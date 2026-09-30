@@ -1,242 +1,242 @@
 {
- "updated": "2026/09/28",
+ "updated": "2026/09/29",
  "songs": {
   "Surfin' Boy": {
    "spotify": {
-    "total": 9954398,
-    "yday": 76136
+    "total": 10033924,
+    "yday": 79526
    },
    "youtube": null
   },
   "Run Devil Run": {
    "spotify": {
-    "total": 1320187,
-    "yday": 692
+    "total": 1320807,
+    "yday": 620
    },
    "youtube": null
   },
   "Cosmic": {
    "spotify": {
-    "total": 108319608,
-    "yday": 85851
+    "total": 108412753,
+    "yday": 93145
    },
    "youtube": {
-    "total": 59333801,
-    "yday": 28704,
-    "likes": null,
+    "total": 59613203,
+    "yday": 32064,
+    "likes": 1189816,
     "ylikes": null
    }
   },
   "Chill Kill": {
    "spotify": {
-    "total": 53742680,
-    "yday": 11106
+    "total": 53755309,
+    "yday": 12629
    },
    "youtube": {
-    "total": 31353934,
-    "yday": 4344,
-    "likes": null,
+    "total": 31397498,
+    "yday": 4752,
+    "likes": 777921,
     "ylikes": null
    }
   },
   "Birthday": {
    "spotify": null,
    "youtube": {
-    "total": 37057934,
-    "yday": 1224,
-    "likes": null,
+    "total": 37070181,
+    "yday": 1320,
+    "likes": 870050,
     "ylikes": null
    }
   },
   "Feel My Rhythm": {
    "spotify": {
-    "total": 189587551,
-    "yday": 27932
+    "total": 189618099,
+    "yday": 30548
    },
    "youtube": {
-    "total": 91396519,
-    "yday": 13248,
-    "likes": null,
+    "total": 91516172,
+    "yday": 12672,
+    "likes": 2397869,
     "ylikes": null
    }
   },
   "Queendom": {
    "spotify": {
-    "total": 143387435,
-    "yday": 16926
+    "total": 143404754,
+    "yday": 17319
    },
    "youtube": {
-    "total": 134635997,
-    "yday": 8448,
-    "likes": null,
+    "total": 134711102,
+    "yday": 8232,
+    "likes": 2869197,
     "ylikes": null
    }
   },
   "Psycho": {
    "spotify": {
-    "total": 572534485,
-    "yday": 130197
+    "total": 572675852,
+    "yday": 141367
    },
    "youtube": {
-    "total": 437825306,
-    "yday": 50112,
-    "likes": null,
+    "total": 438251783,
+    "yday": 45384,
+    "likes": 6627090,
     "ylikes": null
    }
   },
   "Umpah Umpah": {
    "spotify": {
-    "total": 42909370,
-    "yday": 5326
+    "total": 42915224,
+    "yday": 5854
    },
    "youtube": {
-    "total": 52966444,
-    "yday": 1992,
-    "likes": null,
+    "total": 52985226,
+    "yday": 2064,
+    "likes": 1687810,
     "ylikes": null
    }
   },
   "Zimzalabim": {
    "spotify": {
-    "total": 98326634,
-    "yday": 8838
+    "total": 98336685,
+    "yday": 10051
    },
    "youtube": {
-    "total": 108595537,
-    "yday": 3528,
-    "likes": null,
+    "total": 108630244,
+    "yday": 3816,
+    "likes": 2858042,
     "ylikes": null
    }
   },
   "RBB (Really Bad Boy)": {
    "spotify": null,
    "youtube": {
-    "total": 80418040,
-    "yday": 3408,
-    "likes": null,
+    "total": 80450479,
+    "yday": 3552,
+    "likes": 1962869,
     "ylikes": null
    }
   },
   "Power Up": {
    "spotify": {
-    "total": 92239838,
-    "yday": 9767
+    "total": 92250826,
+    "yday": 10988
    },
    "youtube": {
-    "total": 128071052,
-    "yday": 3696,
-    "likes": null,
+    "total": 128104832,
+    "yday": 3888,
+    "likes": 2077024,
     "ylikes": null
    }
   },
   "Bad Boy": {
    "spotify": {
-    "total": 373298187,
-    "yday": 108217
+    "total": 373417994,
+    "yday": 119807
    },
    "youtube": {
-    "total": 449025436,
-    "yday": 54792,
-    "likes": null,
+    "total": 449523496,
+    "yday": 53424,
+    "likes": 4340407,
     "ylikes": null
    }
   },
   "Peek-A-Boo": {
    "spotify": {
-    "total": 250475018,
-    "yday": 34360
+    "total": 250515294,
+    "yday": 40276
    },
    "youtube": {
-    "total": 259324762,
-    "yday": 13152,
-    "likes": null,
+    "total": 259450620,
+    "yday": 13656,
+    "likes": 3182103,
     "ylikes": null
    }
   },
   "Red Flavor": {
    "spotify": {
-    "total": 229540875,
-    "yday": 39540
+    "total": 229581358,
+    "yday": 40483
    },
    "youtube": {
-    "total": 215355031,
-    "yday": 11304,
-    "likes": null,
+    "total": 215458083,
+    "yday": 11592,
+    "likes": 2576598,
     "ylikes": null
    }
   },
   "Rookie": {
    "spotify": null,
    "youtube": {
-    "total": 76922317,
-    "yday": 1920,
-    "likes": null,
+    "total": 76939442,
+    "yday": 1848,
+    "likes": 1014359,
     "ylikes": null
    }
   },
   "Russian Roulette": {
    "spotify": {
-    "total": 262514750,
-    "yday": 138936
+    "total": 262660420,
+    "yday": 145670
    },
    "youtube": {
-    "total": 298317276,
-    "yday": 50472,
-    "likes": null,
+    "total": 298769321,
+    "yday": 50424,
+    "likes": 2955185,
     "ylikes": null
    }
   },
   "Automatic": {
    "spotify": null,
    "youtube": {
-    "total": 29325351,
-    "yday": 1584,
-    "likes": null,
+    "total": 29339813,
+    "yday": 1512,
+    "likes": 389272,
     "ylikes": null
    }
   },
   "Dumb Dumb": {
    "spotify": {
-    "total": 104655413,
-    "yday": 36822
+    "total": 104695140,
+    "yday": 39727
    },
    "youtube": {
-    "total": 158755073,
-    "yday": 13272,
-    "likes": null,
+    "total": 158869332,
+    "yday": 12024,
+    "likes": 1561784,
     "ylikes": null
    }
   },
   "One Of These Nights": {
    "spotify": {
-    "total": 26816206,
-    "yday": 4646
+    "total": 26821433,
+    "yday": 5227
    },
    "youtube": {
-    "total": 30468168,
-    "yday": 1152,
-    "likes": null,
+    "total": 30480021,
+    "yday": 1320,
+    "likes": 612190,
     "ylikes": null
    }
   },
   "Ice Cream Cake": {
    "spotify": null,
    "youtube": {
-    "total": 141898034,
-    "yday": 4848,
-    "likes": null,
+    "total": 141943083,
+    "yday": 4896,
+    "likes": 1555734,
     "ylikes": null
    }
   },
   "Happiness": {
    "spotify": {
-    "total": 52246976,
-    "yday": 20226
+    "total": 52268689,
+    "yday": 21713
    },
    "youtube": {
-    "total": 119335077,
-    "yday": 10176,
-    "likes": null,
+    "total": 119424940,
+    "yday": 9576,
+    "likes": 1424509,
     "ylikes": null
    }
   }
