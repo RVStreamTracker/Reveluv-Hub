@@ -1,243 +1,243 @@
 {
- "updated": "2026/09/29",
+ "updated": "2026/09/30",
  "songs": {
   "Surfin' Boy": {
    "spotify": {
-    "total": 10033924,
-    "yday": 79526
+    "total": 10110650,
+    "yday": 76726
    },
    "youtube": null
   },
   "Run Devil Run": {
    "spotify": {
-    "total": 1320807,
-    "yday": 620
+    "total": 1321499,
+    "yday": 692
    },
    "youtube": null
   },
   "Cosmic": {
    "spotify": {
-    "total": 108412753,
-    "yday": 93145
+    "total": 108501711,
+    "yday": 88958
    },
    "youtube": {
-    "total": 59613203,
+    "total": 59637543,
     "yday": 32064,
-    "likes": 1189816,
-    "ylikes": null
+    "likes": 1189899,
+    "ylikes": 83
    }
   },
   "Chill Kill": {
    "spotify": {
-    "total": 53755309,
-    "yday": 12629
+    "total": 53768135,
+    "yday": 12826
    },
    "youtube": {
-    "total": 31397498,
+    "total": 31401140,
     "yday": 4752,
-    "likes": 777921,
-    "ylikes": null
+    "likes": 777930,
+    "ylikes": 9
    }
   },
   "Birthday": {
    "spotify": null,
    "youtube": {
-    "total": 37070181,
+    "total": 37071105,
     "yday": 1320,
-    "likes": 870050,
-    "ylikes": null
+    "likes": 870057,
+    "ylikes": 7
    }
   },
   "Feel My Rhythm": {
    "spotify": {
-    "total": 189618099,
-    "yday": 30548
+    "total": 189646062,
+    "yday": 27963
    },
    "youtube": {
-    "total": 91516172,
+    "total": 91525950,
     "yday": 12672,
-    "likes": 2397869,
-    "ylikes": null
+    "likes": 2397916,
+    "ylikes": 47
    }
   },
   "Queendom": {
    "spotify": {
-    "total": 143404754,
-    "yday": 17319
+    "total": 143421003,
+    "yday": 16249
    },
    "youtube": {
-    "total": 134711102,
+    "total": 134717165,
     "yday": 8232,
-    "likes": 2869197,
-    "ylikes": null
+    "likes": 2869213,
+    "ylikes": 16
    }
   },
   "Psycho": {
    "spotify": {
-    "total": 572675852,
-    "yday": 141367
+    "total": 572813503,
+    "yday": 137651
    },
    "youtube": {
-    "total": 438251783,
+    "total": 438288541,
     "yday": 45384,
-    "likes": 6627090,
-    "ylikes": null
+    "likes": 6627226,
+    "ylikes": 136
    }
   },
   "Umpah Umpah": {
    "spotify": {
-    "total": 42915224,
-    "yday": 5854
+    "total": 42921298,
+    "yday": 6074
    },
    "youtube": {
-    "total": 52985226,
+    "total": 52986744,
     "yday": 2064,
     "likes": 1687810,
-    "ylikes": null
+    "ylikes": 0
    }
   },
   "Zimzalabim": {
    "spotify": {
-    "total": 98336685,
-    "yday": 10051
+    "total": 98346675,
+    "yday": 9990
    },
    "youtube": {
-    "total": 108630244,
+    "total": 108633176,
     "yday": 3816,
-    "likes": 2858042,
-    "ylikes": null
+    "likes": 2858059,
+    "ylikes": 17
    }
   },
   "RBB (Really Bad Boy)": {
    "spotify": null,
    "youtube": {
-    "total": 80450479,
+    "total": 80453326,
     "yday": 3552,
-    "likes": 1962869,
-    "ylikes": null
+    "likes": 1962888,
+    "ylikes": 19
    }
   },
   "Power Up": {
    "spotify": {
-    "total": 92250826,
-    "yday": 10988
+    "total": 92261734,
+    "yday": 10908
    },
    "youtube": {
-    "total": 128104832,
+    "total": 128107736,
     "yday": 3888,
-    "likes": 2077024,
-    "ylikes": null
+    "likes": 2077039,
+    "ylikes": 15
    }
   },
   "Bad Boy": {
    "spotify": {
-    "total": 373417994,
-    "yday": 119807
+    "total": 373531483,
+    "yday": 113489
    },
    "youtube": {
-    "total": 449523496,
+    "total": 449566985,
     "yday": 53424,
-    "likes": 4340407,
-    "ylikes": null
+    "likes": 4340528,
+    "ylikes": 121
    }
   },
   "Peek-A-Boo": {
    "spotify": {
-    "total": 250515294,
-    "yday": 40276
+    "total": 250555735,
+    "yday": 40441
    },
    "youtube": {
-    "total": 259450620,
+    "total": 259460981,
     "yday": 13656,
-    "likes": 3182103,
-    "ylikes": null
+    "likes": 3182157,
+    "ylikes": 54
    }
   },
   "Red Flavor": {
    "spotify": {
-    "total": 229581358,
-    "yday": 40483
+    "total": 229623118,
+    "yday": 41760
    },
    "youtube": {
-    "total": 215458083,
+    "total": 215467296,
     "yday": 11592,
-    "likes": 2576598,
-    "ylikes": null
+    "likes": 2576653,
+    "ylikes": 55
    }
   },
   "Rookie": {
    "spotify": null,
    "youtube": {
-    "total": 76939442,
+    "total": 76940821,
     "yday": 1848,
-    "likes": 1014359,
-    "ylikes": null
+    "likes": 1014368,
+    "ylikes": 9
    }
   },
   "Russian Roulette": {
    "spotify": {
-    "total": 262660420,
-    "yday": 145670
+    "total": 262800061,
+    "yday": 139641
    },
    "youtube": {
-    "total": 298769321,
+    "total": 298806488,
     "yday": 50424,
-    "likes": 2955185,
-    "ylikes": null
+    "likes": 2955314,
+    "ylikes": 129
    }
   },
   "Automatic": {
    "spotify": null,
    "youtube": {
-    "total": 29339813,
+    "total": 29340967,
     "yday": 1512,
-    "likes": 389272,
-    "ylikes": null
+    "likes": 389283,
+    "ylikes": 11
    }
   },
   "Dumb Dumb": {
    "spotify": {
-    "total": 104695140,
-    "yday": 39727
+    "total": 104733170,
+    "yday": 38030
    },
    "youtube": {
-    "total": 158869332,
+    "total": 158878853,
     "yday": 12024,
-    "likes": 1561784,
-    "ylikes": null
+    "likes": 1561896,
+    "ylikes": 112
    }
   },
   "One Of These Nights": {
    "spotify": {
-    "total": 26821433,
-    "yday": 5227
+    "total": 26826581,
+    "yday": 5148
    },
    "youtube": {
-    "total": 30480021,
+    "total": 30480993,
     "yday": 1320,
-    "likes": 612190,
-    "ylikes": null
+    "likes": 612200,
+    "ylikes": 10
    }
   },
   "Ice Cream Cake": {
    "spotify": null,
    "youtube": {
-    "total": 141943083,
+    "total": 141946844,
     "yday": 4896,
-    "likes": 1555734,
-    "ylikes": null
+    "likes": 1555752,
+    "ylikes": 18
    }
   },
   "Happiness": {
    "spotify": {
-    "total": 52268689,
-    "yday": 21713
+    "total": 52289426,
+    "yday": 20737
    },
    "youtube": {
-    "total": 119424940,
+    "total": 119432425,
     "yday": 9576,
-    "likes": 1424509,
-    "ylikes": null
+    "likes": 1424575,
+    "ylikes": 66
    }
   }
  }
