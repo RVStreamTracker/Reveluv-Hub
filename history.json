@@ -313,102 +313,712 @@
    "s": 10272673
   },
   "Run Devil Run": {
-   "s": 1322169
+   "s": 1322169,
+   "y": 2539136,
+   "l": 92862
   },
   "Cosmic": {
    "s": 108653186,
-   "y": 59701622,
+   "y": 59702628,
    "l": 1190184
   },
   "Chill Kill": {
    "s": 53792670,
-   "y": 31410863,
+   "y": 31411032,
    "l": 778005
   },
   "Birthday": {
-   "y": 37074014,
-   "l": 870068
+   "y": 37074061,
+   "l": 870070
   },
   "Feel My Rhythm": {
    "s": 189701166,
-   "y": 91551019,
+   "y": 91551403,
    "l": 2398031
   },
   "Queendom": {
    "s": 143457510,
-   "y": 134733993,
+   "y": 134734229,
    "l": 2869273
   },
   "Psycho": {
    "s": 573092725,
-   "y": 438394241,
-   "l": 6627731
+   "y": 438396018,
+   "l": 6627738
   },
   "Umpah Umpah": {
    "s": 42933557,
-   "y": 52991224,
+   "y": 52991286,
    "l": 1687822
   },
   "Zimzalabim": {
    "s": 98368299,
-   "y": 108641353,
-   "l": 2858133
+   "y": 108641511,
+   "l": 2858135
   },
   "RBB (Really Bad Boy)": {
-   "y": 80461235,
-   "l": 1962952
+   "y": 80461368,
+   "l": 1962953
   },
   "Power Up": {
    "s": 92283196,
-   "y": 128115370,
-   "l": 2077076
+   "y": 128115481,
+   "l": 2077078
   },
   "Bad Boy": {
    "s": 373752546,
-   "y": 449685772,
-   "l": 4340884
+   "y": 449687605,
+   "l": 4340887
   },
   "Peek-A-Boo": {
    "s": 250637505,
-   "y": 259491731,
-   "l": 3182388
+   "y": 259492289,
+   "l": 3182392
   },
   "Red Flavor": {
    "s": 229712345,
-   "y": 215493087,
-   "l": 2576825
+   "y": 215493496,
+   "l": 2576828
   },
   "Rookie": {
-   "y": 76944889,
-   "l": 1014394
+   "y": 76944970,
+   "l": 1014395
   },
   "Russian Roulette": {
    "s": 263098472,
-   "y": 298912901,
-   "l": 2955935
+   "y": 298914785,
+   "l": 2955947
   },
   "Automatic": {
-   "y": 29344284,
-   "l": 389336
+   "y": 29344348,
+   "l": 389337
   },
   "Dumb Dumb": {
    "s": 104808369,
-   "y": 158906226,
-   "l": 1562290
+   "y": 158906816,
+   "l": 1562295
   },
   "One Of These Nights": {
    "s": 26836638,
-   "y": 30483712,
-   "l": 612229
+   "y": 30483751,
+   "l": 612230
   },
   "Ice Cream Cake": {
-   "y": 141957354,
-   "l": 1555837
+   "y": 141957525,
+   "l": 1555836
   },
   "Happiness": {
    "s": 52334341,
-   "y": 119454116,
-   "l": 1424864
+   "y": 119454523,
+   "l": 1424870
+  },
+  "Hot Girls Cold Vibe": {
+   "s": 1765725
+  },
+  "Hula Hoop": {
+   "s": 1817370
+  },
+  "Orchestra": {
+   "s": 3081593
+  },
+  "Hawaii": {
+   "s": 1336558
+  },
+  "Sweet Dreams": {
+   "s": 5988650
+  },
+  "Night Drive": {
+   "s": 6709052
+  },
+  "Bubble": {
+   "s": 6212786
+  },
+  "Sunflower": {
+   "s": 9648344
+  },
+  "Last Drop": {
+   "s": 9409971
+  },
+  "Love Arcade": {
+   "s": 6614078
+  },
+  "Knock Knock (Who's There?)": {
+   "s": 10820741
+  },
+  "Will I Ever See You Again?": {
+   "s": 10276295
+  },
+  "Underwater": {
+   "s": 16350790
+  },
+  "Iced Coffee": {
+   "s": 7681397
+  },
+  "Nightmare": {
+   "s": 7360310
+  },
+  "One Kiss": {
+   "s": 7088172
+  },
+  "Bulldozer": {
+   "s": 5765208
+  },
+  "Scenery": {
+   "s": 4808003
+  },
+  "Wings": {
+   "s": 4711178
+  },
+  "Bye Bye": {},
+  "Celebrate": {},
+  "On A Ride": {},
+  "Zoom": {},
+  "Bamboleo": {
+   "s": 24229821
+  },
+  "Beg For Me": {
+   "s": 14590947
+  },
+  "Good, Bad, Ugly": {
+   "s": 8494143
+  },
+  "In My Dreams": {
+   "s": 55150493
+  },
+  "Rainbow Halo": {
+   "s": 10189156
+  },
+  "Better Be": {
+   "s": 7685145
+  },
+  "Hello, Sunset": {
+   "s": 15838497
+  },
+  "Knock On Wood": {
+   "s": 10398939
+  },
+  "Pose": {
+   "s": 23985978
+  },
+  "Pushin' N Pullin'": {
+   "s": 10676564
+  },
+  "In & Out": {
+   "s": 34161881
+  },
+  "La Rouge": {
+   "s": 7698687
+  },
+  "Remember Forever": {
+   "s": 12073254
+  },
+  "Carpool": {
+   "s": 9008318
+  },
+  "Eyes Locked, Hands Locked": {
+   "s": 14722060
+  },
+  "Jumpin'": {
+   "s": 7830414
+  },
+  "Ladies Night": {
+   "s": 11318423
+  },
+  "Love Is The Way": {
+   "s": 10285652
+  },
+  "Bing Bing": {
+   "s": 8039898
+  },
+  "LP": {
+   "s": 15688103
+  },
+  "Milkshake": {
+   "s": 10466416
+  },
+  "Parade": {
+   "s": 8133138
+  },
+  "Sunny Side Up!": {
+   "s": 27183766
+  },
+  "Butterflies": {},
+  "Sassy Me": {},
+  "So Good": {},
+  "Taste": {},
+  "Blue Lemonade": {
+   "s": 14110072
+  },
+  "Hit That Drum": {
+   "s": 6257531
+  },
+  "Mosquito": {
+   "s": 5360550
+  },
+  "Mr. E": {
+   "s": 5044537
+  },
+  "With You": {
+   "s": 6373817
+  },
+  "All Right": {
+   "s": 8386206
+  },
+  "Time To Love": {
+   "s": 10300955
+  },
+  "About Love": {
+   "s": 12309872
+  },
+  "Attaboy": {
+   "s": 9007177
+  },
+  "I Just": {
+   "s": 21293907
+  },
+  "Kingdom Come": {
+   "s": 33819438
+  },
+  "Look": {
+   "s": 20550163
+  },
+  "Moonlight Melody": {
+   "s": 9889966
+  },
+  "My Second Date": {
+   "s": 11018412
+  },
+  "Perfect 10": {
+   "s": 11904026
+  },
+  "Hear The Sea": {
+   "s": 8342079
+  },
+  "Mojito": {
+   "s": 5744655
+  },
+  "You Better Know": {
+   "s": 18014861
+  },
+  "Zoo": {
+   "s": 13918381
+  },
+  "Body Talk": {},
+  "Happily Ever After": {},
+  "Last Love": {},
+  "Little Little": {},
+  "Talk To Me": {},
+  "Bad Dracula": {
+   "s": 6844966
+  },
+  "Fool": {
+   "s": 5587471
+  },
+  "Lucky Girl": {
+   "s": 8731080
+  },
+  "My Dear": {
+   "s": 5895323
+  },
+  "Some Love": {
+   "s": 4505759
+  },
+  "Sunny Afternoon": {
+   "s": 5800899
+  },
+  "Cool Hot Sweet Love": {
+   "s": 8536288
+  },
+  "First Time": {
+   "s": 4513165
+  },
+  "Light Me Up": {
+   "s": 6167463
+  },
+  "Rose Scent Breeze": {
+   "s": 3046379
+  },
+  "Campfire": {
+   "s": 4951175
+  },
+  "Cool World": {
+   "s": 5534705
+  },
+  "Day 1": {
+   "s": 72752707
+  },
+  "Don't U Wait No More": {
+   "s": 5453203
+  },
+  "Huff n Puff": {
+   "s": 7001380
+  },
+  "Lady's Room": {
+   "s": 5232219
+  },
+  "Oh Boy": {
+   "s": 12492740
+  },
+  "Red Dress": {
+   "s": 7588757
+  },
+  "Time Slip": {
+   "s": 8387147
+  },
+  "Candy": {},
+  "Somethin' Kinda Crazy": {},
+  "Stupid Cupid": {},
+  "Take It Slow": {},
+  "Sappy": {
+   "s": 12077779
+  },
+  "#Cookie Jar": {
+   "s": 15605321
+  },
+  "Wildside": {
+   "s": 18808505
+  },
+  "Sayonara": {
+   "s": 6482669
+  },
+  "Aitai-tai": {
+   "s": 6097138
+  },
+  "Color of Love": {
+   "s": 4383184
+  },
+  "Marionette": {
+   "s": 4417646
+  },
+  "Swimming Pool": {
+   "s": 4316346
+  },
+  "Snap Snap": {
+   "s": 2164058
+  },
+  "'Cause it's you": {
+   "s": 2999182
+  },
+  "Jackpot": {
+   "s": 1775084
+  },
+  "Monster": {
+   "s": 159057641
+  },
+  "Naughty": {
+   "s": 60293027
+  },
+  "TILT": {
+   "s": 11868526
+  },
+  "Feel Good": {
+   "s": 9181058
+  },
+  "Jelly": {
+   "s": 7700640
+  },
+  "Diamond": {
+   "s": 7207431
+  },
+  "Uncover (Sung by SEULGI)": {
+   "s": 5496614
+  },
+  "Girl Next Door": {
+   "s": 3396669
+  },
+  "Heaven": {
+   "s": 3362065
+  },
+  "Irresistible": {
+   "s": 2705285
+  },
+  "Trampoline": {
+   "s": 2591122
+  },
+  "What's Your Problem?": {
+   "s": 2268633
+  },
+  "28 Reasons": {
+   "s": 87975441
+  },
+  "Wow Thing": {
+   "s": 43479149
+  },
+  "Anywhere But Home": {
+   "s": 30767989
+  },
+  "Baby, Not Baby": {
+   "s": 15539846
+  },
+  "Dead Man Runnin'": {
+   "s": 11701382
+  },
+  "Bad Boy, Sad Girl": {
+   "s": 10960475
+  },
+  "Los Angeles": {
+   "s": 7150847
+  },
+  "Crown": {
+   "s": 6275248
+  },
+  "Praying": {
+   "s": 4745059
+  },
+  "In my memory": {
+   "s": 4379729
+  },
+  "Better Dayz": {
+   "s": 2542256
+  },
+  "Weakness": {
+   "s": 2181348
+  },
+  "Whatever": {
+   "s": 2030494
+  },
+  "Rollin' (With My Homies)": {
+   "s": 2011796
+  },
+  "Always": {
+   "s": 1484332
+  },
+  "Like A Flower": {
+   "s": 18438103
+  },
+  "Summer Rain": {
+   "s": 3551781
+  },
+  "Strawberry Silhouette": {
+   "s": 2904272
+  },
+  "Calling Me Back": {
+   "s": 2394742
+  },
+  "Ka-Ching": {
+   "s": 2186381
+  },
+  "Start Line": {
+   "s": 1889075
+  },
+  "Winter Wish": {
+   "s": 1824968
+  },
+  "I Feel Pretty": {
+   "s": 1570219
+  },
+  "Biggest Fan": {
+   "s": 706217
+  },
+  "Best Believe": {
+   "s": 277600
+  },
+  "Don't Wanna Get Up": {
+   "s": 241147
+  },
+  "Face To Face": {
+   "s": 217121
+  },
+  "Million Miles Away": {
+   "s": 204666
+  },
+  "Love Can Make A Way": {
+   "s": 188141
+  },
+  "Black Halo": {
+   "s": 184087
+  },
+  "SPIT IT OUT": {
+   "s": 181473
+  },
+  "MTV (My Timeless Video)": {
+   "s": 169642
+  },
+  "Wasteland": {
+   "s": 161749
+  },
+  "Written In The Stars": {
+   "s": 64966866
+  },
+  "Like Water": {
+   "s": 40376765
+  },
+  "What If Love": {
+   "s": 35372080
+  },
+  "Goodbye": {
+   "s": 31559696
+  },
+  "When This Rain Stops": {
+   "s": 27207587
+  },
+  "Wish You Hell": {
+   "s": 21595456
+  },
+  "Spring Love": {
+   "s": 18448006
+  },
+  "His Car Isn't Yours": {
+   "s": 14655669
+  },
+  "Daydream": {
+   "s": 13943948
+  },
+  "Two Words": {
+   "s": 10519638
+  },
+  "I Can Only See You": {
+   "s": 10424801
+  },
+  "Best Friend (with SEULGI)": {
+   "s": 8780190
+  },
+  "Why Can't You Love Me?": {
+   "s": 8756310
+  },
+  "Airport Goodbyes": {
+   "s": 6456501
+  },
+  "The Road": {
+   "s": 5446892
+  },
+  "Sunkiss": {
+   "s": 4146519
+  },
+  "Queen Of The Party": {
+   "s": 3382111
+  },
+  "Doll": {
+   "s": 3028725
+  },
+  "Vermilion": {
+   "s": 2932013
+  },
+  "Better Judgement": {
+   "s": 2924594
+  },
+  "If I Could Read Your Mind": {
+   "s": 2843142
+  },
+  "Best Ever": {
+   "s": 2598533
+  },
+  "Miracle": {
+   "s": 2540825
+  },
+  "Say You Love Me": {
+   "s": 2252703
+  },
+  "Chapter You": {
+   "s": 2195337
+  },
+  "Hate²": {
+   "s": 1611792
+  },
+  "EXISTENTIAL CRISIS": {
+   "s": 1384133
+  },
+  "The Little Match Girl": {
+   "s": 1325540
+  },
+  "Let You Know": {
+   "s": 1303441
+  },
+  "EMOTIONS": {
+   "s": 1296327
+  },
+  "Fireproof": {
+   "s": 1193590
+  },
+  "Believe": {
+   "s": 1101443
+  },
+  "Girls": {
+   "s": 1094629
+  },
+  "FLY": {
+   "s": 275601
+  },
+  "Hello": {
+   "s": 78768591
+  },
+  "Introduce me a good person": {
+   "s": 32217947
+  },
+  "Je T'aime": {
+   "s": 15461165
+  },
+  "Yeowooya": {
+   "s": 14818761
+  },
+  "Dream Me": {
+   "s": 7111760
+  },
+  "Day By Day": {
+   "s": 6922369
+  },
+  "I'm OK (feat. Lee Hyun Woo)": {
+   "s": 6542972
+  },
+  "Always In My Heart": {
+   "s": 5961345
+  },
+  "Your Days": {
+   "s": 5741541
+  },
+  "Shiny Boy": {
+   "s": 5738663
+  },
+  "Happy Birthday To You": {
+   "s": 5393987
+  },
+  "If Only": {
+   "s": 4089394
+  },
+  "Why isn't love always easy?": {
+   "s": 4080801
+  },
+  "Waiting for You": {
+   "s": 3387154
+  },
+  "Love Splash!": {
+   "s": 3107618
+  },
+  "Be There For You": {
+   "s": 2978833
+  },
+  "The Way To Me": {
+   "s": 2777476
+  },
+  "OMG!": {
+   "s": 2671796
+  },
+  "Your Name": {
+   "s": 1681822
+  },
+  "Blue night song": {
+   "s": 919623
+  },
+  "My Lips Like Warm Coffee": {
+   "s": 880591
+  },
+  "La Vie En Bleu": {
+   "s": 870842
+  },
+  "Scent Of Green": {
+   "s": 705938
+  },
+  "Get Up And Dance": {
+   "s": 676690
+  },
+  "Unwritten Page": {
+   "s": 624553
+  },
+  "Cuddle": {
+   "s": 495246
+  },
+  "Love Condition": {
+   "s": 312167
   }
  }
 }
