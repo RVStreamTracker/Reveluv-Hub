@@ -1,243 +1,243 @@
 {
- "updated": "2026/09/30",
+ "updated": "2026/10/02",
  "songs": {
   "Surfin' Boy": {
    "spotify": {
-    "total": 10110650,
-    "yday": 76726
+    "total": 10272673,
+    "yday": 81011
    },
    "youtube": null
   },
   "Run Devil Run": {
    "spotify": {
-    "total": 1321499,
-    "yday": 692
+    "total": 1322169,
+    "yday": 670
    },
    "youtube": null
   },
   "Cosmic": {
    "spotify": {
-    "total": 108501711,
-    "yday": 88958
+    "total": 108653186,
+    "yday": 75737
    },
    "youtube": {
-    "total": 59667483,
-    "yday": 32064,
-    "likes": 1190043,
-    "ylikes": 144
+    "total": 59701622,
+    "yday": 30552,
+    "likes": 1190184,
+    "ylikes": 141
    }
   },
   "Chill Kill": {
    "spotify": {
-    "total": 53768135,
-    "yday": 12826
+    "total": 53792670,
+    "yday": 12267
    },
    "youtube": {
-    "total": 31405518,
-    "yday": 4752,
-    "likes": 777958,
-    "ylikes": 28
+    "total": 31410863,
+    "yday": 4584,
+    "likes": 778005,
+    "ylikes": 47
    }
   },
   "Birthday": {
    "spotify": null,
    "youtube": {
-    "total": 37072401,
-    "yday": 1320,
-    "likes": 870058,
-    "ylikes": 1
+    "total": 37074014,
+    "yday": 1248,
+    "likes": 870068,
+    "ylikes": 10
    }
   },
   "Feel My Rhythm": {
    "spotify": {
-    "total": 189646062,
-    "yday": 27963
+    "total": 189701166,
+    "yday": 27552
    },
    "youtube": {
-    "total": 91537598,
-    "yday": 12672,
-    "likes": 2397958,
-    "ylikes": 42
+    "total": 91551019,
+    "yday": 11880,
+    "likes": 2398031,
+    "ylikes": 73
    }
   },
   "Queendom": {
    "spotify": {
-    "total": 143421003,
-    "yday": 16249
+    "total": 143457510,
+    "yday": 18253
    },
    "youtube": {
-    "total": 134724987,
-    "yday": 8232,
-    "likes": 2869238,
-    "ylikes": 25
+    "total": 134733993,
+    "yday": 7704,
+    "likes": 2869273,
+    "ylikes": 35
    }
   },
   "Psycho": {
    "spotify": {
-    "total": 572813503,
-    "yday": 137651
+    "total": 573092725,
+    "yday": 139611
    },
    "youtube": {
-    "total": 438336128,
-    "yday": 45384,
-    "likes": 6627450,
-    "ylikes": 224
+    "total": 438394241,
+    "yday": 45240,
+    "likes": 6627731,
+    "ylikes": 281
    }
   },
   "Umpah Umpah": {
    "spotify": {
-    "total": 42921298,
-    "yday": 6074
+    "total": 42933557,
+    "yday": 6129
    },
    "youtube": {
-    "total": 52988716,
-    "yday": 2064,
-    "likes": 1687819,
-    "ylikes": 9
+    "total": 52991224,
+    "yday": 1944,
+    "likes": 1687822,
+    "ylikes": 3
    }
   },
   "Zimzalabim": {
    "spotify": {
-    "total": 98346675,
-    "yday": 9990
+    "total": 98368299,
+    "yday": 10812
    },
    "youtube": {
-    "total": 108636664,
-    "yday": 3816,
-    "likes": 2858090,
-    "ylikes": 31
+    "total": 108641353,
+    "yday": 3744,
+    "likes": 2858133,
+    "ylikes": 43
    }
   },
   "RBB (Really Bad Boy)": {
    "spotify": null,
    "youtube": {
-    "total": 80456864,
-    "yday": 3552,
-    "likes": 1962927,
-    "ylikes": 39
+    "total": 80461235,
+    "yday": 3528,
+    "likes": 1962952,
+    "ylikes": 25
    }
   },
   "Power Up": {
    "spotify": {
-    "total": 92261734,
-    "yday": 10908
+    "total": 92283196,
+    "yday": 10731
    },
    "youtube": {
-    "total": 128111217,
-    "yday": 3888,
-    "likes": 2077055,
-    "ylikes": 16
+    "total": 128115370,
+    "yday": 3576,
+    "likes": 2077076,
+    "ylikes": 21
    }
   },
   "Bad Boy": {
    "spotify": {
-    "total": 373531483,
-    "yday": 113489
+    "total": 373752546,
+    "yday": 110531
    },
    "youtube": {
-    "total": 449621394,
-    "yday": 53424,
-    "likes": 4340692,
-    "ylikes": 164
+    "total": 449685772,
+    "yday": 53400,
+    "likes": 4340884,
+    "ylikes": 192
    }
   },
   "Peek-A-Boo": {
    "spotify": {
-    "total": 250555735,
-    "yday": 40441
+    "total": 250637505,
+    "yday": 40885
    },
    "youtube": {
-    "total": 259474530,
-    "yday": 13656,
-    "likes": 3182250,
-    "ylikes": 93
+    "total": 259491731,
+    "yday": 13440,
+    "likes": 3182388,
+    "ylikes": 138
    }
   },
   "Red Flavor": {
    "spotify": {
-    "total": 229623118,
-    "yday": 41760
+    "total": 229712345,
+    "yday": 44613
    },
    "youtube": {
-    "total": 215478792,
-    "yday": 11592,
-    "likes": 2576735,
-    "ylikes": 82
+    "total": 215493087,
+    "yday": 11496,
+    "likes": 2576825,
+    "ylikes": 90
    }
   },
   "Rookie": {
    "spotify": null,
    "youtube": {
-    "total": 76942630,
-    "yday": 1848,
-    "likes": 1014381,
+    "total": 76944889,
+    "yday": 1800,
+    "likes": 1014394,
     "ylikes": 13
    }
   },
   "Russian Roulette": {
    "spotify": {
-    "total": 262800061,
-    "yday": 139641
+    "total": 263098472,
+    "yday": 149205
    },
    "youtube": {
-    "total": 298853866,
-    "yday": 50424,
-    "likes": 2955572,
-    "ylikes": 258
+    "total": 298912901,
+    "yday": 47496,
+    "likes": 2955935,
+    "ylikes": 363
    }
   },
   "Automatic": {
    "spotify": null,
    "youtube": {
-    "total": 29342413,
+    "total": 29344284,
     "yday": 1512,
-    "likes": 389304,
-    "ylikes": 21
+    "likes": 389336,
+    "ylikes": 32
    }
   },
   "Dumb Dumb": {
    "spotify": {
-    "total": 104733170,
-    "yday": 38030
+    "total": 104808369,
+    "yday": 37599
    },
    "youtube": {
-    "total": 158891019,
-    "yday": 12024,
-    "likes": 1562062,
-    "ylikes": 166
+    "total": 158906226,
+    "yday": 12408,
+    "likes": 1562290,
+    "ylikes": 228
    }
   },
   "One Of These Nights": {
    "spotify": {
-    "total": 26826581,
-    "yday": 5148
+    "total": 26836638,
+    "yday": 5028
    },
    "youtube": {
-    "total": 30482156,
-    "yday": 1320,
-    "likes": 612209,
-    "ylikes": 9
+    "total": 30483712,
+    "yday": 1272,
+    "likes": 612229,
+    "ylikes": 20
    }
   },
   "Ice Cream Cake": {
    "spotify": null,
    "youtube": {
-    "total": 141951557,
-    "yday": 4896,
-    "likes": 1555787,
-    "ylikes": 35
+    "total": 141957354,
+    "yday": 4752,
+    "likes": 1555837,
+    "ylikes": 50
    }
   },
   "Happiness": {
    "spotify": {
-    "total": 52289426,
-    "yday": 20737
+    "total": 52334341,
+    "yday": 22457
    },
    "youtube": {
-    "total": 119441745,
+    "total": 119454116,
     "yday": 9576,
-    "likes": 1424686,
-    "ylikes": 111
+    "likes": 1424864,
+    "ylikes": 178
    }
   }
  }
