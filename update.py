@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Daily updater for the Red Velvet stream tracker. Uses only the Python standard library.
-
-Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb (and from the
-YouTube Data API if YOUTUBE_API_KEY is set, which also gives likes), then writes data.json.
-history.json keeps one snapshot per day so daily gains and daily likes can be worked out.
+""" Kworb for Spotify and Kworb + Soridata for Youtube data.
 """
 import json
 import os
