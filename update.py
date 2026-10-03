@@ -49,7 +49,7 @@ SPOTIFY = {
 # The ID is the 11 characters after "v=" in a YouTube link. "" means not known yet.
 VIDEOS = {
     "Surfin' Boy": "",
-    "Run Devil Run": "",
+    "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
     "Cosmic": "FyG21rXCxlY",
     "Chill Kill": "xlyrt5eAtKI",
     "Birthday": "Ut1OzEVUiM4",
@@ -71,6 +71,294 @@ VIDEOS = {
     "Ice Cream Cake": "glXgSSOKlls",
     "Happiness": "JFgv8bKfxEs",
 }
+
+
+# B-sides: album tracks that are not title tracks (from Wikipedia's list of Red Velvet songs)
+BSIDES = [
+    "Hot Girls Cold Vibe",
+    "Hula Hoop",
+    "Orchestra",
+    "Hawaii",
+    "Sweet Dreams",
+    "Night Drive",
+    "Bubble",
+    "Sunflower",
+    "Last Drop",
+    "Love Arcade",
+    "Knock Knock (Who's There?)",
+    "Will I Ever See You Again?",
+    "Underwater",
+    "Iced Coffee",
+    "Nightmare",
+    "One Kiss",
+    "Bulldozer",
+    "Scenery",
+    "Wings",
+    "Bye Bye",
+    "Celebrate",
+    "On A Ride",
+    "Zoom",
+    "Bamboleo",
+    "Beg For Me",
+    "Good, Bad, Ugly",
+    "In My Dreams",
+    "Rainbow Halo",
+    "Better Be",
+    "Hello, Sunset",
+    "Knock On Wood",
+    "Pose",
+    "Pushin' N Pullin'",
+    "In & Out",
+    "La Rouge",
+    "Remember Forever",
+    "Carpool",
+    "Eyes Locked, Hands Locked",
+    "Jumpin'",
+    "Ladies Night",
+    "Love Is The Way",
+    "Bing Bing",
+    "LP",
+    "Milkshake",
+    "Parade",
+    "Sunny Side Up!",
+    "Butterflies",
+    "Sassy Me",
+    "So Good",
+    "Taste",
+    "Blue Lemonade",
+    "Hit That Drum",
+    "Mosquito",
+    "Mr. E",
+    "With You",
+    "All Right",
+    "Time To Love",
+    "About Love",
+    "Attaboy",
+    "I Just",
+    "Kingdom Come",
+    "Look",
+    "Moonlight Melody",
+    "My Second Date",
+    "Perfect 10",
+    "Hear The Sea",
+    "Mojito",
+    "You Better Know",
+    "Zoo",
+    "Body Talk",
+    "Happily Ever After",
+    "Last Love",
+    "Little Little",
+    "Talk To Me",
+    "Bad Dracula",
+    "Fool",
+    "Lucky Girl",
+    "My Dear",
+    "Some Love",
+    "Sunny Afternoon",
+    "Cool Hot Sweet Love",
+    "First Time",
+    "Light Me Up",
+    "Rose Scent Breeze",
+    "Campfire",
+    "Cool World",
+    "Day 1",
+    "Don't U Wait No More",
+    "Huff n Puff",
+    "Lady's Room",
+    "Oh Boy",
+    "Red Dress",
+    "Time Slip",
+    "Candy",
+    "Somethin' Kinda Crazy",
+    "Stupid Cupid",
+    "Take It Slow"
+]
+
+# Japanese-language songs
+JAPANESE = [
+    "Sappy",
+    "#Cookie Jar",
+    "Wildside",
+    "Sayonara",
+    "Aitai-tai",
+    "Color of Love",
+    "Marionette",
+    "Swimming Pool",
+    "Snap Snap",
+    "'Cause it's you",
+    "Jackpot"
+]
+
+# Where the name on Kworb differs from the name used on the site
+ALIASES = {
+    "First Time": "처음인가요 First Time",
+    "Rose Scent Breeze": "장미꽃 향기는 바람에 날리고 Rose Scent Breeze",
+    "La Rouge": "La Rouge - Special Track",
+}
+
+
+# Solo and sub-unit songs. Each Kworb page is read once a day (those pages can be out of date).
+EXTRA = {
+    "Irene & Seulgi": {
+        "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
+        "songs": [
+            "Monster",
+            "Naughty",
+            "TILT",
+            "Feel Good",
+            "Jelly",
+            "Diamond",
+            "Uncover (Sung by SEULGI)",
+            "Girl Next Door",
+            "Heaven",
+            "Irresistible",
+            "Trampoline",
+            "What's Your Problem?",
+            "Cheetah",
+            "Fall 4 U",
+            "Love Anxiety",
+            "Wave",
+            "Free",
+        ],
+    },
+    "Seulgi": {
+        "url": "https://kworb.net/spotify/artist/2QM5S4yO6xHgnNvF0nbZZq_songs.html",
+        "songs": [
+            "28 Reasons",
+            "Wow Thing",
+            "Anywhere But Home",
+            "Baby, Not Baby",
+            "Dead Man Runnin'",
+            "Bad Boy, Sad Girl",
+            "Los Angeles",
+            "Crown",
+            "Praying",
+            "In my memory",
+            "Better Dayz",
+            "Weakness",
+            "Whatever",
+            "Rollin' (With My Homies)",
+            "Always",
+        ],
+    },
+    "Irene": {
+        "url": "https://kworb.net/spotify/artist/1FCug8HMxqearaZB5qwWQj_songs.html",
+        "songs": [
+            "Like A Flower",
+            "Summer Rain",
+            "Strawberry Silhouette",
+            "Calling Me Back",
+            "Ka-Ching",
+            "Start Line",
+            "Winter Wish",
+            "I Feel Pretty",
+            "Biggest Fan",
+            "Best Believe",
+            "Don't Wanna Get Up",
+            "Face To Face",
+            "Million Miles Away",
+            "Love Can Make A Way",
+            "Black Halo",
+            "SPIT IT OUT",
+            "MTV (My Timeless Video)",
+            "Wasteland",
+        ],
+    },
+    "Wendy": {
+        "url": "https://kworb.net/spotify/artist/0FRUZvZNPzM3YJMABJxf2K_songs.html",
+        "songs": [
+            "Written In The Stars",
+            "Like Water",
+            "What If Love",
+            "Goodbye",
+            "When This Rain Stops",
+            "Wish You Hell",
+            "Spring Love",
+            "His Car Isn't Yours",
+            "Daydream",
+            "Two Words",
+            "I Can Only See You",
+            "Best Friend (with SEULGI)",
+            "Why Can't You Love Me?",
+            "Airport Goodbyes",
+            "The Road",
+            "Sunkiss",
+            "Queen Of The Party",
+            "Doll",
+            "Vermilion",
+            "Better Judgement",
+            "If I Could Read Your Mind",
+            "Best Ever",
+            "Miracle",
+            "Say You Love Me",
+            "Chapter You",
+            "Hate²",
+            "EXISTENTIAL CRISIS",
+            "The Little Match Girl",
+            "Let You Know",
+            "EMOTIONS",
+            "Fireproof",
+            "Believe",
+            "Girls",
+            "FLY",
+        ],
+    },
+    "Joy": {
+        "url": "https://kworb.net/spotify/artist/0sYpJ0nCC8AlDrZFeAA7ub_songs.html",
+        "songs": [
+            "Hello",
+            "Introduce me a good person",
+            "Je T'aime",
+            "Yeowooya",
+            "Dream Me",
+            "Day By Day",
+            "I'm OK (feat. Lee Hyun Woo)",
+            "Always In My Heart",
+            "Your Days",
+            "Shiny Boy",
+            "Happy Birthday To You",
+            "If Only",
+            "Why isn't love always easy?",
+            "Waiting for You",
+            "Love Splash!",
+            "Be There For You",
+            "The Way To Me",
+            "OMG!",
+            "Your Name",
+            "Blue night song",
+            "My Lips Like Warm Coffee",
+            "La Vie En Bleu",
+            "Scent Of Green",
+            "Get Up And Dance",
+            "Unwritten Page",
+            "Cuddle",
+            "Love Condition",
+        ],
+    },
+}
+# Site title -> exact title on Kworb, where they differ
+EXTRA_ALIASES = {
+    "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
+    "Always In My Heart": "이별을 배웠어 Always In My Heart",
+    "Spring Love": "봄인가 봐 Spring Love",
+    "Let You Know": "아나요 Let You Know",
+    "Ka-Ching": "Ka-Ching - Special Track",
+    "I Feel Pretty": "I Feel Pretty - Special Track",
+    "Why isn't love always easy?": "Why isn't love always easy? (Romance 101 X JOY)",
+    "Airport Goodbyes": "Airport Goodbyes (Prod. The Black Skirts)",
+}
+
+
+def norm(text):
+    return re.sub(r"[^0-9a-z\uac00-\ud7a3]", "", (text or "").lower())
+
+
+def lookup(found, name):
+    wanted = norm(name)
+    for key, value in found.items():
+        if norm(key) == wanted:
+            return value
+    return None
 
 
 class Rows(HTMLParser):
@@ -138,15 +426,15 @@ def parse_rows(html):
     return parser.rows
 
 
-def read_spotify():
-    html = fetch(SPOTIFY_URL)
+def read_spotify(url=SPOTIFY_URL):
+    html = fetch(url)
     if not html:
         return None, None
     found = {}
     for row in parse_rows(html):
         cells = row["cells"]
-        if len(cells) >= 3 and num(cells[1]) is not None and num(cells[2]) is not None:
-            found.setdefault(cells[0], (num(cells[1]), num(cells[2])))
+        if len(cells) >= 2 and num(cells[1]) is not None:
+            found.setdefault(cells[0], (num(cells[1]), num(cells[2]) if len(cells) > 2 else None))
     m = re.search(r"Last updated:\s*(\d{4}/\d{2}/\d{2})", html)
     return found, (m.group(1) if m else None)
 
@@ -218,13 +506,13 @@ def main():
         print("No YOUTUBE_API_KEY set: likes will stay empty.")
 
     songs, snap, missing = {}, {}, []
-    for title in SPOTIFY:
+    for title in list(SPOTIFY) + BSIDES + JAPANESE:
         old = data.get("songs", {}).get(title) or {}
         sp, yt = old.get("spotify"), old.get("youtube")
         snap[title] = {}
 
         if spotify is not None:
-            hit = spotify.get(SPOTIFY[title])
+            hit = lookup(spotify, SPOTIFY.get(title) or ALIASES.get(title, title))
             if hit:
                 sp = {"total": hit[0], "yday": hit[1]}
                 snap[title]["s"] = hit[0]
@@ -252,15 +540,32 @@ def main():
                     yt["ylikes"] = gain(hist, today, title, "l", likes)
             else:
                 missing.append(title + " (YouTube)")
-        else:
+        elif title in VIDEOS:
             missing.append(title + " (YouTube: no video ID yet)")
         songs[title] = {"spotify": sp, "youtube": yt}
+
+    xdates = dict(data.get("xdates", {}))
+    for who, info in EXTRA.items():
+        found, kdate = read_spotify(info["url"])
+        if found is None:
+            continue
+        if kdate:
+            xdates[who] = kdate
+        for title in info["songs"]:
+            old = (data.get("songs", {}).get(title) or {}).get("spotify")
+            hit = lookup(found, EXTRA_ALIASES.get(title, title))
+            if hit:
+                old = {"total": hit[0], "yday": hit[1]}
+                snap[title] = {"s": hit[0]}
+            else:
+                missing.append(title + " (" + who + ")")
+            songs[title] = {"spotify": old, "youtube": None}
 
     hist[ds] = snap
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
         del hist[day]
 
-    out = {"updated": kworb_date or ds, "songs": songs}
+    out = {"updated": kworb_date or ds, "xdates": xdates, "songs": songs}
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     with open("history.json", "w", encoding="utf-8") as f:
