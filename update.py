@@ -15,7 +15,6 @@ SPOTIFY_URL = "https://kworb.net/spotify/artist/1z4g3DjTBBZKhvAroFlhOM_songs.htm
 YOUTUBE_URL = "https://kworb.net/youtube/artist/redvelvet.html"
 UA = "RedVelvetStreamTracker/1.0 (fan project; one request per page per day)"
 
-# Song title on the site -> song name on Kworb's Spotify page
 SPOTIFY = {
     "Surfin' Boy": "Surfin' Boy",
     "Run Devil Run": "Run Devil Run",
@@ -41,11 +40,9 @@ SPOTIFY = {
     "Happiness": "행복 (Happiness)",
 }
 
-# Song title on the site -> YouTube video ID of the music video.
-# The ID is the 11 characters after "v=" in a YouTube link. "" means not known yet.
 VIDEOS = {
     "Surfin' Boy": "",
-    "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
+    "Run Devil Run": "MP7w6N5Jlow",  # not mv
     "Cosmic": "FyG21rXCxlY",
     "Chill Kill": "xlyrt5eAtKI",
     "Birthday": "Ut1OzEVUiM4",
@@ -69,7 +66,6 @@ VIDEOS = {
 }
 
 
-# B-sides: album tracks that are not title tracks (from Wikipedia's list of Red Velvet songs)
 BSIDES = [
     "Hot Girls Cold Vibe",
     "Hula Hoop",
@@ -170,7 +166,7 @@ BSIDES = [
     "Take It Slow"
 ]
 
-# Japanese-language songs
+# jp songs
 JAPANESE = [
     "Sappy",
     "#Cookie Jar",
@@ -185,7 +181,6 @@ JAPANESE = [
     "Jackpot"
 ]
 
-# Where the name on Kworb differs from the name used on the site
 ALIASES = {
     "First Time": "처음인가요 First Time",
     "Rose Scent Breeze": "장미꽃 향기는 바람에 날리고 Rose Scent Breeze",
@@ -193,7 +188,7 @@ ALIASES = {
 }
 
 
-# Solo and sub-unit songs. Each Kworb page is read once a day (those pages can be out of date).
+# solo and subunit
 EXTRA = {
     "Irene & Seulgi": {
         "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
@@ -332,7 +327,7 @@ EXTRA = {
         ],
     },
 }
-# Site title -> exact title on Kworb, where they differ
+
 EXTRA_ALIASES = {
     "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
     "Always In My Heart": "이별을 배웠어 Always In My Heart",
