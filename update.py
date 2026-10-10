@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-""" Kworb for Spotify and Kworb + Soridata for Youtube data.
-"""
 import json
 import os
 import re
@@ -9,12 +7,14 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timezone
+from html import unescape
 from html.parser import HTMLParser
 
 SPOTIFY_URL = "https://kworb.net/spotify/artist/1z4g3DjTBBZKhvAroFlhOM_songs.html"
 YOUTUBE_URL = "https://kworb.net/youtube/artist/redvelvet.html"
 UA = "RedVelvetStreamTracker/1.0 (fan project; one request per page per day)"
 
+# Song title on the site -> song name on Kworb's Spotify page
 SPOTIFY = {
     "Surfin' Boy": "Surfin' Boy",
     "Run Devil Run": "Run Devil Run",
@@ -40,9 +40,11 @@ SPOTIFY = {
     "Happiness": "행복 (Happiness)",
 }
 
+# Uses Kworb and soridata for youtube data
+# The ID is the 11 characters after "v=" in a YouTube link means unknown
 VIDEOS = {
-    "Surfin' Boy": "",
-    "Run Devil Run": "MP7w6N5Jlow",  # not mv
+    "Surfin' Boy": "NZP153MUpHY",
+    "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
     "Cosmic": "FyG21rXCxlY",
     "Chill Kill": "xlyrt5eAtKI",
     "Birthday": "Ut1OzEVUiM4",
@@ -64,7 +66,6 @@ VIDEOS = {
     "Ice Cream Cake": "glXgSSOKlls",
     "Happiness": "JFgv8bKfxEs",
 }
-
 
 BSIDES = [
     "Hot Girls Cold Vibe",
@@ -166,7 +167,7 @@ BSIDES = [
     "Take It Slow"
 ]
 
-# jp songs
+# japanese promoted songs
 JAPANESE = [
     "Sappy",
     "#Cookie Jar",
@@ -188,7 +189,7 @@ ALIASES = {
 }
 
 
-# solo and subunit
+# Solo and aesul
 EXTRA = {
     "Irene & Seulgi": {
         "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
@@ -327,7 +328,7 @@ EXTRA = {
         ],
     },
 }
-
+# special tracks
 EXTRA_ALIASES = {
     "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
     "Always In My Heart": "이별을 배웠어 Always In My Heart",
@@ -461,6 +462,67 @@ def read_api(ids):
     return found
 
 
+MSC = "https://www.mystreamcount.com"
+MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # rv spotify
+MSC_STALE_DAYS = 2      # mystreamcount backup
+msc_down = False        
+
+
+def msc_fetch(url):
+    """One polite attempt. After the first failure we stop asking, so a block never slows the run."""
+    global msc_down
+    if msc_down:
+        return None
+    time.sleep(1)
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return resp.read().decode("utf-8", "replace")
+    except Exception as err:
+        print("MyStreamCount unavailable (", err, ") - skipping it for this run.")
+        msc_down = True
+        return None
+
+
+def msc_artist_tracks(artist_id):
+    """{song title: Spotify track id} from a MyStreamCount artist page."""
+    html = msc_fetch(MSC + "/artist/" + artist_id)
+    tracks = {}
+    if not html:
+        return tracks
+    parts = re.split(r"/track/([A-Za-z0-9]{22})", html)
+    for i in range(1, len(parts) - 1, 2):
+        tid, after = parts[i], parts[i + 1]
+        after = after.split(">", 1)[1] if ">" in after else after
+        text = re.sub(r"<[^>]*(>|$)", "\n", after[:1200])
+        for line in text.split("\n"):
+            line = unescape(line).strip()
+            if line and re.search(r"[A-Za-z\uac00-\ud7a3]", line):
+                tracks.setdefault(line, tid)
+                break
+    if not tracks:
+        print("MyStreamCount artist page had no readable songs. Start of page:", html[:300].replace("\n", " "))
+    return tracks
+
+
+def msc_find(tracks, name):
+    wanted = norm(name)
+    for key, tid in tracks.items():
+        if norm(key) == wanted:
+            return tid
+    close = [tid for key, tid in tracks.items() if wanted and norm(key).startswith(wanted)]
+    return close[0] if len(set(close)) == 1 else None
+
+
+def msc_total(track_id):
+    html = msc_fetch(MSC + "/track/" + track_id)
+    if not html:
+        return None
+    text = unescape(re.sub(r"<[^>]+>", " ", html))
+    m = re.search(r"Total\s+Streams\D{0,40}?(\d[\d,]{3,})", text, re.I) or re.search(r"(\d[\d,]{3,})\s*Total\s+Streams", text, re.I)
+    return num(m.group(1)) if m else None
+
+
 def gain(hist, today, title, field, now):
     """Average daily change since the most recent earlier snapshot, or None if there is none yet."""
     if now is None:
@@ -497,16 +559,33 @@ def main():
         print("No YOUTUBE_API_KEY set: likes will stay empty.")
 
     songs, snap, missing = {}, {}, []
+    rv_msc, from_msc_main = None, 0
     for title in list(SPOTIFY) + BSIDES + JAPANESE:
         old = data.get("songs", {}).get(title) or {}
         sp, yt = old.get("spotify"), old.get("youtube")
         snap[title] = {}
 
+        fresh = False
         if spotify is not None:
             hit = lookup(spotify, SPOTIFY.get(title) or ALIASES.get(title, title))
             if hit:
                 sp = {"total": hit[0], "yday": hit[1]}
                 snap[title]["s"] = hit[0]
+                fresh = True
+        if not fresh:
+            # if kworb is down or not working use mystreamcount
+            if rv_msc is None:
+                rv_msc = msc_artist_tracks(MAIN_ARTIST_ID)
+            tid = None
+            for name in (SPOTIFY.get(title), ALIASES.get(title), title):
+                tid = msc_find(rv_msc, name) if name else None
+                if tid:
+                    break
+            total = msc_total(tid) if tid else None
+            if total:
+                sp = {"total": total, "yday": gain(hist, today, title, "s", total)}
+                snap[title]["s"] = total
+                from_msc_main += 1
             else:
                 missing.append(title + " (Spotify)")
 
@@ -535,6 +614,8 @@ def main():
             missing.append(title + " (YouTube: no video ID yet)")
         songs[title] = {"spotify": sp, "youtube": yt}
 
+    if from_msc_main:
+        print("Red Velvet:", from_msc_main, "song(s) updated from MyStreamCount")
     xdates = dict(data.get("xdates", {}))
     for who, info in EXTRA.items():
         found, kdate = read_spotify(info["url"])
@@ -542,15 +623,38 @@ def main():
             continue
         if kdate:
             xdates[who] = kdate
+        try:
+            age = (today - date(*map(int, kdate.split("/")))).days if kdate else 999
+        except Exception:
+            age = 999
+        stale = age > MSC_STALE_DAYS
+        msc, from_msc = None, 0
         for title in info["songs"]:
             old = (data.get("songs", {}).get(title) or {}).get("spotify")
             hit = lookup(found, EXTRA_ALIASES.get(title, title))
-            if hit:
+            if hit and not stale:
                 old = {"total": hit[0], "yday": hit[1]}
                 snap[title] = {"s": hit[0]}
             else:
-                missing.append(title + " (" + who + ")")
+                if hit:
+                    old = {"total": hit[0], "yday": None}   # stale: not saved to history, or the gain would be wrong
+                # mystreamcount backup
+                if msc is None:
+                    mid = re.search(r"/artist/([A-Za-z0-9]{22})", info["url"])
+                    msc = msc_artist_tracks(mid.group(1)) if mid else {}
+                tid = msc_find(msc, EXTRA_ALIASES.get(title, title)) or msc_find(msc, title)
+                total = msc_total(tid) if tid else None
+                if total and (not hit or total >= hit[0]):
+                    old = {"total": total, "yday": gain(hist, today, title, "s", total)}
+                    snap[title] = {"s": total}
+                    from_msc += 1
+                elif not hit:
+                    missing.append(title + " (" + who + ")")
             songs[title] = {"spotify": old, "youtube": None}
+        if from_msc:
+            print(who + ":", from_msc, "song(s) updated from MyStreamCount")
+            if from_msc * 2 >= len(info["songs"]):
+                xdates[who] = today.strftime("%Y/%m/%d")
 
     hist[ds] = snap
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
