@@ -528,8 +528,16 @@ def msc_total(track_id):
     if not html:
         return None
     text = unescape(re.sub(r"<[^>]+>", " ", html))
-    m = re.search(r"Total\s+Streams\D{0,40}?(\d[\d,]{3,})", text, re.I) or re.search(r"(\d[\d,]{3,})\s*Total\s+Streams", text, re.I)
-    return num(m.group(1)) if m else None
+    text = re.sub(r"\s+", " ", text)
+    # Best: the sentence "... has accumulated 80,526,948 streams on Spotify".
+    # Next: the number right after the "Total Streams" label.
+    # Never the release year (e.g. "Released May 31, 2021"), which sits next to that label.
+    for pattern in (r"accumulated\s+(\d[\d,]*)\s+streams", r"Total\s+Streams\s*:?\s*(\d[\d,]*)"):
+        for m in re.finditer(pattern, text, re.I):
+            n = num(m.group(1))
+            if n and not (1900 <= n <= 2100):
+                return n
+    return None
 
 
 def gain(hist, today, title, field, now):
@@ -538,7 +546,7 @@ def gain(hist, today, title, field, now):
         return None
     for day in sorted((d for d in hist if d < today.isoformat()), reverse=True):
         before = hist[day].get(title, {}).get(field)
-        if before is not None:
+        if before is not None and not (1900 <= before <= 2100):   # ignore a release year that was once saved by mistake
             days = max(1, (today - date.fromisoformat(day)).days)
             return max(0, round((now - before) / days))
     return None
