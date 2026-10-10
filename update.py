@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""Daily updater for the Red Velvet stream tracker. Uses only the Python standard library.
+
+Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb (and from the
+YouTube Data API if YOUTUBE_API_KEY is set, which also gives likes), then writes data.json.
+history.json keeps one snapshot per day so daily gains and daily likes can be worked out.
+"""
 import json
 import os
 import re
@@ -40,8 +46,8 @@ SPOTIFY = {
     "Happiness": "행복 (Happiness)",
 }
 
-# Uses Kworb and soridata for youtube data
-# The ID is the 11 characters after "v=" in a YouTube link means unknown
+# Song title on the site -> YouTube video ID of the music video.
+# The ID is the 11 characters after "v=" in a YouTube link. "" means not known yet.
 VIDEOS = {
     "Surfin' Boy": "NZP153MUpHY",
     "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
@@ -67,6 +73,8 @@ VIDEOS = {
     "Happiness": "JFgv8bKfxEs",
 }
 
+
+# B-sides: album tracks that are not title tracks (from Wikipedia's list of Red Velvet songs)
 BSIDES = [
     "Hot Girls Cold Vibe",
     "Hula Hoop",
@@ -167,7 +175,7 @@ BSIDES = [
     "Take It Slow"
 ]
 
-# japanese promoted songs
+# Japanese-language songs
 JAPANESE = [
     "Sappy",
     "#Cookie Jar",
@@ -182,6 +190,7 @@ JAPANESE = [
     "Jackpot"
 ]
 
+# Where the name on Kworb differs from the name used on the site
 ALIASES = {
     "First Time": "처음인가요 First Time",
     "Rose Scent Breeze": "장미꽃 향기는 바람에 날리고 Rose Scent Breeze",
@@ -189,7 +198,7 @@ ALIASES = {
 }
 
 
-# Solo and aesul
+# Solo and sub-unit songs. Each Kworb page is read once a day (those pages can be out of date).
 EXTRA = {
     "Irene & Seulgi": {
         "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
@@ -328,7 +337,7 @@ EXTRA = {
         ],
     },
 }
-# special tracks
+# Site title -> exact title on Kworb, where they differ
 EXTRA_ALIASES = {
     "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
     "Always In My Heart": "이별을 배웠어 Always In My Heart",
@@ -463,9 +472,9 @@ def read_api(ids):
 
 
 MSC = "https://www.mystreamcount.com"
-MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # rv spotify
-MSC_STALE_DAYS = 2      # mystreamcount backup
-msc_down = False        
+MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # Red Velvet on Spotify (same ID Kworb uses)
+MSC_STALE_DAYS = 2      # use MyStreamCount when a Kworb page is older than this many days
+msc_down = False        # set to True after one failed request so the rest are skipped
 
 
 def msc_fetch(url):
@@ -573,7 +582,7 @@ def main():
                 snap[title]["s"] = hit[0]
                 fresh = True
         if not fresh:
-            # if kworb is down or not working use mystreamcount
+            # Not on Kworb (or Kworb is down): try MyStreamCount's Red Velvet page.
             if rv_msc is None:
                 rv_msc = msc_artist_tracks(MAIN_ARTIST_ID)
             tid = None
@@ -628,7 +637,9 @@ def main():
         except Exception:
             age = 999
         stale = age > MSC_STALE_DAYS
+        print(who + ": Kworb page date", kdate, "-", ("STALE, trying MyStreamCount" if stale else "fresh, using Kworb"))
         msc, from_msc = None, 0
+        why = {"no match": [], "no total": [], "lower": []}
         for title in info["songs"]:
             old = (data.get("songs", {}).get(title) or {}).get("spotify")
             hit = lookup(found, EXTRA_ALIASES.get(title, title))
@@ -638,12 +649,18 @@ def main():
             else:
                 if hit:
                     old = {"total": hit[0], "yday": None}   # stale: not saved to history, or the gain would be wrong
-                # mystreamcount backup
+                # Kworb is out of date or missing this song: try MyStreamCount.
                 if msc is None:
                     mid = re.search(r"/artist/([A-Za-z0-9]{22})", info["url"])
                     msc = msc_artist_tracks(mid.group(1)) if mid else {}
                 tid = msc_find(msc, EXTRA_ALIASES.get(title, title)) or msc_find(msc, title)
                 total = msc_total(tid) if tid else None
+                if not tid:
+                    why["no match"].append(title)
+                elif not total:
+                    why["no total"].append(title)
+                elif hit and total < hit[0]:
+                    why["lower"].append(title + " (MSC " + format(total, ",") + " < Kworb " + format(hit[0], ",") + ")")
                 if total and (not hit or total >= hit[0]):
                     old = {"total": total, "yday": gain(hist, today, title, "s", total)}
                     snap[title] = {"s": total}
@@ -651,6 +668,11 @@ def main():
                 elif not hit:
                     missing.append(title + " (" + who + ")")
             songs[title] = {"spotify": old, "youtube": None}
+        for k, v in why.items():
+            if v:
+                print(who + ": MyStreamCount " + k + " for", "; ".join(v[:8]) + (" ..." if len(v) > 8 else ""))
+        if msc is not None:
+            print(who + ": MyStreamCount page had", len(msc), "songs")
         if from_msc:
             print(who + ":", from_msc, "song(s) updated from MyStreamCount")
             if from_msc * 2 >= len(info["songs"]):
