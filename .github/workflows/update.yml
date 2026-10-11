@@ -3,7 +3,7 @@ name: Update stream data
 on:
   schedule:
     - cron: "0 15 * * *"   # every day at 15:00 UTC
-  workflow_dispatch:        # lets you run it by hand from the Actions tab
+  workflow_dispatch:        # run update script manually
 
 permissions:
   contents: write
