@@ -20,7 +20,7 @@ SPOTIFY_URL = "https://kworb.net/spotify/artist/1z4g3DjTBBZKhvAroFlhOM_songs.htm
 YOUTUBE_URL = "https://kworb.net/youtube/artist/redvelvet.html"
 UA = "RedVelvetStreamTracker/1.0 (fan project; one request per page per day)"
 
-# Song title on the site -> song name on Kworb's Spotify page
+# titl tracks
 SPOTIFY = {
     "Surfin' Boy": "Surfin' Boy",
     "Run Devil Run": "Run Devil Run",
@@ -46,8 +46,8 @@ SPOTIFY = {
     "Happiness": "행복 (Happiness)",
 }
 
-# Song title on the site -> YouTube video ID of the music video.
-# The ID is the 11 characters after "v=" in a YouTube link. "" means not known yet.
+# title track mv + run devil run stage clip
+# the ID is the 11 characters 
 VIDEOS = {
     "Surfin' Boy": "NZP153MUpHY",
     "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
@@ -74,7 +74,7 @@ VIDEOS = {
 }
 
 
-# B-sides: album tracks that are not title tracks (from Wikipedia's list of Red Velvet songs)
+# bsides
 BSIDES = [
     "Hot Girls Cold Vibe",
     "Hula Hoop",
@@ -175,7 +175,7 @@ BSIDES = [
     "Take It Slow"
 ]
 
-# Japanese-language songs
+# japanese promoted songs
 JAPANESE = [
     "Sappy",
     "#Cookie Jar",
@@ -190,7 +190,7 @@ JAPANESE = [
     "Jackpot"
 ]
 
-# Where the name on Kworb differs from the name used on the site
+# long titles shortened
 ALIASES = {
     "First Time": "처음인가요 First Time",
     "Rose Scent Breeze": "장미꽃 향기는 바람에 날리고 Rose Scent Breeze",
@@ -198,7 +198,7 @@ ALIASES = {
 }
 
 
-# Solo and sub-unit songs. Each Kworb page is read once a day (those pages can be out of date).
+# solo & aseul
 EXTRA = {
     "Irene & Seulgi": {
         "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
@@ -337,7 +337,7 @@ EXTRA = {
         ],
     },
 }
-# Site title -> exact title on Kworb, where they differ
+# solo and aseul shortened
 EXTRA_ALIASES = {
     "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
     "Always In My Heart": "이별을 배웠어 Always In My Heart",
@@ -472,8 +472,8 @@ def read_api(ids):
 
 
 MSC = "https://www.mystreamcount.com"
-MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # Red Velvet on Spotify (same ID Kworb uses)
-MSC_STALE_DAYS = 2      # use MyStreamCount when a Kworb page is older than this many days
+MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # rv spotify 
+MSC_STALE_DAYS = 2      # mystreamcount if kworb is stale
 msc_down = False        # set to True after one failed request so the rest are skipped
 
 
@@ -590,7 +590,7 @@ def main():
                 snap[title]["s"] = hit[0]
                 fresh = True
         if not fresh:
-            # Not on Kworb (or Kworb is down): try MyStreamCount's Red Velvet page.
+            # not on Kworb (or Kworb is down for 2+ days): try mystreamcount 
             if rv_msc is None:
                 rv_msc = msc_artist_tracks(MAIN_ARTIST_ID)
             tid = None
@@ -657,7 +657,7 @@ def main():
             else:
                 if hit:
                     old = {"total": hit[0], "yday": None}   # stale: not saved to history, or the gain would be wrong
-                # Kworb is out of date or missing this song: try MyStreamCount.
+                # kworb 2+ days old use mystreamcount
                 if msc is None:
                     mid = re.search(r"/artist/([A-Za-z0-9]{22})", info["url"])
                     msc = msc_artist_tracks(mid.group(1)) if mid else {}
