@@ -20,7 +20,7 @@ SPOTIFY_URL = "https://kworb.net/spotify/artist/1z4g3DjTBBZKhvAroFlhOM_songs.htm
 YOUTUBE_URL = "https://kworb.net/youtube/artist/redvelvet.html"
 UA = "RedVelvetStreamTracker/1.0 (fan project; one request per page per day)"
 
-# titl tracks
+# title tracks spotify
 SPOTIFY = {
     "Surfin' Boy": "Surfin' Boy",
     "Run Devil Run": "Run Devil Run",
