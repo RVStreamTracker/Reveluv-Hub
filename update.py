@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Daily updater for the Red Velvet stream tracker. Uses only the Python standard library.
+"""Daily updater for the Red Velvet stream tracker. 
 
-Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb (and from the
-YouTube Data API if YOUTUBE_API_KEY is set, which also gives likes), then writes data.json.
+Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb, then writes data.json.
 history.json keeps one snapshot per day so daily gains and daily likes can be worked out.
 """
 import json
@@ -20,7 +19,7 @@ SPOTIFY_URL = "https://kworb.net/spotify/artist/1z4g3DjTBBZKhvAroFlhOM_songs.htm
 YOUTUBE_URL = "https://kworb.net/youtube/artist/redvelvet.html"
 UA = "RedVelvetStreamTracker/1.0 (fan project; one request per page per day)"
 
-# title tracks spotify
+# kworb spotify
 SPOTIFY = {
     "Surfin' Boy": "Surfin' Boy",
     "Run Devil Run": "Run Devil Run",
@@ -46,8 +45,7 @@ SPOTIFY = {
     "Happiness": "행복 (Happiness)",
 }
 
-# title track mv + run devil run stage clip
-# the ID is the 11 characters 
+# youtube videos
 VIDEOS = {
     "Surfin' Boy": "NZP153MUpHY",
     "Run Devil Run": "MP7w6N5Jlow",  # a stage clip, not a music video
@@ -72,7 +70,6 @@ VIDEOS = {
     "Ice Cream Cake": "glXgSSOKlls",
     "Happiness": "JFgv8bKfxEs",
 }
-
 
 # bsides
 BSIDES = [
@@ -175,7 +172,7 @@ BSIDES = [
     "Take It Slow"
 ]
 
-# japanese promoted songs
+# japanese
 JAPANESE = [
     "Sappy",
     "#Cookie Jar",
@@ -190,7 +187,7 @@ JAPANESE = [
     "Jackpot"
 ]
 
-# long titles shortened
+
 ALIASES = {
     "First Time": "처음인가요 First Time",
     "Rose Scent Breeze": "장미꽃 향기는 바람에 날리고 Rose Scent Breeze",
@@ -198,7 +195,7 @@ ALIASES = {
 }
 
 
-# solo & aseul
+# solo and aseul
 EXTRA = {
     "Irene & Seulgi": {
         "url": "https://kworb.net/spotify/artist/6bwp9ObI8FWvMPCIWVBmhl_songs.html",
@@ -337,7 +334,7 @@ EXTRA = {
         ],
     },
 }
-# solo and aseul shortened
+# solo aliases
 EXTRA_ALIASES = {
     "Uncover (Sung by SEULGI)": "Uncover (Sung by SEULGI) - Bonus Track",
     "Always In My Heart": "이별을 배웠어 Always In My Heart",
@@ -440,6 +437,42 @@ def read_spotify(url=SPOTIFY_URL):
     return found, (m.group(1) if m else None)
 
 
+def read_peaks(url):
+    """Kworb's "Peaks" page for an artist: every song's best chart position (Global and by country).
+
+    Returns a list like [{"t": "Psycho", "d": "2019/12/27", "s": 136095619, "p": {"Global": 54, "KR": 29}}], in
+    Kworb's order (most chart streams first), or None if the page could not be read.
+    """
+    html = fetch(url)
+    if not html:
+        return None
+    rows = parse_rows(html)
+    header = None
+    for row in rows:
+        cells = [c.strip() for c in row["cells"]]
+        if cells and cells[0].lower() == "peak date":
+            header = cells
+            break
+    if not header:
+        header = ["Peak Date", "Title", "Streams", "Global", "ID", "PH", "TH", "MY", "SG", "KR", "TW", "VN", "HK", "JP",
+                  "CA", "US", "SA", "AE", "RU", "BG"]
+    out = []
+    for row in rows:
+        cells = [c.strip() for c in row["cells"]]
+        if len(cells) < 4 or not re.match(r"\d{4}/\d{2}/\d{2}$", cells[0]):
+            continue
+        pos = {}
+        for name, val in zip(header[3:], cells[3:]):
+            if re.fullmatch(r"\d{1,3}", val):
+                pos[name] = int(val)
+        if pos:
+            out.append({"t": cells[1], "d": cells[0], "s": num(cells[2]) or 0, "p": pos})
+    if not out:
+        print("Chart peaks page had no readable rows:", url)
+        return None
+    return out[:150]
+
+
 def read_kworb_youtube():
     html = fetch(YOUTUBE_URL)
     if not html:
@@ -472,9 +505,14 @@ def read_api(ids):
 
 
 MSC = "https://www.mystreamcount.com"
-MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # rv spotify 
-MSC_STALE_DAYS = 2      # mystreamcount if kworb is stale
-msc_down = False        # set to True after one failed request so the rest are skipped
+MAIN_ARTIST_ID = "1z4g3DjTBBZKhvAroFlhOM"   # rv spotify
+# mystreamcount 
+# ID is 22 letters at end of mystreamcount
+MSC_TRACK_IDS = {
+    "Love Anxiety": "5CQ9lSfkFurZ9ftmg838ZI",
+}
+MSC_STALE_DAYS = 2      # use mystreamcount when kworb is dated
+msc_down = False        # set to true after one failed request so the rest are skipped
 
 
 def msc_fetch(url):
@@ -520,7 +558,11 @@ def msc_find(tracks, name):
         if norm(key) == wanted:
             return tid
     close = [tid for key, tid in tracks.items() if wanted and norm(key).startswith(wanted)]
-    return close[0] if len(set(close)) == 1 else None
+    if len(set(close)) == 1:
+        return close[0]
+    # for aliases
+    tail = [tid for key, tid in tracks.items() if len(wanted) >= 5 and re.search(r"[\uac00-\ud7a3\u3040-\u30ff]", key) and norm(key).endswith(wanted)]
+    return tail[0] if len(set(tail)) == 1 else None
 
 
 def msc_total(track_id):
@@ -529,15 +571,198 @@ def msc_total(track_id):
         return None
     text = unescape(re.sub(r"<[^>]+>", " ", html))
     text = re.sub(r"\s+", " ", text)
-    # Best: the sentence "... has accumulated 80,526,948 streams on Spotify".
-    # Next: the number right after the "Total Streams" label.
-    # Never the release year (e.g. "Released May 31, 2021"), which sits next to that label.
+    # so text dosent glitch
+  
     for pattern in (r"accumulated\s+(\d[\d,]*)\s+streams", r"Total\s+Streams\s*:?\s*(\d[\d,]*)"):
         for m in re.finditer(pattern, text, re.I):
             n = num(m.group(1))
             if n and not (1900 <= n <= 2100):
                 return n
     return None
+
+
+# solo and aseul mv
+
+EXTRA_VIDEOS = {
+    "Monster": "Ujb-gvqsoi0",
+    "TILT": "wlTvVgI5FEI",
+    "Like A Flower": "KdOF5-h4qpw",
+    "28 Reasons": "G_BYjnopO6U",
+    "Hello": "lNvBbh5jDcA",
+    "Naughty": "wCWoUUWwdqg",
+    "Biggest Fan": "x7wLlK9MMN4",
+    "Baby, Not Baby": "S-VLzICd2FE",
+    "Wow Thing": "KR5CtMLuiqQ",
+    "Wish You Hell": "yIQgSDpwFEo",
+    "Sunkiss": "5PS2cJsSJrI",
+    "Daydream": "L1rR_smhD78",
+    "Like Water": "-Ih5UArd4zk",
+    "Love Splash!": "-2fAmkQS854",
+}
+
+MV_SEARCH = {
+    "Irene & Seulgi": ["Cheetah"],
+    "Irene": ["Wasteland"],
+    "Seulgi": ["Dead Man Runnin'", "Rollin' (With My Homies)", "Better Dayz"],
+    "Wendy": ["Goodbye", "Girls"],
+    "Joy": ["Je T'aime", "Introduce me a good person", "Yeowooya"],
+}
+MV_SKIP = ("teaser", "dance practice", "performance", "live", "reaction", "lyric", "audio", "behind", "making",
+           "highlight", "stage", "reacts", "shorts", "cover", "preview", "spoiler", "snippet", "visualizer", "clip")
+MV_RETRY_DAYS = 30
+
+
+def squash(text):
+    return re.sub(r"[^a-z0-9\uac00-\ud7a3]", "", (text or "").lower())
+
+
+def find_mv(who, title, key):
+    """Search YouTube for a song's official music video. Returns a video ID only when the result looks right."""
+    name = "Red Velvet" if who == "Irene & Seulgi" else who
+    query = urllib.parse.urlencode({"part": "snippet", "q": name + " " + title + " MV", "type": "video",
+                                    "maxResults": 8, "key": key})
+    body = fetch("https://www.googleapis.com/youtube/v3/search?" + query)
+    if not body:
+        return None
+    try:
+        items = json.loads(body).get("items", [])
+    except Exception:
+        return None
+    want = squash(title)
+    for item in items:
+        vid = (item.get("id") or {}).get("videoId")
+        text = (item.get("snippet") or {}).get("title", "")
+        low = text.lower()
+        if not vid or want not in squash(text):
+            continue
+        if not re.search(r"\bm/?v\b|music video", low):
+            continue
+        if any(w in low for w in MV_SKIP):
+            continue
+        if squash(name.split(" ")[0]) not in squash(text):
+            continue
+        return vid
+    return None
+
+
+def discover_videos(data, today):
+    """Returns {title: video ID} for the solo and sub-unit songs, finding new ones when it can."""
+    vids = dict(data.get("vids", {}))
+    vids.update(EXTRA_VIDEOS)
+    tried = dict(data.get("vids_tried", {}))
+    key = os.environ.get("YOUTUBE_API_KEY", "").strip()
+    if not key:
+        return vids, tried
+    found = 0
+    for who, titles in MV_SEARCH.items():
+        for title in titles:
+            if title in vids:
+                continue
+            last = tried.get(title)
+            try:
+                recent = last and (today - date.fromisoformat(last)).days < MV_RETRY_DAYS
+            except Exception:
+                recent = False
+            if recent:
+                continue
+            vid = find_mv(who, title, key)
+            tried[title] = today.isoformat()
+            if vid:
+                vids[title] = vid
+                found += 1
+                print(who + ": found a music video for", title, "->", vid)
+    if found == 0:
+        print("No new solo or sub-unit music videos found today.")
+    return vids, tried
+
+
+
+APPLE_COUNTRIES = ["kr", "jp", "th", "id", "ph", "my", "sg", "tw", "hk", "vn", "us", "uk", "ar", "au", "br", "ca",
+                   "co", "fr", "de", "in", "it", "mx", "nl", "pe", "pl", "ru", "es", "tr", "dz", "ao", "ai", "ag",
+                   "am", "at", "az", "bh", "bb", "by", "be", "bz", "bj", "bm", "bt", "bo", "bw", "vg", "bn", "bg",
+                   "bf", "kh", "cm", "cv", "ky", "td", "cl", "cn", "cr", "hr", "cy", "cz", "ci", "dk", "dm", "do",
+                   "ec", "eg", "sv", "ee", "fj", "fi", "gm", "gh", "gr", "gd", "gt", "gw", "gy", "hn", "hu", "is",
+                   "ie", "il", "jm", "jo", "kz", "ke", "kw", "kg", "la", "lv", "lb", "lr", "ly", "lt", "lu", "mo",
+                   "mg", "mw", "mv", "ml", "mt", "mr", "mu", "fm", "md", "mn", "ms", "ma", "mz", "mm", "na", "np",
+                   "nz", "ni", "ne", "ng", "mk", "no", "om", "pa", "pg", "py", "pt", "qa", "cg", "ro", "kn", "sa",
+                   "sn", "rs", "sc", "sl", "sk", "si", "sb", "za", "lk", "lc", "vc", "sr", "sz", "se", "ch", "tj",
+                   "tz", "bs", "tt", "tn", "tm", "tc", "ug", "ua", "ae", "uy", "uz", "ve", "ye", "zw"]
+
+
+ITUNES_COUNTRIES = ["th", "id", "ph", "my", "sg", "tw", "hk", "vn", "jp", "us", "uk", "mn", "ar", "au", "br", "ca",
+                    "co", "fr", "de", "in", "it", "mx", "nl", "pe", "pl", "ru", "es", "tr", "ai", "ag", "am", "at",
+                    "az", "bh", "bb", "by", "be", "bz", "bm", "bo", "bw", "vg", "bn", "bg", "bf", "kh", "cv", "ky",
+                    "cl", "cr", "cy", "cz", "dk", "dm", "do", "ec", "eg", "sv", "ee", "fj", "fi", "gm", "gh", "gr",
+                    "gd", "gt", "gw", "hn", "hu", "ie", "il", "jo", "kz", "ke", "kg", "la", "lv", "lb", "lt", "lu",
+                    "mo", "mt", "mu", "fm", "md", "mz", "na", "np", "nz", "ni", "ne", "ng", "no", "om", "pa", "pg",
+                    "py", "pt", "qa", "ro", "kn", "sa", "sk", "si", "za", "lk", "sz", "se", "ch", "tj", "bs", "tt",
+                    "tm", "ug", "ua", "ae", "uz", "ve", "zw"]
+APPLE_NAMES = {
+    "Red Velvet": ("red velvet", "레드벨벳", "レッドベルベット"),
+    "Irene": ("irene", "아이린", "アイリーン"),
+    "Seulgi": ("seulgi", "슬기", "スルギ"),
+    "Wendy": ("wendy", "웬디", "ウェンディ"),
+    "Joy": ("joy", "조이", "ジョイ"),
+}
+
+
+def apple_artist(text):
+    """Works out which of our artists a Kworb 'Artist - Title' cell belongs to. Returns (artist, title) or None."""
+    parts = [p.strip() for p in re.split(r"\s[-\u2013]\s", text or "")]
+    if len(parts) < 2:
+        return None
+    head = " ".join(parts[:-1]).lower()
+    title = parts[-1]
+    if ("irene" in head and "seulgi" in head) or ("아이린" in head and "슬기" in head):
+        return "Irene & Seulgi", title
+    names = [n.strip() for n in re.split(r"\s*(?:,|&|/|\bfeat\.?|\bft\.?|\sx\s)\s*", parts[0].lower()) if n.strip()]
+    for who in ("Irene", "Seulgi", "Wendy", "Joy", "Red Velvet"):
+        if any(n in APPLE_NAMES[who] for n in names):
+            return who, " - ".join(parts[1:])
+    return None
+
+
+def read_chart(old, today, folder, label, codes):
+    """Updates the saved peaks for one Kworb country-chart service (Apple Music or iTunes).
+    Returns the new {"updated", "best"} block, or the old one on failure."""
+    best = {w: dict(t) for w, t in (old or {}).get("best", {}).items()}
+    seen_pages, hits = 0, 0
+    stamp = today.strftime("%Y/%m/%d")
+    for cc in codes:
+        time.sleep(1)
+        try:
+            req = urllib.request.Request("https://kworb.net/charts/" + folder + "/" + cc + ".html", headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                html = resp.read().decode("utf-8", "replace")
+        except Exception as err:
+            print(label, cc.upper(), "not read -", err)
+            continue
+        rows = parse_rows(html)
+        seen_pages += 1
+        for row in rows:
+            cells = [c.strip() for c in row["cells"]]
+            if len(cells) < 2 or not re.fullmatch(r"\d{1,3}", cells[0]):
+                continue
+            hit = apple_artist(cells[-1])   # the last cell is "Artist - Title" (some countries have no P+ column)
+            if not hit:
+                continue
+            who, title = hit
+            pos = int(cells[0])
+            entry = best.setdefault(who, {}).setdefault(title, {}).setdefault(cc.upper(), {"p": pos, "d": stamp})
+            if pos < entry["p"]:
+                entry["p"], entry["d"] = pos, stamp
+            entry["l"] = stamp
+            entry["n"] = pos
+            hits += 1
+    if not seen_pages:
+        print(label + ": no country pages could be read, keeping the old data.")
+        return old
+    print(label + ": read", seen_pages, "country charts,", hits, "entries for our artists")
+    return {"updated": stamp, "best": best}
+
+
+def read_apple(old, today):
+    return read_chart(old, today, "apple_s", "Apple Music", APPLE_COUNTRIES)
 
 
 def gain(hist, today, title, field, now):
@@ -572,6 +797,8 @@ def main():
         print("Both sources failed, keeping the old data.")
         sys.exit(1)
     api = read_api(VIDEOS.values())
+    xvids, vids_tried = discover_videos(data, today)
+    api.update(read_api([v for v in xvids.values() if v not in api]))
     if not os.environ.get("YOUTUBE_API_KEY", "").strip():
         print("No YOUTUBE_API_KEY set: likes will stay empty.")
 
@@ -590,7 +817,7 @@ def main():
                 snap[title]["s"] = hit[0]
                 fresh = True
         if not fresh:
-            # not on Kworb (or Kworb is down for 2+ days): try mystreamcount 
+            # Not on Kworb (or Kworb is down): try MyStreamCount's Red Velvet page.
             if rv_msc is None:
                 rv_msc = msc_artist_tracks(MAIN_ARTIST_ID)
             tid = None
@@ -598,6 +825,7 @@ def main():
                 tid = msc_find(rv_msc, name) if name else None
                 if tid:
                     break
+            tid = tid or MSC_TRACK_IDS.get(title)
             total = msc_total(tid) if tid else None
             if total:
                 sp = {"total": total, "yday": gain(hist, today, title, "s", total)}
@@ -656,12 +884,12 @@ def main():
                 snap[title] = {"s": hit[0]}
             else:
                 if hit:
-                    old = {"total": hit[0], "yday": None}   # stale: not saved to history, or the gain would be wrong
-                # kworb 2+ days old use mystreamcount
+                    old = {"total": hit[0], "yday": None}   
+                    
                 if msc is None:
                     mid = re.search(r"/artist/([A-Za-z0-9]{22})", info["url"])
                     msc = msc_artist_tracks(mid.group(1)) if mid else {}
-                tid = msc_find(msc, EXTRA_ALIASES.get(title, title)) or msc_find(msc, title)
+                tid = msc_find(msc, EXTRA_ALIASES.get(title, title)) or msc_find(msc, title) or MSC_TRACK_IDS.get(title)
                 total = msc_total(tid) if tid else None
                 if not tid:
                     why["no match"].append(title)
@@ -675,7 +903,27 @@ def main():
                     from_msc += 1
                 elif not hit:
                     missing.append(title + " (" + who + ")")
-            songs[title] = {"spotify": old, "youtube": None}
+            yt = (data.get("songs", {}).get(title) or {}).get("youtube")
+            vid = xvids.get(title)
+            if vid:
+                views = yday = likes = None
+                if kworb_yt and vid in kworb_yt:
+                    views, yday = kworb_yt[vid]
+                if vid in api:
+                    api_views, likes = api[vid]
+                    if api_views is not None and (views is None or api_views >= views):
+                        views = api_views
+                if views is not None:
+                    if yday is None:
+                        yday = gain(hist, today, title, "y", views)
+                    snap.setdefault(title, {})["y"] = views
+                    prev = yt or {}
+                    yt = {"total": views, "yday": yday, "likes": prev.get("likes"), "ylikes": prev.get("ylikes")}
+                    if likes is not None:
+                        snap[title]["l"] = likes
+                        yt["likes"] = likes
+                        yt["ylikes"] = gain(hist, today, title, "l", likes)
+            songs[title] = {"spotify": old, "youtube": yt}
         for k, v in why.items():
             if v:
                 print(who + ": MyStreamCount " + k + " for", "; ".join(v[:8]) + (" ..." if len(v) > 8 else ""))
@@ -690,7 +938,33 @@ def main():
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
         del hist[day]
 
-    out = {"updated": kworb_date or ds, "xdates": xdates, "songs": songs}
+    charts = dict(data.get("charts", {}))
+    peak_pages = {"Red Velvet": "https://kworb.net/spotify/artist/" + MAIN_ARTIST_ID + ".html"}
+    for who, info in EXTRA.items():
+        peak_pages[who] = info["url"].replace("_songs.html", ".html")
+    for who, url in peak_pages.items():
+        peaks = read_peaks(url)
+        if peaks:
+            charts[who] = peaks
+            print(who + ": read", len(peaks), "chart peaks")
+        else:
+            print(who + ": chart peaks not updated, keeping the old ones")
+
+    try:
+        apple = read_apple(data.get("apple"), today)
+    except Exception as err:
+        print("Apple Music: skipped -", err)
+        apple = data.get("apple")
+    try:
+        itunes = read_chart(data.get("itunes"), today, "itunes", "iTunes", ITUNES_COUNTRIES)
+    except Exception as err:
+        print("iTunes: skipped -", err)
+        itunes = data.get("itunes")
+    out = {"updated": kworb_date or ds, "xdates": xdates, "songs": songs, "charts": charts, "vids": xvids, "vids_tried": vids_tried}
+    if apple:
+        out["apple"] = apple
+    if itunes:
+        out["itunes"] = itunes
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     with open("history.json", "w", encoding="utf-8") as f:
