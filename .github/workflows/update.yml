@@ -3,7 +3,7 @@ name: Update stream data
 on:
   schedule:
     - cron: "0 15 * * *"   # every day at 15:00 UTC
-  workflow_dispatch:        # run update script manually
+  workflow_dispatch:        # run maually
 
 permissions:
   contents: write
