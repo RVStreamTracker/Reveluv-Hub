@@ -1174,13 +1174,14 @@ fetch("data.json?v=" + Date.now()).then(function(r){ return r.json(); }).then(fu
   UPDATED = d.updated || UPDATED;
   if (d.xdates) XDATE = d.xdates;
   if (d.vids) Object.keys(d.vids).forEach(function(k){ VIDS[k] = d.vids[k]; });
+  ["Cheetah", "Better Dayz", "Dead Man Runnin'"].forEach(function(k){ delete VIDS[k]; }); // these have no music video
   if (d.special) Object.keys(d.special).forEach(function(k){ SPECIAL[k] = d.special[k]; });
   if (d.covers) { var ck = Object.keys(d.covers), cl = ck.length, cn = 0;
     ck.forEach(function(k){ var im = new Image(); im.onload = function(){ COVERS[k] = d.covers[k]; cn++; if (--cl === 0) render(true); }; im.onerror = function(){ if (--cl === 0 && cn) render(true); }; im.src = d.covers[k]; }); }
   if (d.charts && Object.keys(d.charts).length) { CHARTS = d.charts; drawCharts(); }
   if (d.apple && d.apple.best) { APPLE = d.apple; drawCharts(); }
   if (d.itunes && d.itunes.best) { ITU = d.itunes; drawCharts(); }
-  SONGS.forEach(function(s){ var x = d.songs && d.songs[s.t]; if (x) { s.s = x.spotify || null; s.y = x.youtube || null; } });
+  SONGS.forEach(function(s){ var x = d.songs && d.songs[s.t]; if (x) { s.s = x.spotify || null; s.y = x.youtube || null; } if (/^(Cheetah|Better Dayz|Dead Man Runnin['\u2019])$/.test(s.t)) s.y = null; });
   anim = true; render(); applyGC();
 }).catch(function(){}).then(openFromHash);
 fetch("history.json?v=" + Date.now()).then(function(r){ return r.json(); }).then(function(h){ HIST = h || {}; HISTOK = true; if ($("dlg").open && $("mb").querySelector(".pns:not(.one)")) openSong(cur); }).catch(function(){});
