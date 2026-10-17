@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""Daily updater for the Red Velvet stream tracker. 
-
-Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb, then writes data.json.
-history.json keeps one snapshot per day so daily gains and daily likes can be worked out.
-"""
 import json
 import os
 import re
@@ -600,10 +594,20 @@ EXTRA_VIDEOS = {
     "Love Splash!": "-2fAmkQS854",
 }
 
+# special videos (not music videos). The site hides these until "Special videos" is switched on.
+# Only used for songs that have no music video of their own.
+SPECIAL_VIDEOS = {
+    "Love Can Make A Way": "do_xad_VWF4",
+    "Sweet Dreams": "jv-UAioFOW0",
+    "Milkshake": "PDy_i0UvAOI",
+    "Hello, Sunset": "DDokLv2ujyk",
+    "Anywhere But Home": "2hVimOZHbOI",
+    "Bad Boy, Sad Girl": "JonuF1zDNik",
+}
+
 MV_SEARCH = {
-    "Irene & Seulgi": ["Cheetah"],
     "Irene": ["Wasteland"],
-    "Seulgi": ["Dead Man Runnin'", "Rollin' (With My Homies)", "Better Dayz"],
+    "Seulgi": ["Rollin' (With My Homies)"],
     "Wendy": ["Goodbye", "Girls"],
     "Joy": ["Je T'aime", "Introduce me a good person", "Yeowooya"],
 }
@@ -785,6 +789,85 @@ def load(path, default):
         return default
 
 
+# bigger covers: looked up once per song on the itunes search api (no key needed) and saved in the covers folder
+COVER_KEEP = {"Naughty", "Wow Thing", "Russian Roulette", "Surfin' Boy"}   # already good quality, never replaced
+COVER_SONGS = ["Happiness", "Ice Cream Cake", "Dumb Dumb", "One Of These Nights", "Rookie", "Red Flavor", "Peek-A-Boo",
+               "Bad Boy", "Power Up", "RBB (Really Bad Boy)", "Zimzalabim", "Umpah Umpah", "Psycho", "Queendom",
+               "Feel My Rhythm", "Birthday", "Chill Kill", "Cosmic", "Run Devil Run", "Automatic", "#Cookie Jar",
+               "Sappy", "Wildside", "Monster", "Like Water", "Hello", "28 Reasons", "Wish You Hell", "Like A Flower",
+               "Baby, Not Baby", "TILT", "Love Splash!", "Sunkiss", "Biggest Fan", "Cheetah", "Daydream"]
+COVER_ARTISTS = ("red velvet", "irene", "seulgi", "wendy", "joy", "\ub808\ub4dc\ubca8\ubcb3", "\uc544\uc774\ub9b0", "\uc2ac\uae30", "\uc6ec\ub514", "\uc870\uc774")
+COVER_RETRY_DAYS = 14
+
+
+def fetch_bytes(url):
+    for attempt in range(2):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return resp.read()
+        except Exception as err:
+            print("Could not fetch", url, "-", err)
+            time.sleep(3)
+    return None
+
+
+def find_cover(title, who):
+    """Returns a 600px artwork url for the song, only when the song and artist both match."""
+    for country in ("us", "kr"):
+        query = urllib.parse.urlencode({"term": who + " " + title, "media": "music", "entity": "song",
+                                        "country": country, "limit": 15})
+        body = fetch("https://itunes.apple.com/search?" + query)
+        time.sleep(1)
+        if not body:
+            continue
+        try:
+            results = json.loads(body).get("results", [])
+        except Exception:
+            continue
+        for r in results:
+            name = re.sub(r"\s*[\(\[].*$", "", r.get("trackName", ""))
+            art = r.get("artworkUrl100")
+            if not art or squash(name) != squash(title):
+                continue
+            if not any(a in r.get("artistName", "").lower() for a in COVER_ARTISTS):
+                continue
+            return re.sub(r"/\d+x\d+bb\.", "/600x600bb.", art)
+    return None
+
+
+def update_covers(data, today):
+    """Saves a bigger cover in covers/ the first time one is found. Returns ({song: file}, {song: last try})."""
+    have = {k: v for k, v in data.get("covers", {}).items() if os.path.exists(v)}
+    tried = dict(data.get("covers_tried", {}))
+    who_of = {s: w for w, i in EXTRA.items() for s in i["songs"]}
+    os.makedirs("covers", exist_ok=True)
+    added = 0
+    for title in COVER_SONGS:
+        if title in have or title in COVER_KEEP:
+            continue
+        last = tried.get(title)
+        try:
+            if last and (today - date.fromisoformat(last)).days < COVER_RETRY_DAYS:
+                continue
+        except Exception:
+            pass
+        tried[title] = today.isoformat()
+        url = find_cover(title, who_of.get(title, "Red Velvet"))
+        img = fetch_bytes(url) if url else None
+        if img and len(img) > 5000 and img[:2] == b"\xff\xd8":
+            path = "covers/" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-") + ".jpg"
+            with open(path, "wb") as f:
+                f.write(img)
+            have[title] = path
+            added += 1
+            print("Cover saved for", title)
+        else:
+            print("No cover found for", title)
+    print("Covers:", len(have), "saved,", added, "new today.")
+    return have, tried
+
+
 def main():
     today = datetime.now(timezone.utc).date()
     ds = today.isoformat()
@@ -796,9 +879,12 @@ def main():
     if spotify is None and kworb_yt is None:
         print("Both sources failed, keeping the old data.")
         sys.exit(1)
-    api = read_api(VIDEOS.values())
+    api = read_api(list(VIDEOS.values()) + list(SPECIAL_VIDEOS.values()))
     xvids, vids_tried = discover_videos(data, today)
-    api.update(read_api([v for v in xvids.values() if v not in api]))
+    special = {t: v for t, v in SPECIAL_VIDEOS.items() if t not in VIDEOS and t not in xvids}
+    xall = dict(xvids)
+    xall.update(special)
+    api.update(read_api([v for v in xall.values() if v not in api]))
     if not os.environ.get("YOUTUBE_API_KEY", "").strip():
         print("No YOUTUBE_API_KEY set: likes will stay empty.")
 
@@ -834,7 +920,7 @@ def main():
             else:
                 missing.append(title + " (Spotify)")
 
-        vid = VIDEOS.get(title, "")
+        vid = VIDEOS.get(title, "") or special.get(title, "")
         if vid:
             views = yday = likes = None
             if kworb_yt and vid in kworb_yt:
@@ -863,17 +949,9 @@ def main():
         print("Red Velvet:", from_msc_main, "song(s) updated from MyStreamCount")
     xdates = dict(data.get("xdates", {}))
     for who, info in EXTRA.items():
-        found, kdate = read_spotify(info["url"])
-        if found is None:
-            continue
-        if kdate:
-            xdates[who] = kdate
-        try:
-            age = (today - date(*map(int, kdate.split("/")))).days if kdate else 999
-        except Exception:
-            age = 999
-        stale = age > MSC_STALE_DAYS
-        print(who + ": Kworb page date", kdate, "-", ("STALE, trying MyStreamCount" if stale else "fresh, using Kworb"))
+        # solos and irene & seulgi: streams come from mystreamcount only (kworb is no longer read for these)
+        found, kdate, stale = {}, None, True
+        print(who + ": using MyStreamCount")
         msc, from_msc = None, 0
         why = {"no match": [], "no total": [], "lower": []}
         for title in info["songs"]:
@@ -904,7 +982,7 @@ def main():
                 elif not hit:
                     missing.append(title + " (" + who + ")")
             yt = (data.get("songs", {}).get(title) or {}).get("youtube")
-            vid = xvids.get(title)
+            vid = xall.get(title)
             if vid:
                 views = yday = likes = None
                 if kworb_yt and vid in kworb_yt:
@@ -960,7 +1038,12 @@ def main():
     except Exception as err:
         print("iTunes: skipped -", err)
         itunes = data.get("itunes")
-    out = {"updated": kworb_date or ds, "xdates": xdates, "songs": songs, "charts": charts, "vids": xvids, "vids_tried": vids_tried}
+    try:
+        covers, covers_tried = update_covers(data, today)
+    except Exception as err:
+        print("Covers: skipped -", err)
+        covers, covers_tried = data.get("covers", {}), data.get("covers_tried", {})
+    out = {"updated": kworb_date or ds, "xdates": xdates, "songs": songs, "charts": charts, "vids": xvids, "vids_tried": vids_tried, "special": special, "covers": covers, "covers_tried": covers_tried}
     if apple:
         out["apple"] = apple
     if itunes:
