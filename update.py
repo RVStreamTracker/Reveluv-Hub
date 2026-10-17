@@ -651,9 +651,11 @@ def find_mv(who, title, key):
 
 def discover_videos(data, today):
     """Returns {title: video ID} for the solo and sub-unit songs, finding new ones when it can."""
-    vids = dict(data.get("vids", {}))
+    # only keep saved videos for songs we still search for, so removed or wrong ones disappear
+    allowed = {title for titles in MV_SEARCH.values() for title in titles}
+    vids = {t: v for t, v in dict(data.get("vids", {})).items() if t in allowed}
     vids.update(EXTRA_VIDEOS)
-    tried = dict(data.get("vids_tried", {}))
+    tried = {t: d for t, d in dict(data.get("vids_tried", {})).items() if t in allowed}
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     if not key:
         return vids, tried
