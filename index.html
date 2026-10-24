@@ -779,6 +779,33 @@ section h2{letter-spacing:-.03em}
 .nbtns #acctbtn{position:relative;display:grid;place-items:center}
 .nbtns #acctbtn>span:not(.av){width:22px;height:22px;display:block}
 .nbtns #acctbtn svg{width:22px;height:22px;display:block}
+/* profile v3 */
+.pban{height:150px}
+.pid{margin:-52px 0 20px;gap:18px}
+.pid .ring{padding:3px;border-radius:50%;background:conic-gradient(from 200deg,var(--a1),var(--a2),var(--a1));flex:none;box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
+.pid .ring .big-av{width:92px;height:92px;border:3px solid var(--glass);box-shadow:none}
+.pid .chip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 10px;border-radius:999px;background:var(--line);font-size:12px;font-weight:700;color:var(--mut)}
+.pid .chip i{width:7px;height:7px;border-radius:50%;background:#2fbf71}
+.lfstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 14px}
+.lfstats .st{padding:12px 10px;border-radius:16px;background:var(--glass);border:1px solid var(--line);text-align:center;min-width:0}
+.lfstats .st b{display:block;font-size:clamp(18px,4.6vw,24px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.lfstats .st span{display:block;margin-top:4px;font-size:11.5px;font-weight:600;color:var(--mut)}
+.lfh{margin:0 0 8px;font-size:13px;font-weight:700;color:var(--mut)}
+.lftop2{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.lftop2 li{display:grid;grid-template-columns:20px 40px 1fr auto;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:color-mix(in srgb,var(--gc,var(--a1)) 10%,var(--glass));border:1px solid var(--line)}
+.lftop2 li>b{text-align:center;font-size:13px;color:var(--mut)}
+.lftop2 .lfcv{width:40px;height:40px;border-radius:10px;overflow:hidden}
+.lftop2 .lfcv .cv{width:100%;height:100%;display:flex;align-items:center;justify-content:center;object-fit:cover;border-radius:0;margin:0;font-size:16px;font-weight:800;color:#fff}
+.lftop2 .nm{min-width:0}
+.lftop2 .nm span{display:block;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lftop2 .nm i{display:block;height:5px;border-radius:99px;background:var(--line);margin-top:6px;overflow:hidden}
+.lftop2 .nm u{display:block;height:100%;border-radius:99px;background:var(--gc,var(--a1))}
+.lftop2 li>em{font-style:normal;font-weight:800;font-size:14px}
+.lfc.on{background:none;padding:0}
+.lfc.off{background:linear-gradient(135deg,color-mix(in srgb,#d51007 10%,var(--line)),var(--line));border:1px solid color-mix(in srgb,#d51007 22%,transparent)}
+@media (max-width:560px){.pban{height:130px}.pid .ring .big-av{width:80px;height:80px}.lftop2 li{grid-template-columns:16px 36px 1fr auto;gap:8px}.lftop2 .lfcv{width:36px;height:36px}}
+.pid .ring{display:block;width:98px;height:98px;box-sizing:border-box}.pid .ring .big-av{display:block;width:100%!important;height:100%!important;box-sizing:border-box}@media (max-width:560px){.pid .ring{width:86px;height:86px}}
+#adlg .x{background:var(--glass);color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 </style>
 </head>
 <body><div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1378,16 +1405,18 @@ var RV_ACCOUNTS = {
   function lfCard(){
     if (!LFK) return '<div class="psoon"><div class="row2"><div><b>Last.fm play counts</b><span class="d">See how many times you have played each song.</span></div><span class="tag">Soon</span></div></div>';
     if (!prof.lastfm_username) {
-      return '<div class="lfc"><h4>Connect Last.fm</h4><p>Type your Last.fm username to see how many times you have played each Red Velvet song. Your listening history needs to be public on Last.fm.</p><form id="alf" novalidate><input id="alfu" placeholder="Last.fm username" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40"><button class="abtn" type="submit" id="alfb">Connect</button></form><div class="aerr" id="aerr" role="alert">' + esc(lfMsg) + '</div></div>';
+      return '<div class="lfc off"><h4>Connect Last.fm</h4><p>Type your Last.fm username to see how many times you have played each Red Velvet song. Your listening history needs to be public on Last.fm.</p><form id="alf" novalidate><input id="alfu" placeholder="Last.fm username" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40"><button class="abtn" type="submit" id="alfb">Connect</button></form><div class="aerr" id="aerr" role="alert">' + esc(lfMsg) + '</div></div>';
     }
-    var h = '<div class="lfc"><h4><i></i>Last.fm: ' + esc(prof.lastfm_username) + '</h4>';
-    if (lfBusy) h += '<div class="lfbar" id="lfprog"><u></u></div><p>Checking songs…</p>';
+    var h = '<div class="lfc on">';
+    if (lfBusy) h += '<div class="lfc off"><h4>Last.fm: ' + esc(prof.lastfm_username) + '</h4><div class="lfbar" id="lfprog"><u></u></div><p>Checking songs…</p></div>';
     else if (LFS) {
-      var top = Object.keys(LFS.plays).sort(function(a, b){ return LFS.plays[b] - LFS.plays[a]; }).slice(0, 10);
-      h += '<div class="lfbig">' + fmt(LFS.total) + '</div><p>Red Velvet plays on Last.fm' + (LFS.at ? ' · updated ' + new Date(LFS.at).toLocaleDateString() : '') + '</p>';
-      h += top.length ? '<ol class="lftop">' + top.map(function(t, i){ return '<li><b>' + (i + 1) + '</b><span>' + esc(t) + '</span><em>' + fmt(LFS.plays[t]) + '</em></li>'; }).join("") + '</ol>' : '';
-      h += '<div class="arow" style="margin-top:12px"><button class="abtn ghost" type="button" id="alfr">Refresh</button><button class="abtn ghost" type="button" id="alfd">Disconnect</button></div>';
-    } else h += '<p>Connected. Load your play counts to see them here and in each song.</p><div class="arow"><button class="abtn" type="button" id="alfl">Load my play counts</button><button class="abtn ghost" type="button" id="alfd">Disconnect</button></div>';
+      var keys = Object.keys(LFS.plays).sort(function(a, b){ return LFS.plays[b] - LFS.plays[a]; }), top = keys.slice(0, 10), mx = top.length ? LFS.plays[top[0]] : 1;
+      h += '<div class="lfstats"><div class="st"><b>' + fmt(LFS.total) + '</b><span>Total plays</span></div><div class="st"><b>' + keys.length + '</b><span>Songs played</span></div><div class="st"><b>' + (top.length ? fmt(mx) : "0") + '</b><span>On your #1</span></div></div>';
+      if (top.length) h += '<p class="lfh">Your top songs</p><ol class="lftop2">' + top.map(function(t, i){
+        var so = SONGS.filter(function(x){ return x.t === t; })[0], g = gcOf(t);
+        return '<li' + (g ? ' style="--gc:' + g + '"' : '') + '><b>' + (i + 1) + '</b><span class="lfcv">' + (so ? cover(so) : '') + '</span><div class="nm"><span>' + esc(t) + '</span><i><u style="width:' + Math.max(4, LFS.plays[t] / mx * 100) + '%"></u></i></div><em>' + fmt(LFS.plays[t]) + '</em></li>'; }).join("") + '</ol>';
+      h += '<div class="arow" style="margin-top:14px"><button class="abtn ghost" type="button" id="alfr">Refresh</button><button class="abtn ghost" type="button" id="alfd">Disconnect</button>' + (LFS.at ? '<span class="pfoot" style="margin:0 0 0 4px">Updated ' + new Date(LFS.at).toLocaleDateString() + '</span>' : '') + '</div>';
+    } else h += '<div class="lfc off"><h4><i></i>Last.fm: ' + esc(prof.lastfm_username) + '</h4><p>Connected. Load your play counts to see them here and in each song.</p><div class="arow"><button class="abtn" type="button" id="alfl">Load my play counts</button><button class="abtn ghost" type="button" id="alfd">Disconnect</button></div></div>';
     return h + (lfMsg ? '<div class="aerr" role="alert">' + esc(lfMsg) + '</div>' : '') + '</div>';
   }
   function lfConnect(){
@@ -1482,7 +1511,7 @@ var RV_ACCOUNTS = {
   function homeView(){
     var src = AV[prof.avatar], since = prof.created_at ? new Date(prof.created_at).toLocaleDateString(undefined, {month: "long", year: "numeric"}) : "";
     box.innerHTML = '<div class="pban">' + (src ? '<i style="background-image:url(' + src + ')"></i>' : '') + '</div>' +
-      '<div class="pid"><span class="big-av">' + avatar(prof.avatar) + '</span><div><b>' + esc(prof.username) + '</b><span class="pmeta">' + (since ? 'Fan since ' + since : 'Signed in') + '</span></div></div>' +
+      '<div class="pid"><span class="ring"><span class="big-av">' + avatar(prof.avatar) + '</span></span><div><b>' + esc(prof.username) + '</b><span class="pmeta">' + (since ? 'Fan since ' + since : 'Signed in') + '</span>' + (prof.lastfm_username ? '<span class="chip"><i></i>Last.fm connected</span>' : '') + '</div></div>' +
       '<div class="arow"><button class="abtn" type="button" id="achange">Change picture</button><button class="abtn out" type="button" id="aout">' + OUTIC + 'Sign out</button></div>' +
       lfCard() + '<div class="psoon"><div class="row2"><div><b>Leaderboards</b><span class="d">Opt in to appear in fan rankings.</span></div><span class="tag">Soon</span></div></div>' +
       '<p class="pfoot">Your account has no email, so keep your password safe. It cannot be reset.</p>';
