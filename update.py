@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+"""Daily updater for the Red Velvet stream tracker. 
+
+Reads Spotify totals and daily streams from Kworb, YouTube views from Kworb, then writes data.json.
+history.json keeps one snapshot per day so daily gains and daily likes can be worked out.
+"""
 import json
 import os
 import re
@@ -605,12 +611,9 @@ SPECIAL_VIDEOS = {
     "Bad Boy, Sad Girl": "JonuF1zDNik",
 }
 
-MV_SEARCH = {
-    "Irene": ["Wasteland"],
-    "Seulgi": ["Rollin' (With My Homies)"],
-    "Wendy": ["Goodbye", "Girls"],
-    "Joy": ["Je T'aime", "Introduce me a good person", "Yeowooya"],
-}
+# automatic YouTube searching is switched off, because it can pick unofficial fan videos.
+# Only the videos listed in EXTRA_VIDEOS (and SPECIAL_VIDEOS) are used. Add a video there only when you have checked the link.
+MV_SEARCH = {}
 MV_SKIP = ("teaser", "dance practice", "performance", "live", "reaction", "lyric", "audio", "behind", "making",
            "highlight", "stage", "reacts", "shorts", "cover", "preview", "spoiler", "snippet", "visualizer", "clip")
 MV_RETRY_DAYS = 30
@@ -783,6 +786,33 @@ def gain(hist, today, title, field, now):
     return None
 
 
+def gain_steady(hist, today, title, field, now):
+    """Like gain(), but for numbers that only change every day or two (MyStreamCount totals).
+    When the total hasn't moved since the last snapshot, it spreads the last real jump over the days it covered
+    instead of showing 0."""
+    if now is None:
+        return None
+    pts = []
+    for day in sorted(d for d in hist if d < today.isoformat()):
+        v = hist[day].get(title, {}).get(field)
+        if v is not None and not (1900 <= v <= 2100):
+            pts.append((date.fromisoformat(day), v))
+    if not pts:
+        return None
+    i, start = len(pts), today
+    while i > 0 and pts[i - 1][1] == now:        # days the total has been sitting at its current value
+        i -= 1
+        start = pts[i][0]
+    if i == 0:
+        return 0
+    prev_val = pts[i - 1][1]
+    j = i - 1
+    while j > 0 and pts[j - 1][1] == prev_val:   # days it sat at the value before that
+        j -= 1
+    days = max(1, (start - pts[j][0]).days)
+    return max(0, round((now - prev_val) / days))
+
+
 def load(path, default):
     try:
         with open(path, encoding="utf-8") as f:
@@ -916,7 +946,7 @@ def main():
             tid = tid or MSC_TRACK_IDS.get(title)
             total = msc_total(tid) if tid else None
             if total:
-                sp = {"total": total, "yday": gain(hist, today, title, "s", total)}
+                sp = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
                 snap[title]["s"] = total
                 from_msc_main += 1
             else:
@@ -978,7 +1008,7 @@ def main():
                 elif hit and total < hit[0]:
                     why["lower"].append(title + " (MSC " + format(total, ",") + " < Kworb " + format(hit[0], ",") + ")")
                 if total and (not hit or total >= hit[0]):
-                    old = {"total": total, "yday": gain(hist, today, title, "s", total)}
+                    old = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
                     snap[title] = {"s": total}
                     from_msc += 1
                 elif not hit:
@@ -1011,8 +1041,7 @@ def main():
             print(who + ": MyStreamCount page had", len(msc), "songs")
         if from_msc:
             print(who + ":", from_msc, "song(s) updated from MyStreamCount")
-            if from_msc * 2 >= len(info["songs"]):
-                xdates[who] = today.strftime("%Y/%m/%d")
+            xdates[who] = today.strftime("%Y/%m/%d")   # counts as updated when MyStreamCount gave at least one new number
 
     hist[ds] = snap
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
@@ -1040,8 +1069,14 @@ def main():
     except Exception as err:
         print("iTunes: skipped -", err)
         itunes = data.get("itunes")
+    # automatic cover search is switched off: iTunes sometimes returns a different release's artwork.
+    # To use it again, change AUTO_COVERS to True.
+    AUTO_COVERS = False
     try:
-        covers, covers_tried = update_covers(data, today)
+        if not AUTO_COVERS:
+            covers, covers_tried = {}, {}
+        else:
+            covers, covers_tried = update_covers(data, today)
     except Exception as err:
         print("Covers: skipped -", err)
         covers, covers_tried = data.get("covers", {}), data.get("covers_tried", {})
