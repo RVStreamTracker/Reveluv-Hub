@@ -981,6 +981,33 @@ button.alr:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--a
 .lbtabs.pl button{position:relative;z-index:1}
 .lbtabs.pl button[aria-pressed="true"]{background:none;box-shadow:none}
 @media (prefers-reduced-motion:reduce){.lbtabs .ind{transition:none}}
+/* v6: icon fix + smoother motion */
+.alr .ic svg,.big-av svg,.pkp svg,.lbrow .pf svg{position:static!important;transition:none;margin:0;transform:none}
+.alr .ic{position:relative}
+.alr .ic svg{width:20px;height:20px}
+.alr .ic.av svg{width:100%;height:100%}
+.alr .go{position:static!important;transition:transform .25s cubic-bezier(.3,1.2,.4,1)}
+.alr:hover .go{transform:translateX(3px)}
+.alr .ic{transition:transform .25s cubic-bezier(.3,1.3,.4,1)}.alr:hover .ic{transform:scale(1.06)}
+.alr:active{transform:scale(.985)}
+@keyframes rvup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes rvfade{from{opacity:0}to{opacity:1}}
+.pbody>*,.fmain form,.fmain .fh2,.fmain .fsub2,.lbrow,.lbempty,.lbrank,.optin,.lfstats,.pkb,.pkc{animation:rvup .38s cubic-bezier(.2,.8,.2,1) both}
+.pbody>*:nth-child(2),.lbrow:nth-child(2){animation-delay:.05s}.pbody>*:nth-child(3),.lbrow:nth-child(3){animation-delay:.1s}
+.pbody>*:nth-child(4),.lbrow:nth-child(4){animation-delay:.15s}.lbrow:nth-child(5){animation-delay:.2s}.lbrow:nth-child(6){animation-delay:.25s}
+.lbrow:nth-child(n+7){animation-delay:.3s}
+.fmain .aerr:not(:empty){animation:rvup .3s ease both}
+.abtn,.alr,.lbrow,.pkb,.pkc,.ptabs button,.lbtabs button,.sw,.x,.eye,.alb,.nbtns button{transition:transform .22s cubic-bezier(.3,1.2,.4,1),background-color .25s,color .25s,box-shadow .25s,opacity .25s,filter .25s,border-color .25s}
+.abtn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.05)}
+.abtn:active:not(:disabled){transform:scale(.97)}
+.lbrow:hover{transform:translateX(3px)}
+.x:hover{transform:rotate(90deg)}.x:active{transform:scale(.92)}
+.nbtns button:active{transform:scale(.92)}
+.fi{transition:box-shadow .25s,border-color .25s,background-color .25s}
+.fmeter i u{transition:width .35s cubic-bezier(.3,1.1,.4,1),background-color .3s}
+.sw,.sw::after,.sw::before{transition:background-color .3s,transform .3s cubic-bezier(.3,1.3,.4,1),left .3s cubic-bezier(.3,1.3,.4,1)}
+body{transition:background-color .4s,color .3s}
+@media (prefers-reduced-motion:reduce){.pbody>*,.fmain form,.fmain .fh2,.fmain .fsub2,.lbrow,.lbempty,.lbrank,.optin,.lfstats,.pkb,.pkc,.fmain .aerr{animation:none!important}.x:hover{transform:none}.lbrow:hover,.alr:hover .go{transform:none}}
 </style>
 </head>
 <body><div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1522,7 +1549,7 @@ var RV_ACCOUNTS = {
   var PERSON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.500 20c1.200-4 4-6 7.500-6s6.300 2 7.500 6"/></svg>';
   function avatar(id){
     if (AV[id]) return '<img src="' + AV[id] + '" alt="" style="display:block;width:100%;height:100%;object-fit:cover">';
-    return '<span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;background:var(--line);color:var(--mut)"><span style="width:56%;height:56%;display:block">' + PERSON + '</span></span>';
+    return '<span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;background:var(--line);color:var(--ink)"><span style="width:56%;height:56%;display:block">' + PERSON + '</span></span>';
   }
 
   var LFK = RV_ACCOUNTS.lastfmKey || "", LFS = null, lfBusy = false, lfMsg = "";
