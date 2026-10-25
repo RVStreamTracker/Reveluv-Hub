@@ -806,6 +806,181 @@ section h2{letter-spacing:-.03em}
 @media (max-width:560px){.pban{height:130px}.pid .ring .big-av{width:80px;height:80px}.lftop2 li{grid-template-columns:16px 36px 1fr auto;gap:8px}.lftop2 .lfcv{width:36px;height:36px}}
 .pid .ring{display:block;width:98px;height:98px;box-sizing:border-box}.pid .ring .big-av{display:block;width:100%!important;height:100%!important;box-sizing:border-box}@media (max-width:560px){.pid .ring{width:86px;height:86px}}
 #adlg .x{background:var(--glass);color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+/* leaderboards */
+#lbsec{padding-top:8px}
+.lbh{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 14px}
+.lbh h2{margin:0;font-size:clamp(24px,4vw,32px);letter-spacing:-.03em}
+.lbh p{margin:4px 0 0;color:var(--mut);font-size:14.5px}
+.lbtabs{display:inline-flex;padding:3px;border-radius:999px;background:var(--line);gap:2px}
+.lbtabs button{border:0;background:none;font:600 13.5px/1 "Inter",sans-serif;color:var(--mut);padding:9px 15px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+.lbtabs button[aria-pressed="true"]{background:var(--glass);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.lbtabs button:focus-visible{outline:3px solid var(--a1);outline-offset:1px}
+.lblist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lbrow{display:grid;grid-template-columns:34px 40px 1fr auto;align-items:center;gap:12px;padding:10px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--line)}
+.lbrow.me{border-color:var(--a1);background:color-mix(in srgb,var(--a1) 10%,var(--glass))}
+.lbrow .rk{text-align:center;font-weight:800;font-size:15px;color:var(--mut)}
+.lbrow.r1 .rk{color:#d9a400}.lbrow.r2 .rk{color:#8d98a5}.lbrow.r3 .rk{color:#b8693a}
+.lbrow .pf{width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--line)}
+.lbrow .pf img{display:block;width:100%;height:100%;object-fit:cover}
+.lbrow .un{font-weight:700;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lbrow .pl{font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
+.lbrow .pl small{display:block;font-weight:600;font-size:11px;color:var(--mut);text-align:right}
+.lbempty{padding:22px;border-radius:18px;background:var(--line);color:var(--mut);font-size:14.5px;line-height:1.5}
+.lbempty .abtn{margin-top:12px;display:inline-block}
+.lbnote{margin:10px 2px 0;font-size:12.5px;color:var(--mut)}
+.lbrank{margin:0 0 10px;font-weight:700;font-size:14px}
+.optin{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--line);margin:12px 0 0}
+.optin div{flex:1;min-width:0}.optin b{display:block;font-size:14px}.optin span.d{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.sw{flex:none;width:46px;height:28px;border-radius:99px;border:0;background:color-mix(in srgb,var(--mut) 45%,transparent);position:relative;cursor:pointer;transition:background .25s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:transform .25s}
+.sw[aria-checked="true"]{background:linear-gradient(90deg,var(--a1),var(--a2))}
+.sw[aria-checked="true"]::after{transform:translateX(18px)}
+.sw:focus-visible{outline:3px solid var(--a1);outline-offset:2px}
+.lbpf{margin:18px 0 0}
+.lbpf .lbtabs{margin:0 0 10px}
+@media (max-width:560px){.lbrow{grid-template-columns:28px 36px 1fr auto;gap:10px;padding:9px 11px}.lbrow .pf{width:36px;height:36px}}
+/* profile v4 + picker */
+.ptabs{display:flex;width:100%;margin:16px 0 4px;box-sizing:border-box}
+.ptabs button{flex:1;padding:11px 12px}
+.ptabs svg{width:15px;height:15px;vertical-align:-2px;margin-right:6px}
+.pkp{display:flex;align-items:center;gap:16px;margin:2px 0 14px;padding:14px 16px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 14%,var(--line)),var(--line))}
+.pkp .ring2{padding:3px;border-radius:50%;background:conic-gradient(from 200deg,var(--a1),var(--a2),var(--a1));flex:none;width:80px;height:80px;box-sizing:border-box;display:block}
+.pkp .ring2 .big-av{display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid var(--glass);box-sizing:border-box;background:var(--line)}
+.pkp .ring2 .big-av img,.pkp .ring2 .big-av svg{display:block;width:100%;height:100%}
+.pkp b{display:block;font-size:19px;letter-spacing:-.02em}
+.pkp span.d{display:block;font-size:13px;color:var(--mut);margin-top:3px}
+.pkchips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:none}
+.pkchips::-webkit-scrollbar{display:none}
+.pkc{display:flex;align-items:center;gap:8px;flex:none;border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:5px 15px 5px 5px;font:700 13.5px/1 "Inter",sans-serif;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+.pkc[aria-pressed="true"]{background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;border-color:transparent}
+.pkc:focus-visible,.pkb:focus-visible{outline:3px solid var(--a1);outline-offset:2px}
+.pkt{width:28px;height:28px;border-radius:50%;overflow:hidden;display:block;flex:none;background:var(--line)}
+.pkt img,.pkt svg{display:block;width:100%;height:100%}
+.pkg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 14px}
+.pkb{position:relative;aspect-ratio:1;border:0;padding:0;border-radius:22px;overflow:hidden;cursor:pointer;background:var(--line);outline:3px solid transparent;outline-offset:3px;transition:transform .2s,outline-color .2s,box-shadow .2s}
+.pkb:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(0,0,0,.5)}
+.pkb[aria-pressed="true"]{outline-color:var(--a1)}
+.pkb img,.pkb>svg,.pkb>span{display:block;width:100%;height:100%;object-fit:cover}
+.pkb .ck{position:absolute;right:8px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--a1);color:#fff;display:none;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.pkb[aria-pressed="true"] .ck{display:grid}
+.pkb .ck svg{width:15px;height:15px}
+.pkg.one{grid-template-columns:96px 1fr;align-items:center}
+.pkg.one p{margin:0;color:var(--mut);font-size:14px;line-height:1.45}
+/* profile v5 */
+.pid{align-items:center}
+.pid .editav{border:0;cursor:pointer;position:relative;font:inherit;color:inherit}
+.pid .editav .pen{position:absolute;right:-2px;bottom:-2px;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;display:grid;place-items:center;border:3px solid var(--glass);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform .2s}
+.pid .editav:hover .pen{transform:scale(1.12) rotate(-8deg)}
+.pid .editav:focus-visible{outline:3px solid var(--a1);outline-offset:3px}
+.pen svg{width:15px;height:15px}
+.ptabs svg{display:inline-block}
+.pbody{animation:pin .24s cubic-bezier(.2,.8,.2,1)}
+@keyframes pin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pbody{animation:none}}
+.lfc .aerr{min-height:0;margin:8px 0 0}.lfc .aerr:empty{display:none}
+.alist{display:grid;gap:8px;margin:2px 0 0}
+.alr{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;text-align:left;padding:13px 14px;border-radius:18px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:inherit;cursor:pointer;transition:transform .2s,background .2s}
+button.alr:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--a1) 8%,var(--glass))}
+.alr:focus-visible{outline:3px solid var(--a1);outline-offset:2px}
+.alr .ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--line);overflow:hidden}
+.alr .ic svg{width:20px;height:20px}
+.alr .ic.av{border-radius:50%}
+.alr .ic.av svg,.alr .ic.av img{width:100%;height:100%;display:block;object-fit:cover}
+.alr div{flex:1;min-width:0}
+.alr b{display:block;font-size:15px}
+.alr .d{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.alr .go{width:18px;height:18px;color:var(--mut);flex:none}
+.alr.danger{background:color-mix(in srgb,#e5484d 10%,var(--glass));border-color:color-mix(in srgb,#e5484d 25%,transparent)}
+.alr.danger .ic{background:color-mix(in srgb,#e5484d 18%,transparent);color:#a1232a}
+.alr.danger b{color:#8f1d22}
+:root[data-theme="dark"] .alr.danger b,:root[data-theme="dark"] .alr.danger .ic{color:#ff9ea1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alr.danger b,:root:not([data-theme="light"]) .alr.danger .ic{color:#ff9ea1}}
+.pkp .d b{display:inline}
+.pkg{max-width:560px}
+.pkb{border-radius:20px}
+.pkb .cap{position:absolute;left:0;right:0;bottom:0;width:auto;height:auto;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;font:700 13px/1 "Inter",sans-serif;text-align:left;pointer-events:none}
+.pkb[aria-pressed="true"]{outline-color:var(--a1);box-shadow:0 14px 30px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
+.pkfoot{position:sticky;bottom:-1px;margin:8px -6px 0;padding:14px 6px 2px;z-index:2}
+.pkfoot .aerr{min-height:0;margin:0 0 8px}.pkfoot .aerr:empty{display:none}
+@media (max-width:560px){.ptabs button{padding:10px 4px;font-size:12.5px;white-space:nowrap}.ptabs svg{display:none}}
+/* sign in v6 */
+.fban{margin:-30px -28px 0;height:136px;position:relative;overflow:hidden;background:linear-gradient(120deg,var(--a1),var(--a2));-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+.fban i{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(30px) saturate(1.35);transform:scale(1.25);opacity:.95}
+.fstack{display:flex;justify-content:center;position:relative;margin:-50px 0 14px}
+.fstack span{width:62px;height:62px;border-radius:50%;overflow:hidden;border:3px solid var(--glass);margin-left:-14px;box-shadow:0 10px 22px -10px rgba(0,0,0,.55);background:var(--line);flex:none}
+.fstack span:first-child{margin-left:0}
+.fstack span:nth-child(3){width:74px;height:74px;margin-top:-8px;z-index:2}
+.fstack img{display:block;width:100%;height:100%;object-fit:cover}
+.fh{text-align:center;padding:0!important;margin:0 0 4px}
+#ab p.fsub{text-align:center;margin:0 0 6px;color:var(--mut);font-size:14.5px}
+#ab .ptabs{margin:14px 0 18px}
+.fperks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 0 18px}
+.fperks span{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:var(--line);font-size:12.5px;font-weight:600;color:var(--mut)}
+.fperks svg{width:14px;height:14px;color:var(--a1)}
+.fl2{display:block;margin:0 0 14px}
+.fl2>b{display:block;margin:0 0 6px 2px;font-size:13px;color:var(--mut);font-weight:700}
+.fi{display:flex;align-items:center;gap:10px;padding:0 6px 0 14px;border-radius:16px;background:var(--glass);border:1.5px solid var(--line);transition:border-color .2s,box-shadow .2s}
+.fi:focus-within{border-color:var(--a1);box-shadow:0 0 0 4px color-mix(in srgb,var(--a1) 18%,transparent)}
+.fi>svg{width:18px;height:18px;color:var(--mut);flex:none}
+.fi input{flex:1;min-width:0;border:0;background:none;outline:none;font:600 16px/1.2 "Inter",sans-serif;color:var(--ink);padding:14px 0;margin:0;width:auto;display:block}
+.fi .eye{border:0;background:none;color:var(--mut);width:38px;height:38px;border-radius:12px;cursor:pointer;display:grid;place-items:center;flex:none}
+.fi .eye:hover{background:var(--line)}
+.fi .eye svg{width:19px;height:19px}
+.fi .eye:focus-visible{outline:3px solid var(--a1);outline-offset:1px}
+.fhint{display:block;margin:6px 2px 0;font-size:12.5px;color:var(--mut);min-height:16px}
+.fhint.ok{color:#1f9d57;font-weight:700}.fhint.bad{color:#d6336c;font-weight:700}
+.fmeter{display:flex;align-items:center;gap:10px;margin:8px 2px 0}
+.fmeter i{flex:1;height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+.fmeter u{display:block;height:100%;width:0;border-radius:99px;background:#d6336c;transition:width .3s,background .3s}
+.fmeter span{font-size:12px;font-weight:700;color:var(--mut);min-width:44px;text-align:right}
+#ab .aerr:not(:empty){padding:10px 12px;border-radius:12px;background:color-mix(in srgb,#d6336c 12%,transparent);margin:2px 0 12px}
+.fsub{width:100%;justify-content:center;padding:15px 22px;font-size:16px;display:flex;align-items:center;gap:10px}
+.fsub:disabled::after{content:"";width:16px;height:16px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.fsub:disabled::after{animation:none}}
+.fnote{display:flex;gap:10px;align-items:flex-start;margin:16px 0 0;padding:12px 14px;border-radius:14px;background:var(--line);font-size:12.8px;color:var(--mut);line-height:1.45}
+.fnote svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--a1)}
+@media (max-width:560px){.fban{margin:-24px -18px 0}.fstack span{width:54px;height:54px}.fstack span:nth-child(3){width:64px;height:64px}}
+/* sign in v5: split layout */
+#ab.au{padding:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:540px}
+.fside{position:relative;overflow:hidden;border-radius:inherit;background:linear-gradient(160deg,#0b2a4a,#124a7a 55%,#0e7c86);min-height:200px}
+.fside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,16,32,.05) 20%,rgba(6,16,32,.88) 82%);pointer-events:none}
+.fmos{position:absolute;inset:-12% -14%;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;transform:rotate(-9deg) scale(1.1);opacity:.95}
+.fcol{display:grid;gap:12px;align-content:start}
+.fcol img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.fcol.c0{animation:fdrift 34s ease-in-out infinite alternate}
+.fcol.c1{margin-top:-90px;animation:fdrift 40s ease-in-out infinite alternate-reverse}
+.fcol.c2{margin-top:-30px;animation:fdrift 37s ease-in-out infinite alternate}
+@keyframes fdrift{from{transform:translateY(0)}to{transform:translateY(-14%)}}
+@media (prefers-reduced-motion:reduce){.fcol{animation:none!important}}
+.fcopy{position:absolute;left:0;right:0;bottom:0;padding:26px 26px 28px;color:#fff;z-index:1}
+.fcopy h4{margin:0 0 14px;font-size:clamp(22px,2.6vw,30px);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+.fcopy ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcopy li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:rgba(255,255,255,.92)}
+.fcopy li svg{width:18px;height:18px;flex:none;padding:3px;border-radius:50%;background:rgba(255,255,255,.2);box-sizing:content-box;width:12px;height:12px}
+.fmain{padding:34px 32px 26px;min-width:0;display:flex;flex-direction:column}
+.fmain .ptabs{margin:0 54px 18px 0;width:auto}
+.fh2{margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.fsub2{margin:6px 0 18px;color:var(--mut);font-size:14.5px}
+.fmain .aerr{min-height:0;margin:2px 0 10px}.fmain .aerr:empty{display:none}
+.fmain .fsub{width:100%;padding:15px 22px;font-size:16px}
+.fmain .fnote{margin-top:auto}
+.fi .eye{background:none;border:0;box-shadow:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;margin:0 4px 0 0;padding:0;color:var(--mut);cursor:pointer;flex:none}
+.fi .eye:hover{background:var(--line);color:var(--ink)}
+@media (max-width:700px){
+  #ab.au{grid-template-columns:1fr;min-height:0}
+  .fside{min-height:150px;height:150px}
+  .fside::after{background:linear-gradient(180deg,rgba(6,16,32,.1) 10%,rgba(6,16,32,.85))}
+  .fmos{inset:-30% -10%;gap:8px}.fcol{gap:8px}.fcol img{border-radius:12px}
+  .fcopy{padding:16px 18px}.fcopy h4{margin:0;font-size:20px}.fcopy ul{display:none}
+  .fmain{padding:22px 18px 20px}.fmain .ptabs{margin-right:0}
+}
+/* sliding pill for tab groups */
+.lbtabs{position:relative}
+.lbtabs .ind{position:absolute;top:3px;bottom:3px;left:0;width:0;border-radius:999px;background:var(--glass);pointer-events:none;will-change:transform,width;transition:transform .38s cubic-bezier(.3,1.15,.4,1),width .38s cubic-bezier(.3,1.15,.4,1);box-shadow:0 3px 8px color-mix(in srgb,var(--ink) 22%,transparent),inset 0 1px 0 var(--bv1),inset 0 -2px 3px color-mix(in srgb,var(--ink) 12%,transparent)}
+.lbtabs.pl button{position:relative;z-index:1}
+.lbtabs.pl button[aria-pressed="true"]{background:none;box-shadow:none}
+@media (prefers-reduced-motion:reduce){.lbtabs .ind{transition:none}}
 </style>
 </head>
 <body><div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -829,6 +1004,7 @@ section h2{letter-spacing:-.03em}
   <section id="milesec" style="padding-top:26px"><div class="g box rv"><h2 style="font-size:26px;margin:0">Milestone countdown</h2><p class="mut" style="margin:4px 0 0">Songs closest to their next round-number milestone, based on yesterday's streams.</p><div class="miles" id="miles"></div></div></section>
   <section id="albsec" style="padding-top:26px"><div class="g box rv"><h2 style="font-size:26px;margin:0">Album rankings</h2><p class="mut" style="margin:4px 0 0">Spotify streams added up from the songs tracked here. Tap an album to see its songs.</p><div class="alw"><button class="alb prev" id="alprev" aria-label="Scroll albums left" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="alr" id="alr"></div><button class="alb next" id="alnext" aria-label="Scroll albums right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></section>
   <section id="chsec" style="padding-top:26px"><div class="g box rv"><h2 style="font-size:26px;margin:0">Chart peaks</h2><p class="mut" style="margin:4px 0 0"><span id="chsrc"></span></p><div class="cpf" id="cpf" role="group" aria-label="Choose a chart"><i class="cpi" aria-hidden="true"></i><button type="button" data-cp="spotify" aria-pressed="true"><img src="data:image/png;base64,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" alt="" width="20" height="20">Spotify</button><button type="button" data-cp="apple" aria-pressed="false"><img src="data:image/png;base64,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" alt="" width="20" height="20">Apple Music</button><button type="button" data-cp="itunes" aria-pressed="false"><img src="data:image/png;base64,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" alt="" width="20" height="20">iTunes</button></div><div class="ctrl" style="margin-top:14px"><div class="ctl grow"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="chq" type="search" placeholder="Search a song or album" aria-label="Search chart peaks" autocomplete="off"></div></div><div class="cht" id="cht" role="group" aria-label="Choose an artist"></div><p class="chn" id="chnote" aria-live="polite"></p><div id="chl" class="chl"></div></div></section>
+  <section id="lbsec" hidden></section>
   <section id="songs"><h2 id="lh">Title tracks</h2><p class="lead">Tap any song to see both platforms, set a goal, and get a prediction.</p>
     <div class="note2" id="xnote"></div>
     <div id="pinsec" style="display:none;margin:0 0 22px"><h3 style="margin:0 0 12px;font-size:20px;letter-spacing:-.02em">Your pinned songs</h3><div class="grid" id="pinlist"></div></div>
@@ -1396,14 +1572,21 @@ var RV_ACCOUNTS = {
       if (fatal) { lfMsg = fatal; }
       else {
         var tot = 0; Object.keys(plays).forEach(function(k){ tot += plays[k]; });
-        LFS = {at: Date.now(), plays: plays, total: tot};
+        LFS = {at: Date.now(), plays: plays, total: tot, week: null, month: null};
         try { localStorage.setItem(lfCacheKey(name), JSON.stringify(LFS)); } catch(e) {}
+        lfBusy = true; if (dlg.open && onHome()) view();
+        Promise.all([lbTotals("7day"), lbTotals("1month")]).then(function(w){
+          LFS.week = w[0]; LFS.month = w[1];
+          try { localStorage.setItem(lfCacheKey(name), JSON.stringify(LFS)); } catch(e) {}
+          lfBusy = false; return lbPublish();
+        }).then(function(){ lfBusy = false; if (dlg.open && onHome()) view(); lbHome(); }, function(){ lfBusy = false; if (dlg.open && onHome()) view(); });
+        return;
       }
       if (dlg.open && onHome()) view();
     });
   }
   function lfCard(){
-    if (!LFK) return '<div class="psoon"><div class="row2"><div><b>Last.fm play counts</b><span class="d">See how many times you have played each song.</span></div><span class="tag">Soon</span></div></div>';
+    if (!LFK) return '<div class="psoon"><div class="row2"><div><b>Last.fm play counts</b><span class="d">See how many times you\'ve played every Red Velvet song.</span></div><span class="tag">Soon</span></div></div>';
     if (!prof.lastfm_username) {
       return '<div class="lfc off"><h4>Connect Last.fm</h4><p>Type your Last.fm username to see how many times you have played each Red Velvet song. Your listening history needs to be public on Last.fm.</p><form id="alf" novalidate><input id="alfu" placeholder="Last.fm username" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40"><button class="abtn" type="submit" id="alfb">Connect</button></form><div class="aerr" id="aerr" role="alert">' + esc(lfMsg) + '</div></div>';
     }
@@ -1411,8 +1594,8 @@ var RV_ACCOUNTS = {
     if (lfBusy) h += '<div class="lfc off"><h4>Last.fm: ' + esc(prof.lastfm_username) + '</h4><div class="lfbar" id="lfprog"><u></u></div><p>Checking songs…</p></div>';
     else if (LFS) {
       var keys = Object.keys(LFS.plays).sort(function(a, b){ return LFS.plays[b] - LFS.plays[a]; }), top = keys.slice(0, 10), mx = top.length ? LFS.plays[top[0]] : 1;
-      h += '<div class="lfstats"><div class="st"><b>' + fmt(LFS.total) + '</b><span>Total plays</span></div><div class="st"><b>' + keys.length + '</b><span>Songs played</span></div><div class="st"><b>' + (top.length ? fmt(mx) : "0") + '</b><span>On your #1</span></div></div>';
-      if (top.length) h += '<p class="lfh">Your top songs</p><ol class="lftop2">' + top.map(function(t, i){
+      h += '<div class="lfstats"><div class="st"><b>' + fmt(LFS.total) + '</b><span>All time</span></div><div class="st"><b>' + (LFS.month == null ? "—" : fmt(LFS.month)) + '</b><span>Last 30 days</span></div><div class="st"><b>' + (LFS.week == null ? "—" : fmt(LFS.week)) + '</b><span>Last 7 days</span></div></div>';
+      if (top.length) h += '<p class="lfh">Your top songs · ' + keys.length + ' played</p><ol class="lftop2">' + top.map(function(t, i){
         var so = SONGS.filter(function(x){ return x.t === t; })[0], g = gcOf(t);
         return '<li' + (g ? ' style="--gc:' + g + '"' : '') + '><b>' + (i + 1) + '</b><span class="lfcv">' + (so ? cover(so) : '') + '</span><div class="nm"><span>' + esc(t) + '</span><i><u style="width:' + Math.max(4, LFS.plays[t] / mx * 100) + '%"></u></i></div><em>' + fmt(LFS.plays[t]) + '</em></li>'; }).join("") + '</ol>';
       h += '<div class="arow" style="margin-top:14px"><button class="abtn ghost" type="button" id="alfr">Refresh</button><button class="abtn ghost" type="button" id="alfd">Disconnect</button>' + (LFS.at ? '<span class="pfoot" style="margin:0 0 0 4px">Updated ' + new Date(LFS.at).toLocaleDateString() + '</span>' : '') + '</div>';
@@ -1426,14 +1609,14 @@ var RV_ACCOUNTS = {
     lfCall({method: "user.getInfo", user: u}).then(function(d){
       if (!d || d.error || !d.user) { b.disabled = false; err(d && d.error === 6 ? "That Last.fm user wasn't found." : "Couldn't reach Last.fm. Try again."); return; }
       var real = d.user.name || u;
-      sb.from("profiles").update({lastfm_username: real}).eq("id", user.id).then(function(r){
-        if (r.error) { b.disabled = false; err("Couldn't save it. Ask the site owner to run the Last.fm line in Supabase."); return; }
+      sb.from("lastfm_links").upsert({id: user.id, lastfm_username: real}).then(function(r){
+        if (r.error) { b.disabled = false; err("Couldn't save your Last.fm username. The site owner may still need to finish the leaderboard setup."); return; }
         prof.lastfm_username = real; lfMsg = ""; lfLoadCache(); view(); lfLoadStats();
       });
     }, function(){ b.disabled = false; err("Couldn't reach Last.fm. Try again."); });
   }
   function lfDisconnect(){
-    sb.from("profiles").update({lastfm_username: null}).eq("id", user.id).then(function(r){
+    sb.from("lastfm_links").delete().eq("id", user.id).then(function(r){
       if (r.error) { lfMsg = "Couldn't disconnect. Try again."; view(); return; }
       try { localStorage.removeItem(lfCacheKey(prof.lastfm_username)); } catch(e) {}
       prof.lastfm_username = null; LFS = null; lfMsg = ""; view();
@@ -1447,6 +1630,70 @@ var RV_ACCOUNTS = {
       if (LFS && a && !document.querySelector("#mb .lfp")) a.insertAdjacentHTML("beforebegin", '<p class="lfp">' + (n ? 'You have played this <b>' + fmt(n) + '</b> ' + (n === 1 ? 'time' : 'times') + ' on Last.fm.' : 'No Last.fm plays found for this song yet.') + '</p>');
     } catch(e) {}
   };
+
+  /* ----- leaderboards ----- */
+  var LBT = [["week","plays_week","Weekly","in the last 7 days","this week"],["month","plays_month","Monthly","in the last 30 days","this month"],["all","plays_all","All time","across all time","all time"]];
+  var lbHomeTab = "week", lbProfTab = "week";
+  function lbFetch(col, n){
+    return sb.from("profiles").select("username,avatar," + col).eq("show_on_leaderboard", true).gt(col, 0).order(col, {ascending: false}).limit(n).then(function(r){ return r.error ? null : (r.data || []); });
+  }
+  function lbRows(rows, col, me, label){
+    return '<ol class="lblist">' + rows.map(function(r, i){
+      return '<li class="lbrow' + (i < 3 ? ' r' + (i + 1) : '') + (me && r.username === me ? ' me' : '') + '"><span class="rk">' + (i + 1) + '</span><span class="pf">' + avatar(r.avatar) + '</span><span class="un">' + esc(r.username) + '</span><span class="pl">' + fmt(r[col]) + '<small>plays</small></span></li>';
+    }).join("") + '</ol>';
+  }
+  function lbTabs(attr, cur){
+    return '<div class="lbtabs" role="group" aria-label="Time frame">' + LBT.map(function(t){ return '<button type="button" ' + attr + '="' + t[0] + '" aria-pressed="' + (t[0] === cur) + '">' + t[2] + '</button>'; }).join("") + '</div>';
+  }
+  function lbHome(){
+    var sec = document.getElementById("lbsec"); if (!sec) return;
+    sec.hidden = false;
+    var t = LBT.filter(function(x){ return x[0] === lbHomeTab; })[0];
+    sec.innerHTML = '<div class="lbh"><div><h2>Top Red Velvet listeners</h2><p>Fans with the most Red Velvet plays on Last.fm, ' + t[3] + '.</p></div>' + lbTabs("data-lbh", lbHomeTab) + '</div><div id="lbbody"><div class="lbempty">Loading…</div></div><p class="lbnote">Fans appear here after they connect Last.fm and switch on the leaderboard in their profile.</p>';
+    lbFetch(t[1], 10).then(function(rows){
+      var b = document.getElementById("lbbody"); if (!b || lbHomeTab !== t[0]) return;
+      if (rows === null) { b.innerHTML = '<div class="lbempty">Couldn\'t load the leaderboard. Check your connection and try again.</div>'; return; }
+      b.innerHTML = rows.length ? lbRows(rows, t[1], prof && prof.username) : '<div class="lbempty">The ' + t[2].toLowerCase() + ' board is empty. Be the first on it: create an account, connect Last.fm, then switch on “Show me on the leaderboards” in your profile.<br><button class="abtn" type="button" id="lbjoin">' + (user ? 'Open my profile' : 'Create an account') + '</button></div>';
+    });
+  }
+  function lbProfile(){
+    var t = LBT.filter(function(x){ return x[0] === lbProfTab; })[0], el = document.getElementById("lbpbody"); if (!el) return;
+    lbFetch(t[1], 25).then(function(rows){
+      el = document.getElementById("lbpbody"); if (!el || lbProfTab !== t[0]) return;
+      if (rows === null) { el.innerHTML = '<div class="lbempty">Couldn\'t load the leaderboard. Check your connection and try again.</div>'; return; }
+      var html = "", mine = prof && prof.show_on_leaderboard ? (prof[t[1]] || 0) : 0, myi = rows.findIndex(function(r){ return prof && r.username === prof.username; });
+      if (prof && prof.show_on_leaderboard) {
+        if (myi >= 0) html += '<p class="lbrank">You\'re #' + (myi + 1) + ' ' + t[4] + '</p>';
+        else if (mine > 0) { el.innerHTML = '<div class="lbempty">Loading…</div>'; sb.from("profiles").select("id", {count: "exact", head: true}).eq("show_on_leaderboard", true).gt(t[1], mine).then(function(c){ var e2 = document.getElementById("lbpbody"); if (!e2 || lbProfTab !== t[0]) return; e2.innerHTML = '<p class="lbrank">You\'re #' + ((c.count || 0) + 1) + ' ' + t[4] + '</p>' + (rows.length ? lbRows(rows, t[1], prof.username) : ''); }); return; }
+      }
+      el.innerHTML = html + (rows.length ? lbRows(rows, t[1], prof && prof.username) : '<div class="lbempty">Nobody is on the ' + t[2].toLowerCase() + ' board yet.</div>');
+    });
+  }
+  function lbCard(){
+    var on = !!(prof && prof.show_on_leaderboard);
+    return '<div class="optin"><div><b>Show me on the leaderboards</b><span class="d">' + (prof.lastfm_username ? 'Everyone can see your username, picture and play counts.' : 'Connect Last.fm first to join.') + '</span></div><button type="button" class="sw" id="alb" role="switch" aria-checked="' + on + '" aria-label="Show me on the leaderboards"' + (prof.lastfm_username ? '' : ' disabled') + '></button></div>' +
+      '<div class="lbpf"><p class="lfh">Fan leaderboard</p>' + lbTabs("data-lbp", lbProfTab) + '<div id="lbpbody"><div class="lbempty">Loading…</div></div></div>';
+  }
+  function lbTotals(period){
+    var keys = {}, total = 0, page = 1;
+    SONGS.forEach(function(s){ keys[(lfArtist(s) + "|" + s.t).toLowerCase()] = 1; });
+    function next(){
+      return lfCall({method: "user.getTopTracks", user: prof.lastfm_username, period: period, limit: 1000, page: page}).then(function(d){
+        var tt = d && d.toptracks; if (!tt) return total;
+        var list = Array.isArray(tt.track) ? tt.track : (tt.track ? [tt.track] : []);
+        list.forEach(function(t){ var a = t.artist && (t.artist.name || t.artist["#text"]) || ""; if (keys[(a + "|" + t.name).toLowerCase()]) total += parseInt(t.playcount, 10) || 0; });
+        var tp = parseInt(tt["@attr"] && tt["@attr"].totalPages, 10) || 1;
+        if (page < tp && page < 6) { page++; return next(); }
+        return total;
+      }, function(){ return total; });
+    }
+    return next();
+  }
+  function lbPublish(){
+    if (!prof || !prof.show_on_leaderboard || !LFS || LFS.week == null) return Promise.resolve();
+    var v = {plays_week: LFS.week, plays_month: LFS.month, plays_all: LFS.total, scores_at: new Date().toISOString()};
+    return sb.from("profiles").update(v).eq("id", user.id).then(function(r){ if (!r.error) Object.assign(prof, v); });
+  }
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function fake(u){ return u.toLowerCase() + "@" + RV_ACCOUNTS.fakeDomain; }
   function nice(err){
@@ -1469,14 +1716,19 @@ var RV_ACCOUNTS = {
     if (!user) { prof = null; setBtn(); cb && cb(); return; }
     function fin(r){
       prof = r.data || {username: (user.user_metadata && user.user_metadata.username) || "you", avatar: "anon"};
-      lfLoadCache(); setBtn(); cb && cb();
+      sb.from("lastfm_links").select("lastfm_username").eq("id", user.id).maybeSingle().then(function(l){
+        prof.lastfm_username = l && l.data && l.data.lastfm_username || null;
+        lfLoadCache(); setBtn(); cb && cb();
+      }, function(){ lfLoadCache(); setBtn(); cb && cb(); });
     }
-    sb.from("profiles").select("username,avatar,created_at,lastfm_username").eq("id", user.id).maybeSingle().then(function(r){
+    sb.from("profiles").select("username,avatar,created_at,show_on_leaderboard,plays_week,plays_month,plays_all").eq("id", user.id).maybeSingle().then(function(r){
       if (r.error) { sb.from("profiles").select("username,avatar,created_at").eq("id", user.id).maybeSingle().then(fin); return; }
       fin(r);
     });
   }
   function view(){
+    if (step !== "pick" && step !== "change") psel = null;
+    box.classList.toggle("au", !user);
     if (!user) { formView(); return; }
     if (step === "pick") { pickView(true); return; }
     if (step === "change") { pickView(false); return; }
@@ -1484,66 +1736,146 @@ var RV_ACCOUNTS = {
     if (step === "signout") { outView(); return; }
     homeView();
   }
+  function strength(p){ var n = 0; if (p.length >= 8) n++; if (p.length >= 12) n++; if (/[a-z]/.test(p) && /[A-Z]/.test(p) && /\d/.test(p)) n++; if (/[^A-Za-z0-9]/.test(p)) n++; return p ? Math.max(1, n) : 0; }
+  var SV = function(d, x){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"' + (x || "") + '>' + d + '</svg>'; };
+  var ICU = SV('<circle cx="12" cy="8" r="4"/><path d="M4.5 20c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/>'), ICL = SV('<rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 018 0v3"/>'), ICE = SV('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'), ICK = SV('<path d="M5 12.5l4.5 4.5L19 7.5"/>');
+  function mosaic(){
+    var ids = IDS.slice(), cols = [[], [], []];
+    ids.forEach(function(id, i){ cols[i % 3].push(id); });
+    return '<div class="fmos" aria-hidden="true">' + cols.map(function(c, ci){ return '<div class="fcol c' + ci + '">' + c.concat(c).map(function(id){ return '<img alt="" src="' + AV[id] + '">'; }).join("") + '</div>'; }).join("") + '</div>';
+  }
   function formView(msg){
+    box.classList.add("au");
     var up = tab === "up";
-    box.innerHTML = '<h3>' + (up ? 'Create your account' : 'Welcome back') + '</h3><p class="sub">' + (up ? 'Pick a username and password. No email needed.' : 'Sign in with your username and password.') + '</p>' +
-      '<div class="atabs" role="group" aria-label="Sign in or create account"><button type="button" data-tab="in" aria-pressed="' + !up + '">Sign in</button><button type="button" data-tab="up" aria-pressed="' + up + '">Create account</button></div>' +
-      '<form id="aform" novalidate><label class="afld">Username<input id="au" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20">' + (up ? '<span class="ahint">3 to 20 letters, numbers, dots, dashes or underscores.</span>' : '') + '</label>' +
-      '<label class="afld">Password<input id="ap" type="password" autocomplete="' + (up ? 'new-password' : 'current-password') + '">' + (up ? '<span class="ahint">At least 8 characters.</span>' : '') + '</label>' +
-      (up ? '<label class="afld">Repeat password<input id="ap2" type="password" autocomplete="new-password"></label>' : '') +
-      '<div class="aerr" id="aerr" role="alert">' + esc(msg || "") + '</div><div class="arow"><button class="abtn" id="asub" type="submit">' + (up ? 'Create account' : 'Sign in') + '</button></div></form>' +
-      (up ? '<p class="anote">There is no email on your account, so there is no way to reset a forgotten password. Keep your password somewhere safe.</p>' : '');
+    box.innerHTML = '<aside class="fside">' + mosaic() + '<div class="fcopy"><h4>Your Red Velvet listening, ranked.</h4><ul><li>' + ICK + 'See your plays for every song</li><li>' + ICK + 'Climb the weekly and all-time boards</li><li>' + ICK + 'No email needed</li></ul></div></aside>' +
+      '<div class="fmain"><div class="lbtabs ptabs" role="group" aria-label="Sign in or create account"><button type="button" data-tab="in" aria-pressed="' + !up + '">Sign in</button><button type="button" data-tab="up" aria-pressed="' + up + '">Create account</button></div>' +
+      '<h3 class="fh2">' + (up ? 'Join the fans' : 'Welcome back') + '</h3><p class="fsub2">' + (up ? 'Pick a username and password to start tracking your plays.' : 'Sign in to see your plays and your rank.') + '</p>' +
+      '<form id="aform" novalidate><label class="fl2"><b>Username</b><span class="fi">' + ICU + '<input id="au" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" placeholder="' + (up ? 'e.g. reveluv_fan' : 'Your username') + '"></span>' + (up ? '<span class="fhint" id="uhint">3 to 20 letters, numbers, dots, dashes or underscores.</span>' : '') + '</label>' +
+      '<label class="fl2"><b>Password</b><span class="fi">' + ICL + '<input id="ap" type="password" autocomplete="' + (up ? 'new-password' : 'current-password') + '" placeholder="' + (up ? 'At least 8 characters' : 'Your password') + '"><button type="button" class="eye" data-eye="ap" aria-pressed="false" aria-label="Show password">' + ICE + '</button></span>' + (up ? '<span class="fmeter" id="pmeter" aria-live="polite"><i><u></u></i><span></span></span>' : '') + '</label>' +
+      (up ? '<label class="fl2"><b>Repeat password</b><span class="fi">' + ICL + '<input id="ap2" type="password" autocomplete="new-password" placeholder="Type it again"></span></label>' : '') +
+      '<div class="aerr" id="aerr" role="alert">' + esc(msg || "") + '</div><button class="abtn fsub" id="asub" type="submit">' + (up ? 'Create account' : 'Sign in') + '</button></form>' +
+      '<p class="fnote">' + ICL + '<span>' + (up ? 'No email, no tracking. A forgotten password can\'t be reset, so keep it somewhere safe.' : 'Forgot your password? There is no email on file, so it can\'t be reset. You can always make a new account.') + '</span></p></div>';
     var f = document.getElementById("au"); if (f) f.focus({preventScroll:true});
   }
-  function tile(id, cur, label){ return '<button type="button" data-av="' + id + '" aria-pressed="' + (id === cur) + '" aria-label="' + label + '">' + avatar(id) + '</button>'; }
+  var uTimer = 0;
+  box.addEventListener("input", function(e){
+    var id = e.target.id;
+    if (id === "ap" && tab === "up") {
+      var sc = strength(e.target.value), m = document.getElementById("pmeter"); if (!m) return;
+      m.querySelector("u").style.width = sc * 25 + "%"; m.querySelector("u").style.background = ["", "#d6336c", "#e8890c", "#2fa866", "#1f9d57"][sc] || "";
+      m.querySelector("span").textContent = ["", "Weak", "Okay", "Good", "Strong"][sc];
+    }
+    if (id === "au" && tab === "up") {
+      var h = document.getElementById("uhint"), u = e.target.value.trim(); clearTimeout(uTimer); if (!h) return;
+      if (!u) { h.className = "fhint"; h.textContent = "3 to 20 letters, numbers, dots, dashes or underscores."; return; }
+      if (!validUser(u)) { h.className = "fhint"; h.textContent = "Use 3 to 20 letters, numbers, dots, dashes or underscores."; return; }
+      h.className = "fhint"; h.textContent = "Checking…";
+      uTimer = setTimeout(function(){
+        sb.from("profiles").select("id", {count: "exact", head: true}).ilike("username", u.replace(/_/g, "\\_")).then(function(r){
+          var h2 = document.getElementById("uhint"); if (!h2 || document.getElementById("au").value.trim() !== u) return;
+          if (r.error) { h2.textContent = "3 to 20 letters, numbers, dots, dashes or underscores."; return; }
+          if (r.count > 0) { h2.className = "fhint bad"; h2.textContent = "That username is taken."; } else { h2.className = "fhint ok"; h2.textContent = "Nice, that username is free."; }
+        }, function(){});
+      }, 450);
+    }
+  });
+  var psel = null, pk = "anon", ptab = "stats";
+  function memberOf(id){ var m = GROUPS.filter(function(g){ return id.indexOf(g[1]) === 0; })[0]; return m ? m[1] : "anon"; }
+  function labelOf(id){ if (id === "anon") return "Anonymous"; var g = GROUPS.filter(function(x){ return id.indexOf(x[1]) === 0; })[0]; return g ? g[0] + " · photo " + id.slice(g[1].length) : "Anonymous"; }
+  function bigtile(id, label){ return '<button type="button" class="pkb" data-av="' + id + '" aria-pressed="' + (id === psel) + '" aria-label="' + label + '">' + avatar(id) + '<span class="cap">' + label.replace(/ (\d)$/, " · $1") + '</span><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>'; }
   function pickView(first){
     var cur = prof ? prof.avatar : "anon";
-    var groups = GROUPS.map(function(g){
-      var ids = IDS.filter(function(id){ return id.indexOf(g[1]) === 0; });
-      if (!ids.length) return "";
-      return '<p class="avh">' + g[0] + '</p><div class="avgrid" role="group" aria-label="' + g[0] + ' pictures">' + ids.map(function(id, i){ return tile(id, cur, g[0] + " " + (i + 1)); }).join("") + '</div>';
-    }).join("");
-    box.innerHTML = '<h3>' + (first ? 'Choose your picture' : 'Change your picture') + '</h3><p class="sub">' + (first ? 'This is what other fans will see next to your username.' : 'Pick any one you like.') + '</p>' +
-      '<div class="avgrid" role="group" aria-label="No picture">' + tile("anon", cur, "Stay anonymous") + '<span class="avlab">Stay anonymous</span></div>' + groups +
-      '<div class="aerr" id="aerr" role="alert"></div><div class="arow"><button class="abtn" id="asave" type="button">' + (first ? 'Continue' : 'Save') + '</button>' + (first ? '' : '<button class="abtn ghost" type="button" id="aback">Cancel</button>') + '</div>';
+    if (psel == null) { psel = cur; pk = memberOf(cur); }
+    var ms = GROUPS.filter(function(g){ return IDS.some(function(id){ return id.indexOf(g[1]) === 0; }); });
+    var chips = '<button type="button" class="pkc" data-pk="anon" aria-pressed="' + (pk === "anon") + '"><span class="pkt">' + avatar("anon") + '</span>Anonymous</button>' + ms.map(function(g){
+      var f1 = IDS.filter(function(id){ return id.indexOf(g[1]) === 0; })[0];
+      return '<button type="button" class="pkc" data-pk="' + g[1] + '" aria-pressed="' + (pk === g[1]) + '"><span class="pkt">' + avatar(f1) + '</span>' + g[0] + '</button>'; }).join("");
+    var grid;
+    if (pk === "anon") grid = '<div class="pkg one">' + bigtile("anon", "Stay anonymous") + '<p>No picture, just your username. You can change it any time.</p></div>';
+    else { var g = GROUPS.filter(function(x){ return x[1] === pk; })[0]; grid = '<div class="pkg">' + IDS.filter(function(id){ return id.indexOf(pk) === 0; }).map(function(id, i){ return bigtile(id, g[0] + " " + (i + 1)); }).join("") + '</div>'; }
+    box.innerHTML = '<h3>' + (first ? 'Choose your picture' : 'Change your picture') + '</h3><p class="sub">' + (first ? 'This is what other fans will see next to your username.' : 'Pick a member, then a photo.') + '</p>' +
+      '<div class="pkp"><span class="ring2"><span class="big-av">' + avatar(psel) + '</span></span><div><b>' + esc(prof ? prof.username : "you") + '</b><span class="d">' + labelOf(psel) + '</span></div></div>' +
+      '<div class="pkchips" role="group" aria-label="Choose a member">' + chips + '</div>' + grid +
+      '<div class="pkfoot"><div class="aerr" id="aerr" role="alert"></div><div class="arow"><button class="abtn" id="asave" type="button">' + (first ? 'Continue' : 'Save') + '</button>' + (first ? '' : '<button class="abtn ghost" type="button" id="aback">Cancel</button>') + '</div></div>';
   }
+
   var OUTIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex:none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>';
   function homeView(){
     var src = AV[prof.avatar], since = prof.created_at ? new Date(prof.created_at).toLocaleDateString(undefined, {month: "long", year: "numeric"}) : "";
+    var body;
+    if (ptab === "board") body = lbCard();
+    else if (ptab === "acct") body = '<div class="alist"><button type="button" class="alr" id="achange2" data-edit="1"><span class="ic av">' + avatar(prof.avatar) + '</span><div><b>Profile picture</b><span class="d">Change the picture other fans see</span></div><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>' +
+      '<div class="alr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zM20 16a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><b>Last.fm</b><span class="d">' + (prof.lastfm_username ? 'Connected as ' + esc(prof.lastfm_username) : 'Not connected yet. You can connect it on the My stats tab.') + '</span></div></div>' +
+      '<button type="button" class="alr danger" id="aout"><span class="ic">' + OUTIC + '</span><div><b>Sign out</b><span class="d">You\'ll need your password to sign back in</span></div></button></div>' +
+      '<p class="pfoot">There\'s no email on your account, so a lost password can\'t be reset. Keep it somewhere safe.</p>';
+    else body = lfCard();
     box.innerHTML = '<div class="pban">' + (src ? '<i style="background-image:url(' + src + ')"></i>' : '') + '</div>' +
-      '<div class="pid"><span class="ring"><span class="big-av">' + avatar(prof.avatar) + '</span></span><div><b>' + esc(prof.username) + '</b><span class="pmeta">' + (since ? 'Fan since ' + since : 'Signed in') + '</span>' + (prof.lastfm_username ? '<span class="chip"><i></i>Last.fm connected</span>' : '') + '</div></div>' +
-      '<div class="arow"><button class="abtn" type="button" id="achange">Change picture</button><button class="abtn out" type="button" id="aout">' + OUTIC + 'Sign out</button></div>' +
-      lfCard() + '<div class="psoon"><div class="row2"><div><b>Leaderboards</b><span class="d">Opt in to appear in fan rankings.</span></div><span class="tag">Soon</span></div></div>' +
-      '<p class="pfoot">Your account has no email, so keep your password safe. It cannot be reset.</p>';
+      '<div class="pid"><button type="button" class="ring editav" id="achange" aria-label="Change your picture"><span class="big-av">' + avatar(prof.avatar) + '</span><span class="pen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></span></button><div><b>' + esc(prof.username) + '</b><span class="pmeta">' + (since ? 'Fan since ' + since : 'Signed in') + '</span>' + (prof.lastfm_username ? '<span class="chip"><i></i>Last.fm connected</span>' : '') + '</div></div>' +
+      '<div class="lbtabs ptabs" role="group" aria-label="Profile sections"><button type="button" data-pt="stats" aria-pressed="' + (ptab === "stats") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>My stats</button><button type="button" data-pt="board" aria-pressed="' + (ptab === "board") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM17 5h3v2a3 3 0 01-3 3M7 5H4v2a3 3 0 003 3"/></svg>Leaderboard</button><button type="button" data-pt="acct" aria-pressed="' + (ptab === "acct") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></svg>Account</button></div>' +
+      '<div class="pbody">' + body + '</div>';
+    if (ptab === "board") lbProfile();
   }
   function outView(){
-    box.innerHTML = '<h3>Sign out?</h3><p class="sub">Do you remember your password? Your account has no email, so if you forget it there is no way to get back in.</p><div class="arow"><button class="abtn out solid" type="button" id="aout2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex:none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Yes, sign out</button><button class="abtn ghost" type="button" id="aback">Stay signed in</button></div>';
+    box.innerHTML = '<h3>Sign out?</h3><p class="sub">Before you go: do you remember your password? With no email on file, a forgotten password can\'t be recovered.</p><div class="arow"><button class="abtn out solid" type="button" id="aout2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex:none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Yes, sign out</button><button class="abtn ghost" type="button" id="aback">Stay signed in</button></div>';
   }
   function delView(){
     box.innerHTML = '<h3>Delete your account?</h3><p class="sub">This removes your username, picture and everything linked to them. It can\'t be undone.</p><div class="aerr" id="aerr" role="alert"></div><div class="arow"><button class="abtn warn" type="button" id="adel2">Yes, delete it</button><button class="abtn ghost" type="button" id="aback">Keep my account</button></div>';
   }
   function err(m){ var e = document.getElementById("aerr"); if (e) e.textContent = m; }
-  function open(){ view(); if (!dlg.open) { dlg.showModal(); try { box.parentNode.tabIndex = -1; } catch(e) {} } }
+  var PM = {};
+  function pillFix(root){
+    (root || document).querySelectorAll(".lbtabs").forEach(function(g){
+      var on = g.querySelector('button[aria-pressed="true"]'), b0 = g.querySelector("button"); if (!on || !b0) return;
+      var key = b0.getAttributeNames().filter(function(n){ return n.indexOf("data-") === 0; })[0] || "x";
+      var ind = g.querySelector(".ind"), fresh = false;
+      if (!ind) { ind = document.createElement("i"); ind.className = "ind"; g.insertBefore(ind, g.firstChild); g.classList.add("pl"); fresh = true; }
+      var x = on.offsetLeft, w = on.offsetWidth;
+      if (!w) { ind.dataset.pend = "1"; return; }
+      var jump = ind.dataset.pend === "1"; delete ind.dataset.pend;
+      var p = PM[key];
+      if (fresh && p) { ind.style.transition = "none"; ind.style.width = p.w + "px"; ind.style.transform = "translateX(" + p.x + "px)"; ind.getBoundingClientRect(); ind.style.transition = ""; }
+      else if (fresh || jump) { ind.style.transition = "none"; }
+      ind.style.width = w + "px"; ind.style.transform = "translateX(" + x + "px)";
+      if ((fresh && !p) || jump) { ind.getBoundingClientRect(); ind.style.transition = ""; }
+      PM[key] = {x: x, w: w};
+    });
+  }
+  if (window.MutationObserver) { var pmo = new MutationObserver(function(){ pillFix(); }); pmo.observe(dlg, {childList: true, subtree: true}); var lbs0 = document.getElementById("lbsec"); if (lbs0) pmo.observe(lbs0, {childList: true}); }
+  window.addEventListener("resize", function(){ pillFix(); });
+  function open(){ view(); if (!dlg.open) { dlg.showModal(); try { box.parentNode.tabIndex = -1; } catch(e) {} } pillFix(); }
   function close(){ if (dlg.open) dlg.close(); }
   function validUser(u){ return /^[A-Za-z0-9_.-]{3,20}$/.test(u); }
   box.addEventListener("click", function(e){
     var t = e.target.closest("button"); if (!t || busy) return;
     if (t.dataset.tab) { tab = t.dataset.tab; formView(); return; }
-    if (t.dataset.av) { box.querySelectorAll("[data-av]").forEach(function(b){ b.setAttribute("aria-pressed", String(b === t)); }); return; }
-    if (t.id === "achange") { step = "change"; view(); return; }
+    if (t.dataset.eye) { var inp = document.getElementById(t.dataset.eye), show = inp.type === "password"; inp.type = show ? "text" : "password"; t.setAttribute("aria-pressed", String(show)); t.setAttribute("aria-label", show ? "Hide password" : "Show password"); return; }
+    if (t.dataset.av) { psel = t.dataset.av; pickView(!!document.getElementById("asave") && box.querySelector("#aback") === null); return; }
+    if (t.dataset.pk) { pk = t.dataset.pk; pickView(box.querySelector("#aback") === null); return; }
+    if (t.dataset.pt) { ptab = t.dataset.pt; homeView(); return; }
+    if (t.id === "achange" || t.dataset.edit) { step = "change"; view(); return; }
     if (t.id === "aback") { step = "home"; view(); return; }
     if (t.id === "adel") { step = "delete"; view(); return; }
     if (t.id === "alfl" || t.id === "alfr") { lfLoadStats(); return; }
     if (t.id === "alfd") { lfDisconnect(); return; }
+    if (t.dataset.lbp) { lbProfTab = t.dataset.lbp; box.querySelectorAll("[data-lbp]").forEach(function(b){ b.setAttribute("aria-pressed", String(b === t)); }); lbProfile(); return; }
+    if (t.id === "alb") {
+      var want = !(prof && prof.show_on_leaderboard); t.disabled = true;
+      sb.from("profiles").update({show_on_leaderboard: want}).eq("id", user.id).then(function(r){
+        if (r.error) { t.disabled = false; return; }
+        prof.show_on_leaderboard = want; lfMsg = want && !(LFS && LFS.week != null) ? "Load your play counts so your scores can appear." : "";
+        (want ? lbPublish() : Promise.resolve()).then(function(){ view(); lbHome(); });
+      });
+      return;
+    }
     if (t.id === "aout") { step = "signout"; view(); return; }
     if (t.id === "aout2") { sb.auth.signOut().then(function(){ step = "form"; tab = "in"; }); return; }
     if (t.id === "asave") {
-      var sel = box.querySelector('[data-av][aria-pressed="true"]'); if (!sel) return;
+      if (!psel) return;
       busy = true; t.disabled = true;
-      sb.from("profiles").update({avatar: sel.dataset.av}).eq("id", user.id).then(function(r){
+      sb.from("profiles").update({avatar: psel}).eq("id", user.id).then(function(r){
         busy = false; t.disabled = false;
         if (r.error) { err(nice(r.error)); return; }
-        prof.avatar = sel.dataset.av; setBtn(); step = "home"; view();
+        prof.avatar = psel; setBtn(); step = "home"; psel = null; view();
       });
       return;
     }
@@ -1578,14 +1910,17 @@ var RV_ACCOUNTS = {
     }, function(x){ busy = false; sub.disabled = false; err(nice(x)); });
   });
   btn.addEventListener("click", function(){ open(); });
+  var lbs = document.getElementById("lbsec");
+  if (lbs) lbs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (!b) return; if (b.dataset.lbh) { lbHomeTab = b.dataset.lbh; lbHome(); } else if (b.id === "lbjoin") open(); });
   document.getElementById("ax").addEventListener("click", close);
   dlg.addEventListener("click", function(e){ if (e.target === dlg) close(); });
   function start(){
     sb = window.supabase.createClient(RV_ACCOUNTS.url, RV_ACCOUNTS.key);
     window.RV_SB = sb;
+    lbHome();
     sb.auth.onAuthStateChange(function(ev, session){
       user = session && session.user || null;
-      setTimeout(function(){ loadProfile(function(){ if (dlg.open) view(); }); }, 0);
+      setTimeout(function(){ loadProfile(function(){ if (dlg.open) view(); lbHome(); }); }, 0);
     });
     sb.auth.getSession().then(function(r){ user = r.data && r.data.session && r.data.session.user || null; loadProfile(); });
   }
