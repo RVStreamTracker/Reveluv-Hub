@@ -598,6 +598,7 @@ EXTRA_VIDEOS = {
     "Daydream": "L1rR_smhD78",
     "Like Water": "-Ih5UArd4zk",
     "Love Splash!": "-2fAmkQS854",
+    "Introduce me a good person": "hoLzH1revMg",
 }
 
 # special videos (not music videos). The site hides these until "Special videos" is switched on.
