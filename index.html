@@ -1111,13 +1111,24 @@ function pred(t, y, g){
   return {c: d <= 7 ? "good" : d <= 30 ? "mid" : "far", x:"Predicted to reach goal in " + d.toLocaleString("en-US") + " day" + (d === 1 ? "" : "s")};
 }
 var LOWD = 1000;
-function lowD(p, v, s){ return p === "spotify" && s && s.cat !== "title" && v && v.yday != null && v.yday > 0 && v.yday < LOWD; }
+function lowD(p, v, s){
+  if (p !== "spotify" || !s || s.cat === "title" || !v || !v.yday || typeof HIST !== "object" || !HIST) return false;
+  var pts = [];
+  Object.keys(HIST).sort().forEach(function(d){ var r = HIST[d] && HIST[d][s.t], x = r && r.s; if (x != null) pts.push({d:d, v:x}); });
+  if (pts.length < 2) return false;
+  function ms(d){ var q = d.split("-"); return Date.UTC(+q[0], q[1] - 1, +q[2]); }
+  var a = pts[pts.length - 2], b = pts[pts.length - 1], gap = Math.round((ms(b.d) - ms(a.d)) / 86400000);
+  if (gap < 1 || gap > 3) return false;
+  var real = Math.max(0, (b.v - a.v) / gap), shown = v.yday;
+  // the daily number Kworb shows doesn't match how much the total really grew
+  return Math.abs(shown - real) >= 300 && Math.max(shown, real) >= 3 * Math.max(1, Math.min(shown, real));
+}
 function cover(s){ var c = COVERS[s.t] || COVERS[COVER_ALIAS[s.t]]; if (c) return '<img class="cv" alt="" src="' + c + '">'; var h = (s.i*47+340)%360; return '<div class="cv" style="background:linear-gradient(135deg,hsl(' + h + ',75%,58%),hsl(' + ((h+50)%360) + ',80%,42%))" aria-hidden="true">' + s.t.charAt(0) + '</div>'; }
 function card(s, n){
   var v = dd(s, P), h = '<button class="sc rv" data-i="' + s.i + '" style="--d:' + (n % 8 * 45) + 'ms' + (gcOf(s.t) ? ';--gc:' + gcOf(s.t) : '') + '" aria-label="Open details for ' + s.t + '">' + cover(s) + '<span class="sm"><b>' + s.t + '</b>' + (isPinned(s.t) ? '<i class="pinm" title="Pinned">★</i>' : '');
   if (!v) return h + '<small>Waiting for data</small></span></button>';
   var g = tgt(s.t, P, v.total), p = pred(v.total, v.yday, g);
-  return h + '<small>' + fmt(v.total) + (P === "youtube" && NOTES[s.t] ? ' · ' + (spOnly(s) ? 'special video' : 'stage clip') : '') + tagText(s) + '</small><i class="bar"><u style="width:' + Math.min(100, v.total/g*100) + '%"></u></i><em class="pill ' + p.c + '"' + (lowD(P, v, s) ? ' title="Low daily streams, so this estimate may be off"' : '') + '>' + (lowD(P, v, s) ? '≈ ' : '') + p.x.replace("Predicted to reach goal in ", "Goal in ") + '</em></span></button>';
+  return h + '<small>' + fmt(v.total) + (P === "youtube" && NOTES[s.t] ? ' · ' + (spOnly(s) ? 'special video' : 'stage clip') : '') + tagText(s) + '</small><i class="bar"><u style="width:' + Math.min(100, v.total/g*100) + '%"></u></i><em class="pill ' + p.c + '"' + (lowD(P, v, s) ? ' title="Daily streams look out of date, so this estimate may be off"' : '') + '>' + (lowD(P, v, s) ? '≈ ' : '') + p.x.replace("Predicted to reach goal in ", "Goal in ") + '</em></span></button>';
 }
 function lk(v){ return '<div class="mut">👍 ' + (v.likes == null ? 'Likes: waiting for data' : fmt(v.likes) + ' likes' + (v.ylikes != null ? ' (+' + fmt(v.ylikes) + ' yesterday)' : '')) + '</div>'; }
 function note(s, p){ return p === "youtube" && NOTES[s.t] ? '<div class="mut" style="margin:6px 0"><i class="pill far">' + NOTES[s.t] + '</i></div>' : ""; }
@@ -1128,7 +1139,7 @@ function panel(s, p){
   var g = tgt(s.t, p, v.total), r = pred(v.total, v.yday, g), pc = Math.min(100, v.total/g*100);
   var vid = p === "youtube" ? vidOf(s.t) : "";
   return '<div class="pn' + (vid ? ' yt' : '') + '"' + (vid ? ' style="--thumb:url(https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg)"' : '') + '><h4>' + n + '</h4><div class="big" data-v="' + v.total + '" data-m="f">' + fmt(v.total) + '</div><div class="mut">' + (v.yday ? '+' + fmt(v.yday) + ' yesterday' : 'Daily gain not available') + '</div>' + (p === "youtube" ? lk(v) : '') + note(s, p) +
-    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Low daily streams. Counts for songs this small can lag or jump around, so these numbers and the goal estimate may be less accurate.</span></div>' : '') +
+    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>The daily streams shown here don\'t match how much this song\'s total actually grew, so they may be out of date. The goal estimate may be off too.</span></div>' : '') +
     '<label class="gl">Goal<input type="text" inputmode="numeric" value="' + fmt(g) + '" data-k="' + p + ':' + s.t + '"></label></div>';
 }
 function openSong(i){
