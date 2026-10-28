@@ -791,27 +791,32 @@ def gain_steady(hist, today, title, field, now):
     """Like gain(), but for numbers that only change every day or two (MyStreamCount totals).
     When the total hasn't moved since the last snapshot, it spreads the last real jump over the days it covered
     instead of showing 0."""
+    return steady_info(hist, today, title, field, now)[0]
+
+
+def steady_info(hist, today, title, field, now):
+    """Returns (daily gain, is_estimate). It is an estimate when a jump was spread over more than one day."""
     if now is None:
-        return None
+        return None, False
     pts = []
     for day in sorted(d for d in hist if d < today.isoformat()):
         v = hist[day].get(title, {}).get(field)
         if v is not None and not (1900 <= v <= 2100):
             pts.append((date.fromisoformat(day), v))
     if not pts:
-        return None
+        return None, False
     i, start = len(pts), today
     while i > 0 and pts[i - 1][1] == now:        # days the total has been sitting at its current value
         i -= 1
         start = pts[i][0]
     if i == 0:
-        return 0
+        return 0, False
     prev_val = pts[i - 1][1]
     j = i - 1
     while j > 0 and pts[j - 1][1] == prev_val:   # days it sat at the value before that
         j -= 1
     days = max(1, (start - pts[j][0]).days)
-    return max(0, round((now - prev_val) / days))
+    return max(0, round((now - prev_val) / days)), (i < len(pts) or days > 1)
 
 
 def load(path, default):
@@ -948,6 +953,7 @@ def main():
             total = msc_total(tid) if tid else None
             if total:
                 sp = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
+                sp["est"] = steady_info(hist, today, title, "s", total)[1]
                 snap[title]["s"] = total
                 from_msc_main += 1
             else:
@@ -1010,6 +1016,7 @@ def main():
                     why["lower"].append(title + " (MSC " + format(total, ",") + " < Kworb " + format(hit[0], ",") + ")")
                 if total and (not hit or total >= hit[0]):
                     old = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
+                    old["est"] = steady_info(hist, today, title, "s", total)[1]
                     snap[title] = {"s": total}
                     from_msc += 1
                 elif not hit:
