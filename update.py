@@ -812,6 +812,22 @@ def steady_info(hist, today, title, field, now):
         start = pts[i][0]
     if i == 0:
         return 0, False
+    if (today - start).days > 3:                 # stuck for days: an old jump would not be a believable daily number
+        return None, False
+    # average growth over the last week or so, which is steadier than one jump spread over a few days
+    before = [p for p in pts[:i] if p[1] != now]
+    if not before:
+        return 0, False
+    old = [p for p in before if (today - p[0]).days >= 7]
+    ref = old[-1] if old else before[0]
+    span = (today - ref[0]).days
+    if span >= 3:
+        avg = max(0, round((now - ref[1]) / span))
+        if i == len(pts) and (today - pts[i - 1][0]).days == 1:   # a real one-day change that agrees with the average
+            one = now - pts[i - 1][1]
+            if avg and 0.5 * avg <= one <= 2 * avg:
+                return one, False
+        return avg, True
     prev_val = pts[i - 1][1]
     j = i - 1
     while j > 0 and pts[j - 1][1] == prev_val:   # days it sat at the value before that
