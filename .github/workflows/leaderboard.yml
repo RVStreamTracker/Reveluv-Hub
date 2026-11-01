@@ -1,0 +1,21 @@
+name: Update leaderboard
+
+on:
+  schedule:
+    - cron: "30 15 * * *"   # every day at 15:30 UTC, after the stream update
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+
+jobs:
+  leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Refresh everyone's Last.fm scores
+        run: python lb_update.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
