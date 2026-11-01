@@ -1078,6 +1078,11 @@ body{transition:background-color .4s,color .3s}
 :root[data-theme="dark"] .estt{color:#ffc766}
 :root:not([data-theme="light"]) .estt{color:color-mix(in srgb,#ffc766 var(--dk,0%),color-mix(in srgb,#b36b00 80%,var(--ink)))}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .estt{color:#ffc766}}
+.oldn{font-style:normal;font-weight:700;font-size:11.5px;color:#d6293a;background:color-mix(in srgb,#e5384a 14%,transparent);border:1px solid color-mix(in srgb,#e5384a 40%,transparent);border-radius:999px;padding:2px 8px;margin-left:4px;white-space:nowrap}
+.oldb{display:flex;gap:12px;align-items:center;margin:12px 0 0;padding:14px 16px;border-radius:16px;color:#d6293a;background:color-mix(in srgb,#e5384a 13%,transparent);border:1.5px solid color-mix(in srgb,#e5384a 55%,transparent)}
+.oldb svg{width:30px;height:30px;flex:none;position:static}
+.oldb b{display:block;font-size:19px;line-height:1.15;letter-spacing:-.01em}
+.oldb span{display:block;margin-top:3px;font-size:12.5px;line-height:1.4;color:var(--mut)}
 </style>
 </head>
 <body><div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1171,7 +1176,7 @@ function fixDaily(){
     var a = pts[pts.length - 2], b = pts[pts.length - 1], gap = Math.round((ms(b.d) - ms(a.d)) / 86400000);
     if (gap < 1 || gap > 3) return;
     var real = Math.max(0, (b.v - a.v) / gap), shown = v.yday;
-    if (Math.abs(shown - real) >= 300 && Math.max(shown, real) >= 3 * Math.max(1, Math.min(shown, real))) { s.s = {total:v.total, yday:real > 0 ? Math.round(real) : null, fixed:true}; changed = true; }
+    if (real > 0 && Math.abs(shown - real) >= 300 && Math.max(shown, real) >= 3 * Math.min(shown, real)) { s.s = {total:v.total, yday:Math.round(real), fixed:true}; changed = true; }
   });
   return changed;
 }
@@ -1180,7 +1185,7 @@ function card(s, n){
   var v = dd(s, P), h = '<button class="sc rv" data-i="' + s.i + '" style="--d:' + (n % 8 * 45) + 'ms' + (gcOf(s.t) ? ';--gc:' + gcOf(s.t) : '') + '" aria-label="Open details for ' + s.t + '">' + cover(s) + '<span class="sm"><b>' + s.t + '</b>' + (isPinned(s.t) ? '<i class="pinm" title="Pinned">★</i>' : '');
   if (!v) return h + '<small>Waiting for data</small></span></button>';
   var g = tgt(s.t, P, v.total), p = pred(v.total, v.yday, g);
-  return h + '<small>' + fmt(v.total) + (P === "youtube" && NOTES[s.t] ? ' · ' + (spOnly(s) ? 'special video' : 'stage clip') : '') + tagText(s) + '</small><i class="bar"><u style="width:' + Math.min(100, v.total/g*100) + '%"></u></i><em class="pill ' + p.c + '"' + (lowD(P, v, s) ? ' title="Daily streams corrected from saved history"' : '') + '>' + (lowD(P, v, s) ? '≈ ' : '') + p.x.replace("Predicted to reach goal in ", "Goal in ") + '</em></span></button>';
+  return h + '<small>' + fmt(v.total) + (P === "youtube" && NOTES[s.t] ? ' · ' + (spOnly(s) ? 'special video' : 'stage clip') : '') + tagText(s) + (outdated(s, P) ? ' <i class="oldn">Heavily outdated</i>' : '') + '</small><i class="bar"><u style="width:' + Math.min(100, v.total/g*100) + '%"></u></i><em class="pill ' + p.c + '"' + (lowD(P, v, s) ? ' title="Daily streams corrected from saved history"' : '') + '>' + (lowD(P, v, s) ? '≈ ' : '') + p.x.replace("Predicted to reach goal in ", "Goal in ") + '</em></span></button>';
 }
 function lk(v){ return '<div class="mut">👍 ' + (v.likes == null ? 'Likes: waiting for data' : fmt(v.likes) + ' likes' + (v.ylikes != null ? ' (+' + fmt(v.ylikes) + ' yesterday)' : '')) + '</div>'; }
 function note(s, p){ return p === "youtube" && NOTES[s.t] ? '<div class="mut" style="margin:6px 0"><i class="pill far">' + NOTES[s.t] + '</i></div>' : ""; }
@@ -1191,7 +1196,7 @@ function panel(s, p){
   var g = tgt(s.t, p, v.total), r = pred(v.total, v.yday, g), pc = Math.min(100, v.total/g*100);
   var vid = p === "youtube" ? vidOf(s.t) : "";
   return '<div class="pn' + (vid ? ' yt' : '') + '"' + (vid ? ' style="--thumb:url(https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg)"' : '') + '><h4>' + n + '</h4><div class="big" data-v="' + v.total + '" data-m="f">' + fmt(v.total) + '</div><div class="mut">' + ydayTxt(v) + '</div>' + (p === "youtube" ? lk(v) : '') + note(s, p) +
-    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Kworb\'s daily number for this song looked out of date, so this uses how much its total grew between the last two updates instead.</span></div>' : '') +
+    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (outdated(s, p) ? '<div class="oldb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v5M12 17.5v.01"/></svg><div><b>Heavily outdated</b><span>This number is far below the other songs on its album, so the stream count here is probably behind.</span></div></div>' : '') + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Kworb\'s daily number for this song looked out of date, so this uses how much its total grew between the last two updates instead.</span></div>' : '') +
     '<label class="gl">Goal<input type="text" inputmode="numeric" value="' + fmt(g) + '" data-k="' + p + ':' + s.t + '"></label></div>';
 }
 function openSong(i){
@@ -1206,6 +1211,14 @@ SONGS.forEach(function(s){ var k = INFO[s.t]; if (!k) return; if (!ALB[k]) { ALB
 var REPACK = {"Bloom - 2022": ["#Cookie Jar - 2018", "Sappy - 2019"], "The ReVe Festival: Finale - 2019": ["The ReVe Festival: Day 1 - 2019", "The ReVe Festival: Day 2 - 2019"], "The Perfect Red Velvet - 2018": ["Perfect Velvet - 2017"]};
 function albList(k){ var out = (ALB[k] || []).slice(); (REPACK[k] || []).forEach(function(pk){ (ALB[pk] || []).forEach(function(s){ if (out.indexOf(s) < 0) out.push(s); }); }); return out; }
 function albFrom(k){ return (REPACK[k] || []).map(function(pk){ return albParts(pk).n.replace(/^The ReVe Festival: /, "TRVF "); }); }
+function outdated(s, p){
+  if (!s || p !== "spotify" || (s.cat !== "solo" && s.cat !== "unit")) return false;
+  var k = INFO[s.t], v = dd(s, "spotify"); if (!k || !v || !v.total) return false;
+  var o = (ALB[k] || []).filter(function(x){ return x !== s; }).map(function(x){ var w = dd(x, "spotify"); return w && w.total; }).filter(function(n){ return n > 0; }).sort(function(a,b){ return a-b; });
+  if (o.length < 2) return false;
+  var med = o.length % 2 ? o[(o.length-1)/2] : (o[o.length/2-1] + o[o.length/2]) / 2;
+  return v.total < med * 0.08;
+}
 function albParts(k){ var m = k.match(/^(.*) - (\d{4})$/); return m ? {n:m[1], y:m[2]} : {n:k, y:""}; }
 function albLine(s){
   var k = INFO[s.t], ai = k ? ALBK.indexOf(k) : -1;
@@ -1457,7 +1470,7 @@ function countUp(root){ if (matchMedia("(prefers-reduced-motion:reduce)").matche
     function st(ts){ t0 = t0 || ts; var p = Math.min(1, (ts - t0) / 850), e = 1 - Math.pow(1 - p, 3); el.textContent = f(v * e); if (p < 1) requestAnimationFrame(st); else el.textContent = f(v); }
     requestAnimationFrame(st); }); }
 function applyGC(){ document.querySelectorAll("[data-i]").forEach(function(el){ var c = gcOf(SONGS[+el.getAttribute("data-i")].t); if (c) el.style.setProperty("--gc", c); }); var sc = GC[SONGS[0].t]; if (sc) $("spot").style.setProperty("--gc", sc); }
-var GCFIX = {"Russian Roulette": "hsl(197,92%,68%)", "Sunkiss": "hsl(248,62%,42%)", "Hello": "hsl(150,68%,48%)", "Like Water": "hsl(207,90%,70%)", "Queendom": "hsl(345,38%,62%)", "Wish You Hell": "hsl(212,82%,62%)", "Automatic": "hsl(0,0%,52%)"};
+var GCFIX = {"Chill Kill": "hsl(352,82%,38%)", "Power Up": "hsl(199,88%,70%)", "Russian Roulette": "hsl(197,92%,68%)", "Sunkiss": "hsl(248,62%,42%)", "Hello": "hsl(150,68%,48%)", "Like Water": "hsl(207,90%,70%)", "Queendom": "hsl(345,38%,62%)", "Wish You Hell": "hsl(212,82%,62%)", "Automatic": "hsl(0,0%,52%)"};
 function calcGC(){ var keys = Object.keys(COVERS), left = keys.length; if (!left) return;
   keys.forEach(function(k){ var im = new Image(); im.onload = function(){ try { var c = document.createElement("canvas"); c.width = c.height = 8; var x = c.getContext("2d"); x.drawImage(im, 0, 0, 8, 8);
       var d = x.getImageData(0, 0, 8, 8).data, r = 0, g = 0, b = 0, w = 0;
