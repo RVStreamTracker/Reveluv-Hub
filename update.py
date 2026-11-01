@@ -599,6 +599,7 @@ EXTRA_VIDEOS = {
     "Like Water": "-Ih5UArd4zk",
     "Love Splash!": "-2fAmkQS854",
     "Introduce me a good person": "hoLzH1revMg",
+    "Written In The Stars": "H4a-5BdZ5ck",
 }
 
 # special videos (not music videos). The site hides these until "Special videos" is switched on.
@@ -941,22 +942,8 @@ def main():
                 snap[title]["s"] = hit[0]
                 fresh = True
         if not fresh:
-            # Not on Kworb (or Kworb is down): try MyStreamCount's Red Velvet page.
-            if rv_msc is None:
-                rv_msc = msc_artist_tracks(MAIN_ARTIST_ID)
-            tid = None
-            for name in (SPOTIFY.get(title), ALIASES.get(title), title):
-                tid = msc_find(rv_msc, name) if name else None
-                if tid:
-                    break
-            tid = tid or MSC_TRACK_IDS.get(title)
-            total = msc_total(tid) if tid else None
-            if total:
-                sp = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
-                sp["est"] = steady_info(hist, today, title, "s", total)[1]
-                snap[title]["s"] = total
-                from_msc_main += 1
-            else:
+            # Not on Kworb (or Kworb is down): keep the numbers saved last time. MyStreamCount is only used for solos and Irene & Seulgi.
+            if not sp:
                 missing.append(title + " (Spotify)")
 
         vid = VIDEOS.get(title, "") or special.get(title, "")
