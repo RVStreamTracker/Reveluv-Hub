@@ -1,9 +1,3 @@
-"""Refreshes the fan leaderboard once a day.
-
-For everyone who turned on "Show me on the leaderboards", this reads their public
-Last.fm history, counts their Red Velvet plays (last 7 days, last 30 days, all time)
-and saves the numbers to Supabase. Run by .github/workflows/leaderboard.yml.
-"""
 import json
 import os
 import sys
@@ -11,7 +5,7 @@ import time
 import urllib.parse
 import urllib.request
 
-import update  # reuses the song lists from update.py (it does not run anything on import)
+import update  # update.py song list
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "").strip()
