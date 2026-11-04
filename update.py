@@ -600,6 +600,7 @@ EXTRA_VIDEOS = {
     "Love Splash!": "-2fAmkQS854",
     "Introduce me a good person": "hoLzH1revMg",
     "Written In The Stars": "H4a-5BdZ5ck",
+    "Cheetah": "Ts8HTHBRxvw",
 }
 
 # special videos (not music videos). The site hides these until "Special videos" is switched on.
