@@ -1,59 +1,59 @@
 {
- "updated": "2026/11/05",
+ "updated": "2026/11/06",
  "xdates": {
-  "Irene & Seulgi": "2026/11/06",
-  "Seulgi": "2026/11/06",
-  "Irene": "2026/11/06",
-  "Wendy": "2026/11/06",
-  "Joy": "2026/11/06"
+  "Irene & Seulgi": "2026/11/07",
+  "Seulgi": "2026/11/07",
+  "Irene": "2026/11/07",
+  "Wendy": "2026/11/07",
+  "Joy": "2026/11/07"
  },
  "songs": {
   "Surfin' Boy": {
    "spotify": {
-    "total": 12631194,
-    "yday": 44628
+    "total": 12677744,
+    "yday": 46550
    },
    "youtube": {
-    "total": 5796070,
-    "yday": 13495,
-    "likes": 296740,
-    "ylikes": 108
+    "total": 5809970,
+    "yday": 13900,
+    "likes": 296855,
+    "ylikes": 115
    }
   },
   "Run Devil Run": {
    "spotify": {
-    "total": 1345913,
-    "yday": 651
+    "total": 1346547,
+    "yday": 634
    },
    "youtube": {
-    "total": 2589516,
-    "yday": 1190,
-    "likes": 93348,
-    "ylikes": 16
+    "total": 2590667,
+    "yday": 1151,
+    "likes": 93353,
+    "ylikes": 5
    }
   },
   "Cosmic": {
    "spotify": {
-    "total": 110998863,
-    "yday": 61518
+    "total": 111061420,
+    "yday": 62557
    },
    "youtube": {
-    "total": 60700894,
+    "total": 60724853,
     "yday": 25104,
-    "likes": 1192590,
-    "ylikes": 73
+    "likes": 1192626,
+    "ylikes": 36
    }
   },
   "Chill Kill": {
    "spotify": {
-    "total": 54192954,
-    "yday": 11494
+    "total": 54204912,
+    "yday": 11958
    },
    "youtube": {
-    "total": 31566394,
+    "total": 31570331,
     "yday": 4272,
-    "likes": 778404,
-    "ylikes": 21
+    "likes": 778397,
+    "ylikes": 0
    }
   },
   "Birthday": {
@@ -63,69 +63,69 @@
     "est": false
    },
    "youtube": {
-    "total": 37116404,
+    "total": 37117675,
     "yday": 1248,
-    "likes": 869709,
+    "likes": 869689,
     "ylikes": 0
    }
   },
   "Feel My Rhythm": {
    "spotify": {
-    "total": 190647767,
-    "yday": 29616
+    "total": 190677296,
+    "yday": 29529
    },
    "youtube": {
-    "total": 91928347,
+    "total": 91936967,
     "yday": 9528,
-    "likes": 2397788,
-    "ylikes": 14
+    "likes": 2397727,
+    "ylikes": 0
    }
   },
   "Queendom": {
    "spotify": {
-    "total": 143996758,
-    "yday": 14847
+    "total": 144011765,
+    "yday": 15007
    },
    "youtube": {
-    "total": 134984873,
+    "total": 134990822,
     "yday": 6456,
-    "likes": 2868218,
+    "likes": 2868125,
     "ylikes": 0
    }
   },
   "Psycho": {
    "spotify": {
-    "total": 577820395,
-    "yday": 132366
+    "total": 577955587,
+    "yday": 135192
    },
    "youtube": {
-    "total": 440129961,
+    "total": 440180167,
     "yday": 52224,
-    "likes": 6630742,
-    "ylikes": 144
+    "likes": 6630712,
+    "ylikes": 0
    }
   },
   "Umpah Umpah": {
    "spotify": {
-    "total": 43115722,
-    "yday": 5167
+    "total": 43121056,
+    "yday": 5334
    },
    "youtube": {
-    "total": 53059200,
+    "total": 53061043,
     "yday": 1944,
-    "likes": 1687436,
+    "likes": 1687391,
     "ylikes": 0
    }
   },
   "Zimzalabim": {
    "spotify": {
-    "total": 98692994,
-    "yday": 9285
+    "total": 98702359,
+    "yday": 9365
    },
    "youtube": {
-    "total": 108758010,
+    "total": 108761094,
     "yday": 3144,
-    "likes": 2857642,
+    "likes": 2857574,
     "ylikes": 0
    }
   },
@@ -136,58 +136,58 @@
     "est": false
    },
    "youtube": {
-    "total": 80577873,
+    "total": 80581139,
     "yday": 3360,
-    "likes": 1962998,
-    "ylikes": 18
+    "likes": 1962963,
+    "ylikes": 0
    }
   },
   "Power Up": {
    "spotify": {
-    "total": 92614658,
-    "yday": 9762
+    "total": 92624255,
+    "yday": 9597
    },
    "youtube": {
-    "total": 128224732,
+    "total": 128227912,
     "yday": 3240,
-    "likes": 2076498,
+    "likes": 2076458,
     "ylikes": 0
    }
   },
   "Bad Boy": {
    "spotify": {
-    "total": 377534629,
-    "yday": 113167
+    "total": 377650592,
+    "yday": 115963
    },
    "youtube": {
-    "total": 451762847,
+    "total": 451830757,
     "yday": 68256,
-    "likes": 4343803,
-    "ylikes": 121
+    "likes": 4343857,
+    "ylikes": 54
    }
   },
   "Peek-A-Boo": {
    "spotify": {
-    "total": 251895088,
-    "yday": 38521
+    "total": 251934975,
+    "yday": 39887
    },
    "youtube": {
-    "total": 259958930,
+    "total": 259971867,
     "yday": 13344,
-    "likes": 3183804,
-    "ylikes": 51
+    "likes": 3183796,
+    "ylikes": 0
    }
   },
   "Red Flavor": {
    "spotify": {
-    "total": 231103076,
-    "yday": 36300
+    "total": 231139953,
+    "yday": 36877
    },
    "youtube": {
-    "total": 215846949,
+    "total": 215856787,
     "yday": 9696,
-    "likes": 2577174,
-    "ylikes": 27
+    "likes": 2577116,
+    "ylikes": 0
    }
   },
   "Rookie": {
@@ -197,22 +197,22 @@
     "est": false
    },
    "youtube": {
-    "total": 77002377,
+    "total": 77003963,
     "yday": 1560,
-    "likes": 1014202,
+    "likes": 1014177,
     "ylikes": 0
    }
   },
   "Russian Roulette": {
    "spotify": {
-    "total": 268071008,
-    "yday": 143633
+    "total": 268214662,
+    "yday": 143654
    },
    "youtube": {
-    "total": 300699286,
+    "total": 300763191,
     "yday": 57600,
-    "likes": 2962949,
-    "ylikes": 232
+    "likes": 2963123,
+    "ylikes": 174
    }
   },
   "Automatic": {
@@ -222,34 +222,34 @@
     "est": false
    },
    "youtube": {
-    "total": 29393952,
+    "total": 29395329,
     "yday": 1464,
-    "likes": 389660,
-    "ylikes": 10
+    "likes": 389671,
+    "ylikes": 11
    }
   },
   "Dumb Dumb": {
    "spotify": {
-    "total": 105925037,
-    "yday": 28141
+    "total": 105953193,
+    "yday": 28156
    },
    "youtube": {
-    "total": 159249289,
+    "total": 159257588,
     "yday": 8496,
-    "likes": 1565360,
-    "ylikes": 72
+    "likes": 1565423,
+    "ylikes": 63
    }
   },
   "One Of These Nights": {
    "spotify": {
-    "total": 26994488,
-    "yday": 4596
+    "total": 26999425,
+    "yday": 4937
    },
    "youtube": {
-    "total": 30525349,
+    "total": 30526521,
     "yday": 1176,
-    "likes": 612353,
-    "ylikes": 10
+    "likes": 612358,
+    "ylikes": 5
    }
   },
   "Ice Cream Cake": {
@@ -259,10 +259,10 @@
     "est": false
    },
    "youtube": {
-    "total": 142121528,
+    "total": 142126245,
     "yday": 4824,
-    "likes": 1556014,
-    "ylikes": 13
+    "likes": 1555978,
+    "ylikes": 0
    }
   },
   "Happiness": {
@@ -272,147 +272,147 @@
     "est": false
    },
    "youtube": {
-    "total": 119750141,
+    "total": 119757678,
     "yday": 7032,
-    "likes": 1427591,
-    "ylikes": 66
+    "likes": 1427644,
+    "ylikes": 53
    }
   },
   "Hot Girls Cold Vibe": {
    "spotify": {
-    "total": 1927020,
-    "yday": 3805
+    "total": 1930939,
+    "yday": 3919
    },
    "youtube": null
   },
   "Hula Hoop": {
    "spotify": {
-    "total": 2001273,
+    "total": 2005819,
     "yday": 4546
    },
    "youtube": null
   },
   "Orchestra": {
    "spotify": {
-    "total": 3514743,
-    "yday": 11857
+    "total": 3526144,
+    "yday": 11401
    },
    "youtube": null
   },
   "Hawaii": {
    "spotify": {
-    "total": 1458009,
-    "yday": 3216
+    "total": 1461137,
+    "yday": 3128
    },
    "youtube": null
   },
   "Sweet Dreams": {
    "spotify": {
-    "total": 6064011,
-    "yday": 2162
+    "total": 6066156,
+    "yday": 2145
    },
    "youtube": {
-    "total": 1453656,
-    "yday": 382,
-    "likes": 81421,
-    "ylikes": 2
+    "total": 1453991,
+    "yday": 335,
+    "likes": 81418,
+    "ylikes": 0
    }
   },
   "Night Drive": {
    "spotify": {
-    "total": 6812692,
-    "yday": 2937
+    "total": 6815762,
+    "yday": 3070
    },
    "youtube": null
   },
   "Bubble": {
    "spotify": {
-    "total": 6289168,
-    "yday": 2445
+    "total": 6291318,
+    "yday": 2150
    },
    "youtube": null
   },
   "Sunflower": {
    "spotify": {
-    "total": 9754796,
-    "yday": 3508
+    "total": 9758122,
+    "yday": 3326
    },
    "youtube": null
   },
   "Last Drop": {
    "spotify": {
-    "total": 9549383,
-    "yday": 4618
+    "total": 9553937,
+    "yday": 4554
    },
    "youtube": null
   },
   "Love Arcade": {
    "spotify": {
-    "total": 6686921,
-    "yday": 2176
+    "total": 6689134,
+    "yday": 2213
    },
    "youtube": null
   },
   "Knock Knock (Who's There?)": {
    "spotify": {
-    "total": 10922068,
-    "yday": 2811
+    "total": 10924859,
+    "yday": 2791
    },
    "youtube": null
   },
   "Will I Ever See You Again?": {
    "spotify": {
-    "total": 10420602,
-    "yday": 4021
+    "total": 10424635,
+    "yday": 4033
    },
    "youtube": null
   },
   "Underwater": {
    "spotify": {
-    "total": 16579276,
-    "yday": 6724
+    "total": 16585790,
+    "yday": 6514
    },
    "youtube": null
   },
   "Iced Coffee": {
    "spotify": {
-    "total": 7767736,
-    "yday": 2587
+    "total": 7770249,
+    "yday": 2513
    },
    "youtube": null
   },
   "Nightmare": {
    "spotify": {
-    "total": 7432579,
-    "yday": 2407
+    "total": 7434707,
+    "yday": 2128
    },
    "youtube": null
   },
   "One Kiss": {
    "spotify": {
-    "total": 7156289,
-    "yday": 1971
+    "total": 7158335,
+    "yday": 2046
    },
    "youtube": null
   },
   "Bulldozer": {
    "spotify": {
-    "total": 5827121,
-    "yday": 1852
+    "total": 5829094,
+    "yday": 1973
    },
    "youtube": null
   },
   "Scenery": {
    "spotify": {
-    "total": 4856238,
-    "yday": 1463
+    "total": 4857614,
+    "yday": 1376
    },
    "youtube": null
   },
   "Wings": {
    "spotify": {
-    "total": 4756217,
-    "yday": 1331
+    "total": 4757545,
+    "yday": 1328
    },
    "youtube": null
   },
@@ -450,172 +450,172 @@
   },
   "Bamboleo": {
    "spotify": {
-    "total": 24402846,
-    "yday": 5425
+    "total": 24408141,
+    "yday": 5295
    },
    "youtube": null
   },
   "Beg For Me": {
    "spotify": {
-    "total": 14657924,
-    "yday": 1992
+    "total": 14659962,
+    "yday": 2038
    },
    "youtube": null
   },
   "Good, Bad, Ugly": {
    "spotify": {
-    "total": 8542989,
-    "yday": 1564
+    "total": 8544409,
+    "yday": 1420
    },
    "youtube": null
   },
   "In My Dreams": {
    "spotify": {
-    "total": 55900615,
-    "yday": 21051
+    "total": 55921514,
+    "yday": 20899
    },
    "youtube": null
   },
   "Rainbow Halo": {
    "spotify": {
-    "total": 10241496,
-    "yday": 1595
+    "total": 10242995,
+    "yday": 1499
    },
    "youtube": null
   },
   "Better Be": {
    "spotify": {
-    "total": 7718191,
-    "yday": 977
+    "total": 7719149,
+    "yday": 958
    },
    "youtube": null
   },
   "Hello, Sunset": {
    "spotify": {
-    "total": 15926701,
-    "yday": 2805
+    "total": 15929558,
+    "yday": 2857
    },
    "youtube": {
-    "total": 953327,
-    "yday": 60,
-    "likes": 84956,
+    "total": 953391,
+    "yday": 64,
+    "likes": 84954,
     "ylikes": 0
    }
   },
   "Knock On Wood": {
    "spotify": {
-    "total": 10448699,
-    "yday": 1614
+    "total": 10450398,
+    "yday": 1699
    },
    "youtube": null
   },
   "Pose": {
    "spotify": {
-    "total": 24071323,
-    "yday": 2484
+    "total": 24073805,
+    "yday": 2482
    },
    "youtube": null
   },
   "Pushin' N Pullin'": {
    "spotify": {
-    "total": 10736955,
-    "yday": 2115
+    "total": 10738974,
+    "yday": 2019
    },
    "youtube": null
   },
   "In & Out": {
    "spotify": {
-    "total": 34283769,
-    "yday": 3791
+    "total": 34287400,
+    "yday": 3631
    },
    "youtube": null
   },
   "La Rouge": {
    "spotify": {
-    "total": 7732190,
-    "yday": 948
+    "total": 7733202,
+    "yday": 1012
    },
    "youtube": null
   },
   "Remember Forever": {
    "spotify": {
-    "total": 12113056,
-    "yday": 1236
+    "total": 12114423,
+    "yday": 1367
    },
    "youtube": null
   },
   "Carpool": {
    "spotify": {
-    "total": 9043686,
-    "yday": 1042
+    "total": 9044845,
+    "yday": 1159
    },
    "youtube": null
   },
   "Eyes Locked, Hands Locked": {
    "spotify": {
-    "total": 14793457,
-    "yday": 2223
+    "total": 14795690,
+    "yday": 2233
    },
    "youtube": null
   },
   "Jumpin'": {
    "spotify": {
-    "total": 7855364,
-    "yday": 728
+    "total": 7856125,
+    "yday": 761
    },
    "youtube": null
   },
   "Ladies Night": {
    "spotify": {
-    "total": 11365066,
-    "yday": 1416
+    "total": 11366453,
+    "yday": 1387
    },
    "youtube": null
   },
   "Love Is The Way": {
    "spotify": {
-    "total": 10321748,
-    "yday": 1055
+    "total": 10322816,
+    "yday": 1068
    },
    "youtube": null
   },
   "Bing Bing": {
    "spotify": {
-    "total": 8063787,
-    "yday": 704
+    "total": 8064554,
+    "yday": 767
    },
    "youtube": null
   },
   "LP": {
    "spotify": {
-    "total": 15760644,
-    "yday": 2098
+    "total": 15762729,
+    "yday": 2085
    },
    "youtube": null
   },
   "Milkshake": {
    "spotify": {
-    "total": 10495236,
-    "yday": 866
+    "total": 10496106,
+    "yday": 870
    },
    "youtube": {
-    "total": 5267542,
-    "yday": 91,
-    "likes": 364335,
+    "total": 5267663,
+    "yday": 121,
+    "likes": 364327,
     "ylikes": 0
    }
   },
   "Parade": {
    "spotify": {
-    "total": 8158841,
-    "yday": 761
+    "total": 8159612,
+    "yday": 771
    },
    "youtube": null
   },
   "Sunny Side Up!": {
    "spotify": {
-    "total": 27278940,
-    "yday": 2864
+    "total": 27281996,
+    "yday": 3056
    },
    "youtube": null
   },
@@ -653,134 +653,134 @@
   },
   "Blue Lemonade": {
    "spotify": {
-    "total": 14181313,
-    "yday": 2029
+    "total": 14183392,
+    "yday": 2079
    },
    "youtube": null
   },
   "Hit That Drum": {
    "spotify": {
-    "total": 6283081,
-    "yday": 753
+    "total": 6283795,
+    "yday": 714
    },
    "youtube": null
   },
   "Mosquito": {
    "spotify": {
-    "total": 5378208,
-    "yday": 486
+    "total": 5378741,
+    "yday": 533
    },
    "youtube": null
   },
   "Mr. E": {
    "spotify": {
-    "total": 5061399,
-    "yday": 507
+    "total": 5061908,
+    "yday": 509
    },
    "youtube": null
   },
   "With You": {
    "spotify": {
-    "total": 6393783,
-    "yday": 633
+    "total": 6394480,
+    "yday": 697
    },
    "youtube": null
   },
   "All Right": {
    "spotify": {
-    "total": 8417257,
-    "yday": 886
+    "total": 8418183,
+    "yday": 926
    },
    "youtube": null
   },
   "Time To Love": {
    "spotify": {
-    "total": 10362013,
-    "yday": 1808
+    "total": 10363808,
+    "yday": 1795
    },
    "youtube": null
   },
   "About Love": {
    "spotify": {
-    "total": 12457544,
-    "yday": 4589
+    "total": 12462447,
+    "yday": 4903
    },
    "youtube": null
   },
   "Attaboy": {
    "spotify": {
-    "total": 9040687,
-    "yday": 1020
+    "total": 9041673,
+    "yday": 986
    },
    "youtube": null
   },
   "I Just": {
    "spotify": {
-    "total": 21386692,
-    "yday": 2609
+    "total": 21389638,
+    "yday": 2946
    },
    "youtube": null
   },
   "Kingdom Come": {
    "spotify": {
-    "total": 34136203,
-    "yday": 9664
+    "total": 34145871,
+    "yday": 9668
    },
    "youtube": null
   },
   "Look": {
    "spotify": {
-    "total": 20658565,
-    "yday": 3400
+    "total": 20661995,
+    "yday": 3430
    },
    "youtube": null
   },
   "Moonlight Melody": {
    "spotify": {
-    "total": 9930525,
-    "yday": 1182
+    "total": 9931735,
+    "yday": 1210
    },
    "youtube": null
   },
   "My Second Date": {
    "spotify": {
-    "total": 11055535,
-    "yday": 1078
+    "total": 11056627,
+    "yday": 1092
    },
    "youtube": null
   },
   "Perfect 10": {
    "spotify": {
-    "total": 11984129,
-    "yday": 2402
+    "total": 11986436,
+    "yday": 2307
    },
    "youtube": null
   },
   "Hear The Sea": {
    "spotify": {
-    "total": 8422170,
-    "yday": 2292
+    "total": 8424342,
+    "yday": 2172
    },
    "youtube": null
   },
   "Mojito": {
    "spotify": {
-    "total": 5766689,
-    "yday": 617
+    "total": 5767341,
+    "yday": 652
    },
    "youtube": null
   },
   "You Better Know": {
    "spotify": {
-    "total": 18102978,
-    "yday": 2723
+    "total": 18105627,
+    "yday": 2649
    },
    "youtube": null
   },
   "Zoo": {
    "spotify": {
-    "total": 13960751,
-    "yday": 1265
+    "total": 13961999,
+    "yday": 1248
    },
    "youtube": null
   },
@@ -826,134 +826,134 @@
   },
   "Bad Dracula": {
    "spotify": {
-    "total": 6875936,
-    "yday": 949
+    "total": 6876819,
+    "yday": 883
    },
    "youtube": null
   },
   "Fool": {
    "spotify": {
-    "total": 5610528,
-    "yday": 669
+    "total": 5611227,
+    "yday": 699
    },
    "youtube": null
   },
   "Lucky Girl": {
    "spotify": {
-    "total": 8781112,
-    "yday": 1580
+    "total": 8782688,
+    "yday": 1576
    },
    "youtube": null
   },
   "My Dear": {
    "spotify": {
-    "total": 5949351,
-    "yday": 1831
+    "total": 5951034,
+    "yday": 1683
    },
    "youtube": null
   },
   "Some Love": {
    "spotify": {
-    "total": 4523931,
-    "yday": 539
+    "total": 4524434,
+    "yday": 503
    },
    "youtube": null
   },
   "Sunny Afternoon": {
    "spotify": {
-    "total": 5835687,
-    "yday": 1034
+    "total": 5836658,
+    "yday": 971
    },
    "youtube": null
   },
   "Cool Hot Sweet Love": {
    "spotify": {
-    "total": 8573128,
-    "yday": 1119
+    "total": 8574229,
+    "yday": 1101
    },
    "youtube": null
   },
   "First Time": {
    "spotify": {
-    "total": 4536983,
-    "yday": 941
+    "total": 4537673,
+    "yday": 690
    },
    "youtube": null
   },
   "Light Me Up": {
    "spotify": {
-    "total": 6195627,
-    "yday": 916
+    "total": 6196454,
+    "yday": 827
    },
    "youtube": null
   },
   "Rose Scent Breeze": {
    "spotify": {
-    "total": 3062380,
-    "yday": 473
+    "total": 3062883,
+    "yday": 503
    },
    "youtube": null
   },
   "Campfire": {
    "spotify": {
-    "total": 4976915,
-    "yday": 765
+    "total": 4977635,
+    "yday": 720
    },
    "youtube": null
   },
   "Cool World": {
    "spotify": {
-    "total": 5570508,
-    "yday": 1124
+    "total": 5571486,
+    "yday": 978
    },
    "youtube": null
   },
   "Day 1": {
    "spotify": {
-    "total": 75804707,
-    "yday": 86492
+    "total": 75893239,
+    "yday": 88532
    },
    "youtube": null
   },
   "Don't U Wait No More": {
    "spotify": {
-    "total": 5482617,
-    "yday": 807
+    "total": 5483445,
+    "yday": 828
    },
    "youtube": null
   },
   "Huff n Puff": {
    "spotify": {
-    "total": 7048641,
-    "yday": 1365
+    "total": 7049889,
+    "yday": 1248
    },
    "youtube": null
   },
   "Lady's Room": {
    "spotify": {
-    "total": 5265347,
-    "yday": 991
+    "total": 5266271,
+    "yday": 924
    },
    "youtube": null
   },
   "Oh Boy": {
    "spotify": {
-    "total": 12581162,
-    "yday": 2524
+    "total": 12583565,
+    "yday": 2403
    },
    "youtube": null
   },
   "Red Dress": {
    "spotify": {
-    "total": 7622637,
-    "yday": 959
+    "total": 7623552,
+    "yday": 915
    },
    "youtube": null
   },
   "Time Slip": {
    "spotify": {
-    "total": 8450896,
-    "yday": 2125
+    "total": 8452940,
+    "yday": 2044
    },
    "youtube": null
   },
@@ -991,105 +991,105 @@
   },
   "Sappy": {
    "spotify": {
-    "total": 12116228,
-    "yday": 1205
+    "total": 12117400,
+    "yday": 1172
    },
    "youtube": null
   },
   "#Cookie Jar": {
    "spotify": {
-    "total": 15678444,
-    "yday": 2038
+    "total": 15680538,
+    "yday": 2094
    },
    "youtube": null
   },
   "Wildside": {
    "spotify": {
-    "total": 18907489,
-    "yday": 2961
+    "total": 18910452,
+    "yday": 2963
    },
    "youtube": null
   },
   "Sayonara": {
    "spotify": {
-    "total": 6514729,
-    "yday": 1088
+    "total": 6515916,
+    "yday": 1187
    },
    "youtube": null
   },
   "Aitai-tai": {
    "spotify": {
-    "total": 6159073,
-    "yday": 2016
+    "total": 6161223,
+    "yday": 2150
    },
    "youtube": null
   },
   "Color of Love": {
    "spotify": {
-    "total": 4410856,
-    "yday": 856
+    "total": 4411759,
+    "yday": 903
    },
    "youtube": null
   },
   "Marionette": {
    "spotify": {
-    "total": 4449681,
-    "yday": 892
+    "total": 4450557,
+    "yday": 876
    },
    "youtube": null
   },
   "Swimming Pool": {
    "spotify": {
-    "total": 4338569,
-    "yday": 684
+    "total": 4339244,
+    "yday": 675
    },
    "youtube": null
   },
   "Snap Snap": {
    "spotify": {
-    "total": 2179636,
+    "total": 2180103,
     "yday": 467
    },
    "youtube": null
   },
   "'Cause it's you": {
    "spotify": {
-    "total": 3013738,
-    "yday": 515
+    "total": 3014232,
+    "yday": 494
    },
    "youtube": null
   },
   "Jackpot": {
    "spotify": {
-    "total": 1787658,
-    "yday": 361
+    "total": 1788027,
+    "yday": 369
    },
    "youtube": null
   },
   "Monster": {
    "spotify": {
-    "total": 161205157,
-    "yday": 14735,
+    "total": 161220403,
+    "yday": 15246,
     "est": false
    },
    "youtube": {
-    "total": 146158009,
+    "total": 146163853,
     "yday": 6840,
-    "likes": 3852319,
+    "likes": 3852210,
     "ylikes": 0
    }
   },
   "Naughty": {
    "spotify": {
-    "total": 61647774,
-    "yday": 11026,
+    "total": 61659452,
+    "yday": 11678,
     "est": false
    },
    "youtube": {
-    "total": 22936869,
-    "yday": 1809,
-    "likes": 951082,
-    "ylikes": 17
+    "total": 22938778,
+    "yday": 1909,
+    "likes": 951070,
+    "ylikes": 0
    }
   },
   "TILT": {
@@ -1099,10 +1099,10 @@
     "est": false
    },
    "youtube": {
-    "total": 5802556,
+    "total": 5806407,
     "yday": 5496,
-    "likes": 281081,
-    "ylikes": 48
+    "likes": 281109,
+    "ylikes": 28
    }
   },
   "Feel Good": {
@@ -1115,24 +1115,24 @@
   },
   "Jelly": {
    "spotify": {
-    "total": 7932466,
-    "yday": 2219,
+    "total": 7934702,
+    "yday": 2236,
     "est": false
    },
    "youtube": null
   },
   "Diamond": {
    "spotify": {
-    "total": 7429505,
-    "yday": 2155,
+    "total": 7431773,
+    "yday": 2268,
     "est": false
    },
    "youtube": null
   },
   "Uncover (Sung by SEULGI)": {
    "spotify": {
-    "total": 5603135,
-    "yday": 817,
+    "total": 5604064,
+    "yday": 929,
     "est": false
    },
    "youtube": null
@@ -1180,14 +1180,14 @@
   "Cheetah": {
    "spotify": {
     "total": 876081,
-    "yday": 7782,
+    "yday": 6528,
     "est": true
    },
    "youtube": {
-    "total": 1152385,
-    "yday": 139455,
-    "likes": 56140,
-    "ylikes": 4302
+    "total": 1240880,
+    "yday": 88495,
+    "likes": 59321,
+    "ylikes": 3181
    }
   },
   "Fall 4 U": {
@@ -1224,40 +1224,40 @@
   },
   "28 Reasons": {
    "spotify": {
-    "total": 88961481,
-    "yday": 15295,
+    "total": 88976854,
+    "yday": 15373,
     "est": false
    },
    "youtube": {
-    "total": 32921308,
-    "yday": 3537,
-    "likes": 1053000,
-    "ylikes": 11
+    "total": 32924948,
+    "yday": 3640,
+    "likes": 1053027,
+    "ylikes": 27
    }
   },
   "Wow Thing": {
    "spotify": {
-    "total": 43814723,
-    "yday": 5555,
+    "total": 43820245,
+    "yday": 5522,
     "est": false
    },
    "youtube": {
-    "total": 60642272,
-    "yday": 1491,
-    "likes": 1393306,
+    "total": 60643705,
+    "yday": 1433,
+    "likes": 1393261,
     "ylikes": 0
    }
   },
   "Anywhere But Home": {
    "spotify": {
-    "total": 31206367,
-    "yday": 7022,
+    "total": 31213638,
+    "yday": 7271,
     "est": false
    },
    "youtube": {
-    "total": 1771512,
-    "yday": 597,
-    "likes": 96297,
+    "total": 1772046,
+    "yday": 534,
+    "likes": 96295,
     "ylikes": 0
    }
   },
@@ -1268,16 +1268,16 @@
     "est": false
    },
    "youtube": {
-    "total": 6799810,
+    "total": 6802802,
     "yday": 2992,
-    "likes": 279828,
-    "ylikes": 23
+    "likes": 279861,
+    "ylikes": 33
    }
   },
   "Dead Man Runnin'": {
    "spotify": {
-    "total": 11841548,
-    "yday": 2426,
+    "total": 11843954,
+    "yday": 2406,
     "est": false
    },
    "youtube": {
@@ -1289,29 +1289,29 @@
   },
   "Bad Boy, Sad Girl": {
    "spotify": {
-    "total": 11060983,
-    "yday": 1810,
+    "total": 11062783,
+    "yday": 1800,
     "est": false
    },
    "youtube": {
-    "total": 1786752,
-    "yday": 433,
-    "likes": 109790,
-    "ylikes": 5
+    "total": 1787149,
+    "yday": 397,
+    "likes": 109788,
+    "ylikes": 0
    }
   },
   "Los Angeles": {
    "spotify": {
-    "total": 7230499,
-    "yday": 1292,
+    "total": 7231779,
+    "yday": 1280,
     "est": false
    },
    "youtube": null
   },
   "Crown": {
    "spotify": {
-    "total": 6338761,
-    "yday": 1072,
+    "total": 6339845,
+    "yday": 1084,
     "est": false
    },
    "youtube": null
@@ -1326,9 +1326,9 @@
   },
   "In my memory": {
    "spotify": {
-    "total": 4463856,
-    "yday": 1883,
-    "est": false
+    "total": 4465396,
+    "yday": 3543,
+    "est": true
    },
    "youtube": null
   },
@@ -1348,8 +1348,8 @@
   "Weakness": {
    "spotify": {
     "total": 2267186,
-    "yday": 2244,
-    "est": true
+    "yday": null,
+    "est": false
    },
    "youtube": null
   },
@@ -1371,37 +1371,37 @@
   },
   "Always": {
    "spotify": {
-    "total": 1490930,
-    "yday": 127,
+    "total": 1491105,
+    "yday": 175,
     "est": false
    },
    "youtube": null
   },
   "Like A Flower": {
    "spotify": {
-    "total": 22745219,
-    "yday": 13068,
+    "total": 22758306,
+    "yday": 13087,
     "est": false
    },
    "youtube": {
-    "total": 5816145,
-    "yday": 2447,
-    "likes": 272876,
-    "ylikes": 18
+    "total": 5818448,
+    "yday": 2303,
+    "likes": 272883,
+    "ylikes": 7
    }
   },
   "Summer Rain": {
    "spotify": {
-    "total": 4206651,
-    "yday": 2729,
+    "total": 4209439,
+    "yday": 2788,
     "est": false
    },
    "youtube": null
   },
   "Strawberry Silhouette": {
    "spotify": {
-    "total": 3331135,
-    "yday": 2018,
+    "total": 3332993,
+    "yday": 1858,
     "est": false
    },
    "youtube": null
@@ -1416,24 +1416,24 @@
   },
   "Ka-Ching": {
    "spotify": {
-    "total": 2493024,
-    "yday": 1739,
+    "total": 2494495,
+    "yday": 1471,
     "est": false
    },
    "youtube": null
   },
   "Start Line": {
    "spotify": {
-    "total": 2138278,
-    "yday": 1011,
+    "total": 2139275,
+    "yday": 997,
     "est": false
    },
    "youtube": null
   },
   "Winter Wish": {
    "spotify": {
-    "total": 2053803,
-    "yday": 1079,
+    "total": 2054754,
+    "yday": 951,
     "est": false
    },
    "youtube": null
@@ -1448,15 +1448,15 @@
   },
   "Biggest Fan": {
    "spotify": {
-    "total": 4945905,
-    "yday": null,
-    "est": false
+    "total": 5013155,
+    "yday": 9607,
+    "est": true
    },
    "youtube": {
-    "total": 2743221,
-    "yday": 2721,
-    "likes": 155866,
-    "ylikes": 30
+    "total": 2745808,
+    "yday": 2587,
+    "likes": 155899,
+    "ylikes": 33
    }
   },
   "Best Believe": {
@@ -1493,15 +1493,15 @@
   },
   "Love Can Make A Way": {
    "spotify": {
-    "total": 870138,
-    "yday": null,
-    "est": false
+    "total": 909681,
+    "yday": 5649,
+    "est": true
    },
    "youtube": {
-    "total": 351357,
-    "yday": 773,
-    "likes": 19782,
-    "ylikes": 11
+    "total": 352018,
+    "yday": 661,
+    "likes": 19789,
+    "ylikes": 7
    }
   },
   "Black Halo": {
@@ -1530,50 +1530,50 @@
   },
   "Wasteland": {
    "spotify": {
-    "total": 714948,
-    "yday": null,
-    "est": false
+    "total": 731287,
+    "yday": 2334,
+    "est": true
    },
    "youtube": null
   },
   "Written In The Stars": {
    "spotify": {
-    "total": 65119454,
-    "yday": 3684,
+    "total": 65122967,
+    "yday": 3513,
     "est": false
    },
    "youtube": {
-    "total": 15380921,
-    "yday": 678,
-    "likes": 833334,
+    "total": 15381461,
+    "yday": 540,
+    "likes": 833304,
     "ylikes": 0
    }
   },
   "Like Water": {
    "spotify": {
-    "total": 40563739,
-    "yday": 4405,
+    "total": 40568443,
+    "yday": 4704,
     "est": false
    },
    "youtube": {
-    "total": 20305167,
-    "yday": 987,
-    "likes": 1152593,
+    "total": 20306026,
+    "yday": 859,
+    "likes": 1152545,
     "ylikes": 0
    }
   },
   "What If Love": {
    "spotify": {
-    "total": 35543466,
-    "yday": 4262,
+    "total": 35548027,
+    "yday": 4561,
     "est": false
    },
    "youtube": null
   },
   "Goodbye": {
    "spotify": {
-    "total": 31811243,
-    "yday": 6354,
+    "total": 31817048,
+    "yday": 5805,
     "est": false
    },
    "youtube": {
@@ -1585,23 +1585,23 @@
   },
   "When This Rain Stops": {
    "spotify": {
-    "total": 27368487,
-    "yday": 4003,
+    "total": 27372569,
+    "yday": 4082,
     "est": false
    },
    "youtube": null
   },
   "Wish You Hell": {
    "spotify": {
-    "total": 21797466,
-    "yday": 4830,
+    "total": 21802485,
+    "yday": 5019,
     "est": false
    },
    "youtube": {
-    "total": 5743310,
-    "yday": 618,
-    "likes": 236305,
-    "ylikes": 10
+    "total": 5744105,
+    "yday": 795,
+    "likes": 236300,
+    "ylikes": 0
    }
   },
   "Spring Love": {
@@ -1614,8 +1614,8 @@
   },
   "His Car Isn't Yours": {
    "spotify": {
-    "total": 14826425,
-    "yday": 4171,
+    "total": 14830647,
+    "yday": 4222,
     "est": false
    },
    "youtube": null
@@ -1627,10 +1627,10 @@
     "est": false
    },
    "youtube": {
-    "total": 8801842,
-    "yday": 33330,
-    "likes": 36576,
-    "ylikes": 75
+    "total": 8834571,
+    "yday": 32729,
+    "likes": 36663,
+    "ylikes": 87
    }
   },
   "Two Words": {
@@ -1649,32 +1649,32 @@
   },
   "Best Friend (with SEULGI)": {
    "spotify": {
-    "total": 8835654,
-    "yday": 1311,
+    "total": 8836931,
+    "yday": 1277,
     "est": false
    },
    "youtube": null
   },
   "Why Can't You Love Me?": {
    "spotify": {
-    "total": 8806579,
-    "yday": 1243,
+    "total": 8807722,
+    "yday": 1143,
     "est": false
    },
    "youtube": null
   },
   "Airport Goodbyes": {
    "spotify": {
-    "total": 6498930,
-    "yday": 1040,
+    "total": 6499924,
+    "yday": 994,
     "est": false
    },
    "youtube": null
   },
   "The Road": {
    "spotify": {
-    "total": 5481670,
-    "yday": 804,
+    "total": 5482503,
+    "yday": 833,
     "est": false
    },
    "youtube": null
@@ -1686,16 +1686,16 @@
     "est": false
    },
    "youtube": {
-    "total": 8069393,
-    "yday": 1386,
-    "likes": 71864,
-    "ylikes": 8
+    "total": 8070502,
+    "yday": 1109,
+    "likes": 71862,
+    "ylikes": 0
    }
   },
   "Queen Of The Party": {
    "spotify": {
-    "total": 3421755,
-    "yday": 946,
+    "total": 3422749,
+    "yday": 994,
     "est": false
    },
    "youtube": null
@@ -1709,16 +1709,16 @@
   },
   "Vermilion": {
    "spotify": {
-    "total": 2974182,
-    "yday": 1164,
+    "total": 2975172,
+    "yday": 990,
     "est": false
    },
    "youtube": null
   },
   "Better Judgement": {
    "spotify": {
-    "total": 2961608,
-    "yday": 1024,
+    "total": 2962612,
+    "yday": 1004,
     "est": false
    },
    "youtube": null
@@ -1732,8 +1732,8 @@
   },
   "Best Ever": {
    "spotify": {
-    "total": 2626935,
-    "yday": 671,
+    "total": 2627595,
+    "yday": 660,
     "est": false
    },
    "youtube": null
@@ -1832,14 +1832,14 @@
   },
   "Hello": {
    "spotify": {
-    "total": 80913319,
-    "yday": 15791,
+    "total": 80929071,
+    "yday": 15752,
     "est": false
    },
    "youtube": {
-    "total": 34254112,
-    "yday": 1805,
-    "likes": 1603669,
+    "total": 34255937,
+    "yday": 1825,
+    "likes": 1603617,
     "ylikes": 0
    }
   },
@@ -1850,16 +1850,16 @@
     "est": false
    },
    "youtube": {
-    "total": 19389300,
-    "yday": 3651,
-    "likes": 157125,
+    "total": 19392599,
+    "yday": 3299,
+    "likes": 157118,
     "ylikes": 0
    }
   },
   "Je T'aime": {
    "spotify": {
-    "total": 15789327,
-    "yday": 2480,
+    "total": 15791980,
+    "yday": 2653,
     "est": false
    },
    "youtube": null
@@ -1885,8 +1885,8 @@
   },
   "Day By Day": {
    "spotify": {
-    "total": 7126291,
-    "yday": 1592,
+    "total": 7127896,
+    "yday": 1605,
     "est": false
    },
    "youtube": null
@@ -1921,16 +1921,16 @@
   },
   "Happy Birthday To You": {
    "spotify": {
-    "total": 5546252,
-    "yday": 1143,
+    "total": 5547360,
+    "yday": 1108,
     "est": false
    },
    "youtube": null
   },
   "If Only": {
    "spotify": {
-    "total": 4209515,
-    "yday": 833,
+    "total": 4210277,
+    "yday": 762,
     "est": false
    },
    "youtube": null
@@ -1956,16 +1956,16 @@
     "est": false
    },
    "youtube": {
-    "total": 1600761,
-    "yday": 417,
-    "likes": 101574,
-    "ylikes": 3
+    "total": 1601087,
+    "yday": 326,
+    "likes": 101573,
+    "ylikes": 0
    }
   },
   "Be There For You": {
    "spotify": {
-    "total": 3061246,
-    "yday": 662,
+    "total": 3061887,
+    "yday": 641,
     "est": false
    },
    "youtube": null
@@ -2001,8 +2001,8 @@
   },
   "My Lips Like Warm Coffee": {
    "spotify": {
-    "total": 1131990,
-    "yday": 3140,
+    "total": 1135020,
+    "yday": 3030,
     "est": false
    },
    "youtube": null
@@ -3471,15 +3471,15 @@
  "covers": {},
  "covers_tried": {},
  "apple": {
-  "updated": "2026/11/06",
+  "updated": "2026/11/07",
   "best": {
    "Red Velvet": {
     "Surfin' Boy": {
      "KR": {
       "p": 98,
       "d": "2026/10/12",
-      "l": "2026/11/06",
-      "n": 171
+      "l": "2026/11/07",
+      "n": 167
      }
     },
     "러시안 룰렛": {
@@ -3494,7 +3494,7 @@
   }
  },
  "itunes": {
-  "updated": "2026/11/06",
+  "updated": "2026/11/07",
   "best": {
    "Wendy": {
     "Recharge Me": {
@@ -3535,8 +3535,8 @@
      "QA": {
       "p": 11,
       "d": "2026/11/04",
-      "l": "2026/11/06",
-      "n": 66
+      "l": "2026/11/07",
+      "n": 92
      },
      "VN": {
       "p": 80,
@@ -3685,8 +3685,8 @@
      "VE": {
       "p": 12,
       "d": "2026/10/12",
-      "l": "2026/11/06",
-      "n": 12
+      "l": "2026/11/07",
+      "n": 15
      },
      "MX": {
       "p": 79,
@@ -3705,6 +3705,12 @@
       "d": "2026/11/05",
       "l": "2026/11/06",
       "n": 47
+     },
+     "AR": {
+      "p": 103,
+      "d": "2026/11/07",
+      "l": "2026/11/07",
+      "n": 103
      }
     },
     "Espacio Sideral": {
@@ -3865,6 +3871,12 @@
       "d": "2026/10/31",
       "l": "2026/10/31",
       "n": 61
+     },
+     "AR": {
+      "p": 110,
+      "d": "2026/11/07",
+      "l": "2026/11/07",
+      "n": 110
      }
     },
     "Punto Y Aparte": {
@@ -3898,6 +3910,14 @@
       "l": "2026/11/05",
       "n": 155
      }
+    },
+    "Te Esperé": {
+     "AR": {
+      "p": 125,
+      "d": "2026/11/07",
+      "l": "2026/11/07",
+      "n": 125
+     }
     }
    },
    "Irene & Seulgi": {
@@ -3925,6 +3945,16 @@
       "d": "2026/11/01",
       "l": "2026/11/01",
       "n": 96
+     }
+    }
+   },
+   "Irene": {
+    "Wasteland": {
+     "GT": {
+      "p": 59,
+      "d": "2026/11/07",
+      "l": "2026/11/07",
+      "n": 59
      }
     }
    }
