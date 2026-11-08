@@ -265,6 +265,7 @@ EXTRA = {
     "Wendy": {
         "url": "https://kworb.net/spotify/artist/0FRUZvZNPzM3YJMABJxf2K_songs.html",
         "songs": [
+            "Even That Is Love",
             "Written In The Stars",
             "Like Water",
             "What If Love",
@@ -846,12 +847,12 @@ def load(path, default):
 
 
 # bigger covers: looked up once per song on the itunes search api (no key needed) and saved in the covers folder
-COVER_KEEP = {"Naughty", "Wow Thing", "Russian Roulette", "Surfin' Boy"}   # already good quality, never replaced
+COVER_KEEP = {"Naughty", "Wow Thing", "Russian Roulette", "Surfin' Boy", "Even That Is Love"}   # already good quality, never replaced
 COVER_SONGS = ["Happiness", "Ice Cream Cake", "Dumb Dumb", "One Of These Nights", "Rookie", "Red Flavor", "Peek-A-Boo",
                "Bad Boy", "Power Up", "RBB (Really Bad Boy)", "Zimzalabim", "Umpah Umpah", "Psycho", "Queendom",
                "Feel My Rhythm", "Birthday", "Chill Kill", "Cosmic", "Run Devil Run", "Automatic", "#Cookie Jar",
                "Sappy", "Wildside", "Monster", "Like Water", "Hello", "28 Reasons", "Wish You Hell", "Like A Flower",
-               "Baby, Not Baby", "TILT", "Love Splash!", "Sunkiss", "Biggest Fan", "Cheetah", "Daydream"]
+               "Baby, Not Baby", "TILT", "Love Splash!", "Sunkiss", "Biggest Fan", "Cheetah", "Daydream", "Even That Is Love"]
 COVER_ARTISTS = ("red velvet", "irene", "seulgi", "wendy", "joy", "\ub808\ub4dc\ubca8\ubcb3", "\uc544\uc774\ub9b0", "\uc2ac\uae30", "\uc6ec\ub514", "\uc870\uc774")
 COVER_RETRY_DAYS = 14
 
