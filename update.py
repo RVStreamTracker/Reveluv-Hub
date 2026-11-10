@@ -601,6 +601,10 @@ EXTRA_VIDEOS = {
     "Love Splash!": "-2fAmkQS854",
     "Introduce me a good person": "hoLzH1revMg",
     "Written In The Stars": "H4a-5BdZ5ck",
+    "Wildside": "xGr53sCo62c",
+    "Sappy": "JUJ3Pq74H4c",
+    "#Cookie Jar": "rRgTMs_bGuI",
+    "Je T'aime": "ZYBY490Undc",
     "Cheetah": "Ts8HTHBRxvw",
 }
 
@@ -847,12 +851,12 @@ def load(path, default):
 
 
 # bigger covers: looked up once per song on the itunes search api (no key needed) and saved in the covers folder
-COVER_KEEP = {"Naughty", "Wow Thing", "Russian Roulette", "Surfin' Boy", "Even That Is Love"}   # already good quality, never replaced
+COVER_KEEP = {"Naughty", "Wow Thing", "Russian Roulette", "Surfin' Boy", "Even That Is Love", "Je T'aime"}   # already good quality, never replaced
 COVER_SONGS = ["Happiness", "Ice Cream Cake", "Dumb Dumb", "One Of These Nights", "Rookie", "Red Flavor", "Peek-A-Boo",
                "Bad Boy", "Power Up", "RBB (Really Bad Boy)", "Zimzalabim", "Umpah Umpah", "Psycho", "Queendom",
                "Feel My Rhythm", "Birthday", "Chill Kill", "Cosmic", "Run Devil Run", "Automatic", "#Cookie Jar",
                "Sappy", "Wildside", "Monster", "Like Water", "Hello", "28 Reasons", "Wish You Hell", "Like A Flower",
-               "Baby, Not Baby", "TILT", "Love Splash!", "Sunkiss", "Biggest Fan", "Cheetah", "Daydream", "Even That Is Love"]
+               "Baby, Not Baby", "TILT", "Love Splash!", "Sunkiss", "Biggest Fan", "Cheetah", "Daydream", "Even That Is Love", "Je T'aime"]
 COVER_ARTISTS = ("red velvet", "irene", "seulgi", "wendy", "joy", "\ub808\ub4dc\ubca8\ubcb3", "\uc544\uc774\ub9b0", "\uc2ac\uae30", "\uc6ec\ub514", "\uc870\uc774")
 COVER_RETRY_DAYS = 14
 
