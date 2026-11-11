@@ -513,6 +513,38 @@ MSC_TRACK_IDS = {
     "Love Anxiety": "5CQ9lSfkFurZ9ftmg838ZI",
 }
 MSC_STALE_DAYS = 2      # use mystreamcount when kworb is dated
+
+# RapidAPI "Spotify Stream Count": a few lookups a day for brand-new songs that Kworb does not list yet.
+# The free plan is only 50 lookups a month, so a song needs its Spotify track id here and the run stops after API_DAILY_MAX lookups.
+# The key is read from the RAPIDAPI_KEY secret and is never printed or saved.
+API_TRACK_IDS = {
+    "Even That Is Love": "4FHGqqIFPOJIg7lwqDMtqa",
+}
+API_HOST = "spotify-stream-count.p.rapidapi.com"
+API_DAILY_MAX = 2
+api_calls = 0
+
+
+def api_total(title):
+    """Current total streams for one song from RapidAPI, or None (no key, no track id, daily limit reached, or an error)."""
+    global api_calls
+    key = os.environ.get("RAPIDAPI_KEY", "").strip()
+    tid = API_TRACK_IDS.get(title)
+    if not key or not tid or api_calls >= API_DAILY_MAX:
+        return None
+    api_calls += 1
+    try:
+        url = "https://" + API_HOST + "/v1/spotify/tracks/" + tid + "/streams/current"
+        req = urllib.request.Request(url, headers={"x-rapidapi-host": API_HOST, "x-rapidapi-key": key, "User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            streams = json.loads(resp.read().decode("utf-8", "replace")).get("streams")
+        if isinstance(streams, int) and streams > 0:
+            print("RapidAPI gave a number for", title)
+            return streams
+        print("RapidAPI had no number for", title)
+    except Exception as err:
+        print("RapidAPI lookup failed for", title, "-", err)
+    return None
 msc_down = False        # set to true after one failed request so the rest are skipped
 
 
@@ -1001,6 +1033,22 @@ def main():
         found, kdate, stale = {}, None, True
         print(who + ": using MyStreamCount")
         msc, from_msc = None, 0
+        # if MyStreamCount blocks the bot, use this artist's Kworb page for the run instead
+        mid0 = re.search(r"/artist/([A-Za-z0-9]{22})", info["url"])
+        msc = msc_artist_tracks(mid0.group(1)) if mid0 else {}
+        if not msc and msc_down:
+            found, kdate = read_spotify(info["url"])
+            found = found or {}
+            stale = not found
+            try:   # Kworb's solo pages are often weeks old, so only trust the page when it is dated within MSC_STALE_DAYS
+                if kdate and (today - datetime.strptime(kdate, "%Y/%m/%d").date()).days > MSC_STALE_DAYS:
+                    stale = True
+            except Exception:
+                stale = True
+            if stale:
+                print(who + ": MyStreamCount is blocked and Kworb is too old (" + str(kdate) + "), keeping the saved numbers")
+            else:
+                print(who + ": MyStreamCount is blocked, using Kworb instead (" + str(len(found)) + " songs, dated " + str(kdate) + ")")
         why = {"no match": [], "no total": [], "lower": []}
         for title in info["songs"]:
             old = (data.get("songs", {}).get(title) or {}).get("spotify")
@@ -1009,7 +1057,7 @@ def main():
                 old = {"total": hit[0], "yday": hit[1]}
                 snap[title] = {"s": hit[0]}
             else:
-                if hit:
+                if hit and not (old and (old.get("total") or 0) > hit[0]):   # an old Kworb page never replaces a newer saved total
                     old = {"total": hit[0], "yday": None}   
                     
                 if msc is None:
@@ -1029,7 +1077,14 @@ def main():
                     snap[title] = {"s": total}
                     from_msc += 1
                 elif not hit:
-                    missing.append(title + " (" + who + ")")
+                    got = api_total(title)
+                    if got:
+                        old = {"total": got, "yday": gain_steady(hist, today, title, "s", got)}
+                        old["est"] = steady_info(hist, today, title, "s", got)[1]
+                        snap[title] = {"s": got}
+                        from_msc += 1
+                    else:
+                        missing.append(title + " (" + who + ")")
             yt = (data.get("songs", {}).get(title) or {}).get("youtube")
             vid = xall.get(title)
             if vid:
@@ -1059,6 +1114,8 @@ def main():
         if from_msc:
             print(who + ":", from_msc, "song(s) updated from MyStreamCount")
             xdates[who] = today.strftime("%Y/%m/%d")   # counts as updated when MyStreamCount gave at least one new number
+        elif found and not stale:
+            xdates[who] = kdate or today.strftime("%Y/%m/%d")   # Kworb backup was used
 
     hist[ds] = snap
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
