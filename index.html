@@ -1146,6 +1146,10 @@ body{transition:background-color .4s,color .3s}
 .lfn .abtn svg{width:15px;height:15px;margin-right:6px}
 .lfn .lfa{font-size:12.5px;color:var(--mut)}
 @media (max-width:560px){.lfn{padding:13px 14px}}
+.srcn{position:relative;padding-right:38px}
+.srcx{position:absolute;top:50%;right:8px;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:0;background:transparent;color:var(--mut);display:grid;place-items:center;padding:0;cursor:pointer}
+.srcx:hover{background:color-mix(in srgb,#f5a524 25%,transparent);color:var(--ink)}
+.srcx svg{width:13px;height:13px;margin:0;color:inherit}
 </style>
 </head>
 <body><div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1261,7 +1265,7 @@ function panel(s, p){
   var g = tgt(s.t, p, v.total), r = pred(v.total, v.yday, g), pc = Math.min(100, v.total/g*100);
   var vid = p === "youtube" ? vidOf(s.t) : "";
   return '<div class="pn' + (vid ? ' yt' : '') + '"' + (vid ? ' style="--thumb:url(https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg)"' : '') + '><h4>' + n + '</h4><div class="big" data-v="' + v.total + '" data-m="f">' + fmt(v.total) + '</div><div class="mut">' + ydayTxt(v) + '</div>' + (p === "youtube" ? lk(v) : '') + note(s, p) +
-    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (outdated(s, p) ? '<div class="oldb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v5M12 17.5v.01"/></svg><div><b>Heavily outdated</b><span>This number is far below the other songs on its album, so the stream count here is probably behind.</span></div></div>' : '') + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Kworb\'s daily number for this song looked out of date, so this uses how much its total grew between the last two updates instead.</span></div>' : '') +
+    '<i class="bar"><u style="width:' + pc + '%"></u></i><div class="mut" style="margin-bottom:8px">' + pc.toFixed(1) + '% of ' + short(g) + '</div><span class="pill ' + r.c + '">' + r.x + '</span>' + (outdated(s, p) ? '<div class="oldb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v5M12 17.5v.01"/></svg><div><b>Heavily outdated</b><span>This number is far below the other songs on its album, so the stream count here is probably behind.</span></div></div>' : '') + (p === "spotify" && (s.cat === "solo" || s.cat === "unit") && !outdated(s, p) ? srcNote() : '') + (lowD(p, v, s) ? '<div class="lown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Kworb\'s daily number for this song looked out of date, so this uses how much its total grew between the last two updates instead.</span></div>' : '') +
     '<label class="gl">Goal<input type="text" inputmode="numeric" value="' + fmt(g) + '" data-k="' + p + ':' + s.t + '"></label></div>';
 }
 function openSong(i){
@@ -1276,6 +1280,18 @@ SONGS.forEach(function(s){ var k = INFO[s.t]; if (!k) return; if (!ALB[k]) { ALB
 var REPACK = {"Bloom - 2022": ["#Cookie Jar - 2018", "Sappy - 2019"], "The ReVe Festival: Finale - 2019": ["The ReVe Festival: Day 1 - 2019", "The ReVe Festival: Day 2 - 2019"], "The Perfect Red Velvet - 2018": ["Perfect Velvet - 2017"]};
 function albList(k){ var out = (ALB[k] || []).slice(); (REPACK[k] || []).forEach(function(pk){ (ALB[pk] || []).forEach(function(s){ if (out.indexOf(s) < 0) out.push(s); }); }); return out; }
 function albFrom(k){ return (REPACK[k] || []).map(function(pk){ return albParts(pk).n.replace(/^The ReVe Festival: /, "TRVF "); }); }
+var SRC_NOTE = true;   // set to false once the solo numbers update normally again
+var SRCKEY = "rv-hide-src-note";
+function srcHidden(){ try { return localStorage.getItem(SRCKEY) === "1"; } catch (e) { return false; } }
+function srcNote(st){
+  if (!SRC_NOTE || srcHidden()) return "";
+  return '<div class="lown srcn"' + (st ? ' style="' + st + '"' : '') + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span>Solo and Irene &amp; Seulgi numbers are likely to be out of date right now. We\'re having trouble getting fresh numbers for these songs right now, so the totals may be behind. We\'re working on it.</span><button type="button" class="srcx" aria-label="Hide this note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>';
+}
+document.addEventListener("click", function(e){
+  if (!e.target.closest(".srcx")) return;
+  try { localStorage.setItem(SRCKEY, "1"); } catch (x) {}
+  document.querySelectorAll(".srcn").forEach(function(n){ n.remove(); });
+});
 function outdated(s, p){
   if (!s || p !== "spotify" || (s.cat !== "solo" && s.cat !== "unit")) return false;
   var k = INFO[s.t], v = dd(s, "spotify"); if (!k || !v || !v.total) return false;
@@ -1311,7 +1327,7 @@ function openAlbum(ai){
   var was = $("dlg").open; $("mb").classList.toggle("static", was); $("mb").classList.remove("hasbk");
   var c = gcOf(lead.t); if (c) $("dlg").style.setProperty("--gc", c); else $("dlg").style.removeProperty("--gc");
   var xs = list.filter(function(s){ return s.who && s.s; })[0];
-  $("mb").innerHTML = '<div class="mh">' + cover(lead) + '<div><h3>' + p.n + '</h3><div class="album">' + (p.y ? p.y + ' - ' : '') + list.length + (list.length === 1 ? ' song' : ' songs') + ' tracked</div>' + '</div></div><div class="pns one">' + albPanel(list, "spotify") + '</div><div class="alg">' + list.map(function(s){ var ok = INFO[s.t] === k || !REPACK[k]; return albCard(s, ok ? "" : albParts(INFO[s.t]).n.replace(/^The ReVe Festival: /, "TRVF ")); }).join("") + '</div><p class="mut fine">Album totals add up the songs tracked on this site, so they can differ from the album count on Spotify.</p>' + (xs ? xFine(xs) : '');
+  $("mb").innerHTML = '<div class="mh">' + cover(lead) + '<div><h3>' + p.n + '</h3><div class="album">' + (p.y ? p.y + ' - ' : '') + list.length + (list.length === 1 ? ' song' : ' songs') + ' tracked</div>' + '</div></div><div class="pns one">' + albPanel(list, "spotify") + '</div>' + (list.some(function(s){ return s.cat === "solo" || s.cat === "unit"; }) ? srcNote("margin:12px 0 0") : '') + '<div class="alg">' + list.map(function(s){ var ok = INFO[s.t] === k || !REPACK[k]; return albCard(s, ok ? "" : albParts(INFO[s.t]).n.replace(/^The ReVe Festival: /, "TRVF ")); }).join("") + '</div><p class="mut fine">Album totals add up the songs tracked on this site, so they can differ from the album count on Spotify.</p>' + (xs ? xFine(xs) : '');
   if (!$("dlg").open) { $("dlg").showModal(); countUp($("mb")); }
 }
 document.addEventListener("click", function(e){ var el = e.target.closest("[data-i]"); if (el) backAl = el.classList.contains("alc") ? curAlb : -1; }, true);
