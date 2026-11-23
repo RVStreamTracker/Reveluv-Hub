@@ -265,6 +265,12 @@ EXTRA = {
     "Wendy": {
         "url": "https://kworb.net/spotify/artist/0FRUZvZNPzM3YJMABJxf2K_songs.html",
         "songs": [
+            "Before Sunrise",
+            "Special Dust",
+            "Timeline",
+            "WORST",
+            "Shadows",
+            "Golden Hour",
             "Even That Is Love",
             "Written In The Stars",
             "Like Water",
@@ -637,6 +643,7 @@ EXTRA_VIDEOS = {
     "Sappy": "JUJ3Pq74H4c",
     "#Cookie Jar": "rRgTMs_bGuI",
     "Je T'aime": "ZYBY490Undc",
+    "Before Sunrise": "4FVkUBRVXiU",
     "Cheetah": "Ts8HTHBRxvw",
 }
 
@@ -1116,6 +1123,23 @@ def main():
             xdates[who] = today.strftime("%Y/%m/%d")   # counts as updated when MyStreamCount gave at least one new number
         elif found and not stale:
             xdates[who] = kdate or today.strftime("%Y/%m/%d")   # Kworb backup was used
+
+    # numbers typed by hand in manual.json, like {"Before Sunrise": 1234567}. only used when higher than the saved total
+    manual = load("manual.json", {})
+    for who, info in EXTRA.items():
+        for title in info["songs"]:
+            try:
+                total = int(str(manual.get(title, "")).replace(",", "").strip())
+            except ValueError:
+                continue
+            old = (songs.get(title) or {}).get("spotify")
+            if total > ((old or {}).get("total") or 0):
+                new = {"total": total, "yday": gain_steady(hist, today, title, "s", total)}
+                new["est"] = steady_info(hist, today, title, "s", total)[1]
+                snap[title] = dict(snap.get(title, {}), s=total)
+                songs[title] = {"spotify": new, "youtube": (songs.get(title) or {}).get("youtube")}
+                xdates[who] = today.strftime("%Y/%m/%d")
+                print(title + ": using the number from manual.json (" + format(total, ",") + ")")
 
     hist[ds] = snap
     for day in [d for d in hist if (today - date.fromisoformat(d)).days > 60]:
