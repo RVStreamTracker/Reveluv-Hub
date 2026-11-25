@@ -1,8 +1,9 @@
 name: Update stream data
 
 on:
-  schedule:
-    - cron: "15 8 * * *"   # every day at 08:15 UTC (3:15 AM EST, 4:15 AM EDT)
+  # schedule is off: cron-job.org starts this at 3:15 AM New York time, so the run is not delayed
+  # schedule:
+  #   - cron: "15 8 * * *"
   workflow_dispatch:        # lets you run it by hand from the Actions tab
 
 permissions:
