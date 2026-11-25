@@ -1201,7 +1201,7 @@ function niceDate(s){ var m = /^(\d{4})\/(\d{2})\/(\d{2})$/.exec(s || ""); if (m
 function fd(s){ var p = s.split("/"); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1] - 1] + " " + (+p[2]); }
 function xFine(s){ if (!((s.cat === "solo" || s.cat === "unit") && XDATE[s.who])) return "";
   if (!s.s) return '<p class="mut fine">No numbers yet for this song.</p>';
-  if (!isStale(s)) return "";
+  if (P !== "spotify" || !isStale(s)) return "";
   return '<p class="mut fine">These numbers were last updated ' + fd(XDATE[s.who]) + ' and may be out of date.</p>'; }
 var SONGS = ROWS.map(function(r,i){ return {t:r[0], i:i, s:r[1]?{total:r[1],yday:r[2]}:null, y:YOUTUBE[r[0]]||null, cat:"title", fresh:i===0}; }).concat(BROWS.map(function(r,i){ return {t:r[0], i:ROWS.length+i, b:true, cat:"b", s:r[1]?{total:r[1],yday:r[2]}:null, y:null, fresh:false}; })).concat(JROWS.map(function(r,i){ return {t:r[0], i:ROWS.length+BROWS.length+i, jp:true, b:r[3]==="b", cat:r[3]==="b"?"b":"title", s:{total:r[1],yday:r[2]}, y:null, fresh:false}; })).concat(XROWS.map(function(r,i){ return {t:r[0], i:ROWS.length+BROWS.length+JROWS.length+i, cat:r[3], who:r[4], s:r[1]?{total:r[1],yday:r[2]}:null, y:YOUTUBE[r[0]]||null, fresh:false}; }));
 document.documentElement.classList.add("js");
@@ -1349,7 +1349,7 @@ function nextMs(t){ var st = stepFor(t), g = Math.floor(t / st) * st + st; retur
 function ms(n){ return n >= 1e9 ? +(n / 1e9).toFixed(2) + "B" : +(n / 1e6).toFixed(2) + "M"; }
 function drawMiles(POOL){
   var items = [];
-  POOL.forEach(function(s){ var v = dd(s, P); if (!v || !(v.yday > 0) || isStale(s)) return; var g = nextMs(v.total), eta = (g - v.total) / v.yday; if (eta <= 30) items.push({s:s, g:g, eta:eta, v:v}); });
+  POOL.forEach(function(s){ var v = dd(s, P); if (!v || !(v.yday > 0) || (P === "spotify" && isStale(s))) return; var g = nextMs(v.total), eta = (g - v.total) / v.yday; if (eta <= 30) items.push({s:s, g:g, eta:eta, v:v}); });
   items.sort(function(a, b){ return a.eta - b.eta; });
   items = items.slice(0, 6);
   $("miles").innerHTML = items.length ? items.map(function(r){
@@ -1426,7 +1426,7 @@ function histBlock(s){
   [["s", "Spotify daily streams", s.s], ["y", "YouTube daily views", s.y]].forEach(function(p){
     if (!p[2]) return;
     var ser = histSeries(s.t, p[0], s), body;
-    if (isStale(s)) body = '<p class="mut" style="margin:6px 0 0">Daily history is not available while this artist\'s numbers are out of date.</p>';
+    if (p[0] === "s" && isStale(s)) body = '<p class="mut" style="margin:6px 0 0">Daily history is not available while this artist\'s numbers are out of date.</p>';
     else if (ser.length < 2) body = '<p class="mut" style="margin:6px 0 0">The chart appears after a few daily updates.</p>';
     else body = histChart(ser, p[1]) + (ser.some(function(x){ return x.est; }) ? '<p class="hnote">Dotted bars are estimates. They cover days with no saved update, or days when the total did not change, and spread the growth over those days.</p>' : '');
     out += '<div class="hist"><h4>' + p[1] + '</h4>' + body + '</div>';
