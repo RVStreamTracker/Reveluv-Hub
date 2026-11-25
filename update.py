@@ -1125,7 +1125,14 @@ def main():
             xdates[who] = kdate or today.strftime("%Y/%m/%d")   # Kworb backup was used
 
     # numbers typed by hand in manual.json, like {"Before Sunrise": 1234567}. only used when higher than the saved total
-    manual = load("manual.json", {})
+    try:
+        with open("manual.json", encoding="utf-8") as f:
+            manual = json.loads(re.sub(r"(?<=\d),(?=\d{3})", "", f.read()))
+    except FileNotFoundError:
+        manual = {}
+    except Exception as e:
+        print("manual.json could not be read (" + str(e) + ") - skipping it")
+        manual = {}
     for who, info in EXTRA.items():
         for title in info["songs"]:
             try:
